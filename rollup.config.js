@@ -8,7 +8,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
-import copy from 'rollup-plugin-copy';
+import copy from 'rollup-plugin-copy-glob';
 
 // PostCSS plugins
 import simplevars from 'postcss-simple-vars';
@@ -66,9 +66,13 @@ export default {
       CSL_ENV: JSON.stringify(process.env.CSL_ENV || 'development'),
     }),
     IS_PRODUCTION && terser(),
-    copy({
-      'src/index.html': 'build/index.html',
-      verbose: IS_PRODUCTION
+    copy([
+      { files: 'src/index.html', dest: 'build' },
+      { files: 'src/icons/*', dest: 'build' },
+      { files: 'robots.txt', dest: 'build' },
+    ], {
+      verbose: IS_PRODUCTION,
+      watch: false
     }),
   ],
 };
