@@ -1,0 +1,44 @@
+{
+  "name": "csl",
+  "version": "0.1.0",
+  "description": "Церковнославянский язык сегодня",
+  "license": "CC0-1.0",
+  "main": "build/js/spa.js",
+  "private": false,
+  "scripts": {
+    "build": "rollup -c",
+    "build-watch": "rollup -c --watch",
+    "lint": "eslint",
+    "lint-all": "clear; find src/ -name '*.js' | xargs eslint",
+    "production": "rm -fr build; rollup -c --environment CSL_ENV:production; git --work-tree=../slavdict.github.io --git-dir=../slavdict.github.io/.git checkout origin; rsync -av build/ ../slavdict.github.io/'",
+    "serve": "lite-server -c lite-server.config.json",
+    "test": "echo 'Error: no test specified' && exit 1",
+    "watch": "find -type f -path './src/*' -o -path './package.json' -o -path './rollup.config.js' | entr -s 'npm-run-all --silent --parallel lint-all build'"
+  },
+  "dependencies": {
+    "debug": "^4.1.0",
+    "jquery": "^3.3.1",
+    "knockout": "^3.4.2",
+    "page": "^1.11.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "cssnano": "^4.1.7",
+    "lite-server": "^2.4.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-inline": "^1.2.0",
+    "postcss-nested": "^4.1.0",
+    "postcss-simple-vars": "^5.0.1",
+    "rollup": "^0.67.4",
+    "rollup-plugin-babel": "^4.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-eslint": "^5.0.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-postcss": "^1.6.3",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-terser": "^3.0.0",
+    "yarn-run-all": "^3.1.1"
+  }
+}

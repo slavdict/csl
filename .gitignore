@@ -1,0 +1,7 @@
+build/**
+
+node_modules
+semantic
+
+npm-debug.log
+yarn-error.log

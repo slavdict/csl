@@ -1,0 +1,27 @@
+env:
+  browser: true
+  es6: true
+globals:
+  ENV: true
+extends: 'eslint:recommended'
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+rules:
+  indent:
+    - error
+    - 2
+    - VariableDeclarator:
+        var: 2
+        let: 2
+        const: 3
+      ArrayExpression: off
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always
