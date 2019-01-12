@@ -1,4 +1,3 @@
-import './styles/main.css';
 import log from './scripts/log.js';
 
 import jQuery from 'jquery';

@@ -2,6 +2,7 @@ const exec = require('child_process').exec,
     { src, dest, parallel } = require('gulp'),
       rollup = require('gulp-better-rollup'),
       rename = require('gulp-rename'),
+      postcss = require('gulp-postcss'),
       nunjucks = require('gulp-nunjucks');
 
 // Rollup plugins
@@ -12,8 +13,7 @@ const babel = require('rollup-plugin-babel'),
       //globals = require('rollup-plugin-node-globals'),
       commonjs = require('rollup-plugin-commonjs'),
       replace = require('rollup-plugin-replace'),
-      terser = require('rollup-plugin-terser').terser,
-      postcss = require('rollup-plugin-postcss');
+      terser = require('rollup-plugin-terser').terser;
 
 // PostCSS plugins
 const easyimport = require('postcss-easy-import'),
@@ -37,16 +37,6 @@ const rollupOutputOpts = {
 const rollupInputOpts = {
   external: ['jquery', 'knockout'],
   plugins: [
-    postcss({
-      extensions: ['.css'],
-      plugins: [
-        easyimport(),
-        simplevars(),
-        nested(),
-        cssnext(),
-        cssnano(),
-      ],
-    }),
     //builtins(),
     resolve({
       jsnext: true,
@@ -88,14 +78,20 @@ function js() {
     .pipe(dest('build/js', { sourcemaps: true }));
 }
 
+function css() {
+  var plugins = [easyimport(), simplevars(), nested(), cssnext(), cssnano()];
+  return src('src/styles/main.css').pipe(postcss(plugins))
+    .pipe(rename('csl.css')).pipe(dest('build'));
+}
+
 function etc(callback) {
   src('src/icons/*').pipe(dest('build'));
   src('src/fonts/*').pipe(dest('build/fonts'));
-  src('src/styles/fonts.css').pipe(dest('build'));
-  src('robots.txt').pipe(dest('build'));
+  return src('robots.txt').pipe(dest('build'));
 }
 
 exports.html = html;
 exports.js = js;
+exports.css = css;
 exports.etc = etc;
-exports.default = parallel(html, js, etc);
+exports.default = parallel(html, css, js, etc);

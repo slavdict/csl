@@ -1,0 +1,162 @@
+@charset 'utf-8';
+
+$civilFont: 'Roboto';
+$greekFont: $civilFont;
+$csl1Font: 'Pochaevsk UCS';
+$csl2Font: 'Pochaevsk Condensed UCS';
+
+//div.Letter
+//div.Entry
+//div.FirstParagraph
+//div.CollogroupParagraph
+//div.CfParagraph
+//div.MeaningParagraph
+
+//span.Headword
+//span.SubHeadword
+//span.HeadwordHomonymNumber
+//span.HeadwordNumber
+//span.HomonymNumber
+//span.Text
+//span.CSLSegment
+//span.CSLSegmentEm
+//span.MeaningfulNoAccent
+//span.Em
+//span.MeaningNumber
+//span.CgMeaningNumber
+//span.Meaning.Text
+//span.Gloss.Em
+//span.Address
+//span.Greek
+//span.Latin
+//span.Use
+//span.BiblicalAllusion
+//span.Diamond
+//span.Gloss.Em
+//span.Conj
+//span.Valency
+
+div.Entry {
+  font-family: Roboto;
+  margin-top: 2em;
+  text-align: justify;
+  line-height: 1.5em;
+}
+
+div.FirstParagraph {
+  text-indent: -0.4em;
+
+  @media print {
+    text-indent: 0;
+  }
+}
+
+div.CfParagraph,
+div.MeaningParagraph {
+  text-indent: 0.6em;
+}
+
+div.CollogroupParagraph {
+  text-indent: 0.15em;
+}
+
+span.Headword,
+span.SubHeadword,
+span.CSLSegmentEm {
+  font-family: $csl1Font;
+}
+
+span.Headword,
+span.SubHeadword {
+  font-size: 1.4em;
+}
+
+span.CSLSegmentEm {
+  font-size: 1.24em;
+}
+
+span.CSLSegment {
+  font-family: $csl2Font;
+  font-style: normal;
+}
+
+span.Text,
+span.Em,
+span.Conj,
+span.Valency,
+span.Latin,
+span.Address {
+  font-family: $civilFont;
+}
+
+span.Address {
+  font-size: smaller;
+}
+
+span.CgMeaningNumber {
+  font-weight: bold;
+}
+
+span.Conj,
+span.Valency,
+span.Em {
+  font-style: italic;
+}
+
+span.Greek {
+  font-family: $greekFont;
+  font-size: 1.1em;
+}
+
+span.MeaningNumber,
+span.CgMeaningNumber {
+  font-family: $civilFont;
+  font-weight: bold;
+}
+
+span.Meaning.Text,
+span.Gloss.Em {
+  hyphens: auto;
+}
+
+span.Diamond,
+span.MeaningfulNoAccent,
+span.BiblicalAllusion,
+span.Use {
+  font-family: FreeSerifSymbols;
+}
+
+span.Use {
+  font-size: 1.35em;
+}
+
+span.MeaningfulNoAccent {
+  font-size: 0.583em;
+  position: relative;
+  vertical-align: top;
+}
+
+span.Diamond {
+  font-size: 1.2em;
+  position: relative;
+  vertical-align: -0.05em;
+  display: inline-block;
+  padding: 0;
+  margin: 0 -0.15em 0 0.2em;
+}
+
+span.BiblicalAllusion {
+  position: relative;
+  vertical-align: -0.05em;
+  left: 0.05rem;
+}
+
+span.HeadwordHomonymNumber,
+span.HeadwordNumber,
+span.HomonymNumber {
+  font-size: 0.583em;
+  position: relative;
+  vertical-align: top;
+  color: black;
+  top: -0.2em;
+}
