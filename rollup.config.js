@@ -11,6 +11,7 @@ import postcss from 'rollup-plugin-postcss';
 import copy from 'rollup-plugin-copy-glob';
 
 // PostCSS plugins
+import easyimport from 'postcss-easy-import';
 import simplevars from 'postcss-simple-vars';
 import nested from 'postcss-nested';
 import cssnext from 'postcss-cssnext';
@@ -37,6 +38,7 @@ export default {
     postcss({
       extensions: ['.css'],
       plugins: [
+        easyimport(),
         simplevars(),
         nested(),
         cssnext(),
@@ -69,6 +71,8 @@ export default {
     copy([
       { files: 'src/index.html', dest: 'build' },
       { files: 'src/icons/*', dest: 'build' },
+      { files: 'src/fonts', dest: 'build' },
+      { files: 'src/styles/fonts.css', dest: 'build' },
       { files: 'robots.txt', dest: 'build' },
     ], {
       verbose: IS_PRODUCTION,

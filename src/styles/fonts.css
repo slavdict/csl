@@ -1,0 +1,33 @@
+@charset 'utf-8';
+
+@font-face {
+  font-family: 'Pochaevsk UCS';
+  src: url('fonts/pochucs.woff2') format('woff2'),
+       url('fonts/pochucs.woff') format('woff'),
+       url('fonts/pochucs.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Pochaevsk Condensed UCS';
+  src: url('fonts/pochucscond.woff') format('woff'),
+       url('fonts/pochucscond.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'Wingdings 3';
+  src: url('fonts/wingdings-3.eot');
+  src: url('fonts/wingdings-3.woff') format('woff'),
+       url('fonts/wingdings-3.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: FreeSerifSymbols;
+  src: url('fonts/freeserif-symbols.woff') format('woff'),
+       url('fonts/freeserif-symbols.ttf') format('truetype');
+  text-rendering: optimizeLegibility;
+}
