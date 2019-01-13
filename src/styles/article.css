@@ -1,46 +1,49 @@
 @charset 'utf-8';
+@import './variables.css';
 
-$civilFont: 'Roboto';
-$greekFont: $civilFont;
-$csl1Font: 'Pochaevsk UCS';
-$csl2Font: 'Pochaevsk Condensed UCS';
+$civilFontSize: 0.93em;
+$addressFontSize: 0.7em;
+$greekFontSize: $civilFontSize;
 
-//div.Letter
-//div.Entry
-//div.FirstParagraph
-//div.CollogroupParagraph
-//div.CfParagraph
-//div.MeaningParagraph
+/* div.Letter */
+/* div.Entry */
+/* div.FirstParagraph */
+/* div.CollogroupParagraph */
+/* div.CfParagraph */
+/* div.MeaningParagraph */
 
-//span.Headword
-//span.SubHeadword
-//span.HeadwordHomonymNumber
-//span.HeadwordNumber
-//span.HomonymNumber
-//span.Text
-//span.CSLSegment
-//span.CSLSegmentEm
-//span.MeaningfulNoAccent
-//span.Em
-//span.MeaningNumber
-//span.CgMeaningNumber
-//span.Meaning.Text
-//span.Gloss.Em
-//span.Address
-//span.Greek
-//span.Latin
-//span.Use
-//span.BiblicalAllusion
-//span.Diamond
-//span.Gloss.Em
-//span.Conj
-//span.Valency
+/* span.Headword */
+/* span.SubHeadword */
+/* span.HeadwordHomonymNumber */
+/* span.HeadwordNumber */
+/* span.HomonymNumber */
+/* span.Text */
+/* span.CSLSegment */
+/* span.CSLSegmentEm */
+/* span.MeaningfulNoAccent */
+/* span.Em */
+/* span.MeaningNumber */
+/* span.CgMeaningNumber */
+/* span.Meaning.Text */
+/* span.Gloss.Em */
+/* span.Address */
+/* span.Greek */
+/* span.Latin */
+/* span.Use */
+/* span.BiblicalAllusion */
+/* span.Diamond */
+/* span.Gloss.Em */
+/* span.Conj */
+/* span.Valency */
 
 div.Entry {
-  font-family: Roboto;
   margin-top: 2em;
   text-align: justify;
   line-height: 1.5em;
+}
+
+div.Entry * {
+  font-family: $civilFont1;
 }
 
 div.FirstParagraph {
@@ -63,7 +66,7 @@ div.CollogroupParagraph {
 span.Headword,
 span.SubHeadword,
 span.CSLSegmentEm {
-  font-family: $csl1Font;
+  font-family: $cslFont1;
 }
 
 span.Headword,
@@ -76,7 +79,7 @@ span.CSLSegmentEm {
 }
 
 span.CSLSegment {
-  font-family: $csl2Font;
+  font-family: $cslFont2;
   font-style: normal;
 }
 
@@ -86,11 +89,12 @@ span.Conj,
 span.Valency,
 span.Latin,
 span.Address {
-  font-family: $civilFont;
+  font-family: $civilFont1;
+  font-size: $civilFontSize;
 }
 
 span.Address {
-  font-size: smaller;
+  font-size: $addressFontSize;
 }
 
 span.CgMeaningNumber {
@@ -105,12 +109,13 @@ span.Em {
 
 span.Greek {
   font-family: $greekFont;
-  font-size: 1.1em;
+  font-size: $greekFontSize;
 }
 
 span.MeaningNumber,
 span.CgMeaningNumber {
-  font-family: $civilFont;
+  font-family: $civilFont1;
+  font-size: $civilFontSize;
   font-weight: bold;
 }
 

@@ -1,0 +1,21 @@
+@import './variables.css';
+
+section.video {
+  figure {
+    width: 570px;
+
+    iframe {
+      width: 570px;
+      height: 320px;
+    }
+
+    header {
+      font-family: $civilFont2;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #3a3b37;
+    }
+  }
+}
