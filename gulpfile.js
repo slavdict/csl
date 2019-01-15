@@ -87,6 +87,7 @@ function css() {
 function etc(callback) {
   src('src/icons/*').pipe(dest('build'));
   src('src/fonts/*').pipe(dest('build/fonts'));
+  src('src/images/*').pipe(dest('build/img'));
   src('node_modules/jquery/dist/jquery.min.js').pipe(dest('build/js'));
   src('node_modules/knockout/build/output/knockout-latest.js')
     .pipe(rename('knockout.min.js')).pipe(dest('build/js'));

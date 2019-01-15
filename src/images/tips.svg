@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <path id="questionMark" style="fill:currentColor;stroke-width:1.38555706" d="m 214.43329,464.63973 v -41.56671 h 41.56672 41.56671 v 41.56671 41.56672 h -41.56671 -41.56672 z m 0,-124.70011 v -41.56671 h 20.78336 20.78336 v -20.78337 -20.78335 h 41.56671 41.56672 V 173.67276 90.539344 h -83.13343 -83.13343 v 41.566716 41.5667 h -41.5667 -41.566714 v -41.5667 -41.566716 h 41.566714 41.5667 V 48.972634 7.4059237 h 83.13343 83.13343 v 41.5667103 41.56671 h 41.56667 41.56672 v 83.133416 83.13343 h -41.56672 -41.56667 v 41.56672 41.56671 h -20.78336 -20.78336 v 20.78336 20.78336 h -41.56671 -41.56672 z"></path>
+  <path id="crossOut" style="fill:none;stroke:#f54f4f;stroke-width:10.47350121;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 7.4058837,504.5941 504.59412,7.4058837"></path>
+</svg>
