@@ -6,9 +6,8 @@ import page from 'page';
 
 import initKnockout from './scripts/init.knockout.js';
 
-/* eslint-disable no-undef,no-constant-condition */
-const baseURL = (CSL_ENV !== 'production' ? '' : '');
-/* eslint-enable no-undef,no-constant-condition */
+/* eslint-disable-next-line no-constant-condition */
+const baseURL = ('CSL_ENV' !== 'production' ? '' : '');
 log('CSL portal');
 
 const qs = window.URLSearchParams && (new URLSearchParams(document.location.search));

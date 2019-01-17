@@ -2,6 +2,9 @@ const exec = require('child_process').exec,
     { src, dest, parallel } = require('gulp'),
       rollup = require('gulp-better-rollup'),
       rename = require('gulp-rename'),
+      ext = require('gulp-ext'),
+      gulpif = require('gulp-if'),
+      htmlmin = require('gulp-htmlmin'),
       postcss = require('gulp-postcss'),
       nunjucks = require('gulp-nunjucks');
 
@@ -22,8 +25,19 @@ const easyimport = require('postcss-easy-import'),
       cssnext = require('postcss-cssnext'),
       cssnano = require('cssnano');
 
-const IS_PRODUCTION = process.env.CSL_ENV === 'production',
+const CSL_ENV = process.env.CSL_ENV || 'development',
+      CSL_ENV_IS_PRODUCTION = process.env.CSL_ENV === 'production',
       CSL_VERSION = require('./package.json').version;
+
+const nunjucksContext = {
+  CSL_NAME: 'Церковнославянский язык сегодня',
+  CSL_SHORT_NAME: 'Цсл язык сегодня',
+  CSL_VERY_SHORT_NAME: 'Цсл сегодня',
+  CSL_DESCRIPTION: 'Поверение ничто ино есть, токмо свидетельство сложения, аще истинно сложил без погрешения, или в чем погрешил: а поверяется сице: из всех верхних перечней порядком вычитай по 9. Оставшее же напиши особно. А по том вычти из исподняго перечня по 9 же: и что останется, того смотри, аще толикое же число осталось, елико и от верхних оставшее, и особно написанное. И по тому знай, яко право, и без погрешения сложен перечень. Аще же не будет согласен остаток, с первым остатком, убо не добре сложил еси.',
+  CSL_VERSION: CSL_VERSION,
+  CSL_ENV: CSL_ENV,
+  CSL_ENV_IS_PRODUCTION: CSL_ENV_IS_PRODUCTION
+};
 
 const rollupOutputOpts = {
   file: 'spa.js',
@@ -38,37 +52,31 @@ const rollupInputOpts = {
   external: ['jquery', 'knockout'],
   plugins: [
     //builtins(),
-    resolve({
-      jsnext: true,
-      main: true,
-      browser: true,
-    }),
+    resolve({ jsnext: true, main: true, browser: true, }),
     commonjs(),
     //globals(),
-    eslint({
-      exclude: [
-        'src/styles/**',
-      ],
-    }),
-    babel({
-      exclude: 'node_modules/**',
-    }),
-    replace({
-      exclude: [
-        'node_modules/**',
-      ],
-      CSL_ENV: JSON.stringify(process.env.CSL_ENV || 'development'),
-    }),
-    IS_PRODUCTION && terser(),
+    eslint({ exclude: ['src/styles/**'] }),
+    babel({ exclude: 'node_modules/**', }),
+    replace(Object.assign(nunjucksContext, { exclude: ['node_modules/**'] })),
+    CSL_ENV_IS_PRODUCTION && terser(),
   ],
 };
 
 console.log('\nCSL v' + CSL_VERSION);
 
 function html() {
-  return src('src/index.njk')
-    .pipe(nunjucks.compile())
-    .pipe(rename('index.html'))
+  var cond = function (vinylFile) { return vinylFile.path.endsWith('.html'); };
+  return src(['src/index.html.njk', 'src/csl.webmanifest.njk'])
+    .pipe(nunjucks.compile(nunjucksContext))
+    .pipe(ext.crop())
+    .pipe(gulpif(cond, htmlmin({
+      collapseWhitespace: true,
+      conservativeCollapse: false,
+      removeComments: true,
+      ignoreCustomComments: [/^\s+ko\s+|\s+\/ko\s+$/],
+      minifyCSS: true,
+      minifyJS: true,
+    })))
     .pipe(dest('build'));
 }
 
