@@ -2,7 +2,7 @@
 @import './variables.css';
 
 @font-face {
-  font-family: $cslFont1;
+  font-family: $--csl-font1;
   src: url('fonts/pochucs.woff2') format('woff2'),
        url('fonts/pochucs.woff') format('woff'),
        url('fonts/pochucs.ttf') format('truetype');
@@ -11,7 +11,7 @@
 }
 
 @font-face {
-  font-family: $cslFont2;
+  font-family: $--csl-font2;
   src: url('fonts/pochucscond.woff') format('woff'),
        url('fonts/pochucscond.ttf') format('truetype');
   font-style: normal;

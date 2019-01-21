@@ -1,5 +1,13 @@
-$civilFont1: 'Roboto';
-$civilFont2: 'Roboto Condensed';
-$greekFont: $civilFont1;
-$cslFont1: 'Pochaevsk UCS';
-$cslFont2: 'Pochaevsk Condensed UCS';
+$--csl-font1: 'Pochaevsk UCS';
+$--csl-font2: 'Pochaevsk Condensed UCS';
+
+:root {
+  --civil-font1: 'Roboto';
+  --civil-font2: 'Roboto Condensed';
+  --greek-font: var(--civil-font1);
+  --csl-font1: $--csl-font1;
+  --csl-font2: $--csl-font2;
+
+  --main-width: 58.625em;
+  --main-margin-left: 18.75em;
+}

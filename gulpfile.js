@@ -1,12 +1,14 @@
 const exec = require('child_process').exec,
-    { src, dest, parallel } = require('gulp'),
-      rollup = require('gulp-better-rollup'),
-      rename = require('gulp-rename'),
-      ext = require('gulp-ext'),
+    { src, dest, parallel } = require('gulp');
+
+// Gulp plugins
+const ext = require('gulp-ext'),
       gulpif = require('gulp-if'),
       htmlmin = require('gulp-htmlmin'),
+      nunjucks = require('gulp-nunjucks'),
       postcss = require('gulp-postcss'),
-      nunjucks = require('gulp-nunjucks');
+      rename = require('gulp-rename'),
+      rollup = require('gulp-better-rollup');
 
 // Rollup plugins
 const babel = require('rollup-plugin-babel'),
@@ -19,11 +21,12 @@ const babel = require('rollup-plugin-babel'),
       terser = require('rollup-plugin-terser').terser;
 
 // PostCSS plugins
-const easyimport = require('postcss-easy-import'),
-      simplevars = require('postcss-simple-vars'),
-      nested = require('postcss-nested'),
-      cssnext = require('postcss-cssnext'),
-      cssnano = require('cssnano');
+const calc = require('postcss-calc'),
+      cssNano = require('cssnano'),
+      cssPresetEnv = require('postcss-preset-env'),
+      customProps = require('postcss-css-variables'),
+      easyImport = require('postcss-easy-import'),
+      sassLikeVars = require('postcss-simple-vars');
 
 const CSL_ENV = process.env.CSL_ENV || 'development',
       CSL_ENV_IS_PRODUCTION = process.env.CSL_ENV === 'production',
@@ -87,7 +90,10 @@ function js() {
 }
 
 function css() {
-  var plugins = [easyimport(), simplevars(), nested(), cssnext(), cssnano()];
+  var cpOpts = { preserve: false },
+      cpeOpts = { stage: 0 },
+      plugins = [easyImport(), sassLikeVars(), customProps(cpOpts), calc(),
+                 cssPresetEnv(cpeOpts), cssNano()];
   return src('src/styles/main.css').pipe(postcss(plugins))
     .pipe(rename('csl.css')).pipe(dest('build'));
 }

@@ -1,9 +1,11 @@
 @charset 'utf-8';
 @import './variables.css';
 
-$civilFontSize: 0.93em;
-$addressFontSize: 0.7em;
-$greekFontSize: $civilFontSize;
+:root {
+  --civil-font-size: 0.93em;
+  --address-font-size: 0.7em;
+  --greek-font-size: var(--civil-font-size);
+}
 
 /* div.Letter */
 /* div.Entry */
@@ -44,7 +46,7 @@ div.Entry {
 }
 
 div.Entry * {
-  font-family: $civilFont1;
+  font-family: var(--civil-font1);
 }
 
 div.FirstParagraph {
@@ -62,7 +64,7 @@ div.CollogroupParagraph {
 span.Headword,
 span.SubHeadword,
 span.CSLSegmentEm {
-  font-family: $cslFont1;
+  font-family: var(--csl-font1);
 }
 
 span.Headword,
@@ -75,7 +77,7 @@ span.CSLSegmentEm {
 }
 
 span.CSLSegment {
-  font-family: $cslFont2;
+  font-family: var(--csl-font2);
   font-style: normal;
 }
 
@@ -85,12 +87,12 @@ span.Conj,
 span.Valency,
 span.Latin,
 span.Address {
-  font-family: $civilFont1;
-  font-size: $civilFontSize;
+  font-family: var(--civil-font1);
+  font-size: var(--civil-font-size);
 }
 
 span.Address {
-  font-size: $addressFontSize;
+  font-size: var(--address-font-size);
 }
 
 span.CgMeaningNumber {
@@ -104,14 +106,14 @@ span.Em {
 }
 
 span.Greek {
-  font-family: $greekFont;
-  font-size: $greekFontSize;
+  font-family: var(--greek-font);
+  font-size: var(--greek-font-size);
 }
 
 span.MeaningNumber,
 span.CgMeaningNumber {
-  font-family: $civilFont1;
-  font-size: $civilFontSize;
+  font-family: var(--civil-font1);
+  font-size: var(--civil-font-size);
   font-weight: bold;
 }
 

@@ -1,12 +1,53 @@
 {% extends 'scraps/webpage.html.njk' %}
 {% block main %}
 
-  <p>{{ CSL_DESCRIPTION }}</p>
+  <header id="header">
 
-  <section class="video">
-    {% include 'scraps/stubdata/video-pichxadze1.htm' %}
-  </section>
+    <figure id="logo">
+      {% include 'images/yus.svg' %}
+      <figcaption>Церковнославянский<br>язык<br>сегодня</figcaption>
+    </figure>
 
-  {% include 'scraps/stubdata/article-angel.htm' %}
+    {% include 'scraps/slovnik.htm' %}
+    {% include 'scraps/menu.htm' %}
+    {% include 'scraps/dict_menu.htm' %}
+
+  </header>
+
+  <div id="main">
+
+    <div id="legend">{{ CSL_DESCRIPTION }}</div>
+
+    {% include 'scraps/search.htm' %}
+
+    <section class="video">
+      <header>
+        Случайные лекции из нашего <a href="">видеоархива</a>
+        <i class="random"></i>
+      </header>
+      {% include 'scraps/stubdata/video-pichxadze1.htm' %}
+      {% include 'scraps/stubdata/video-kagarlickij1.htm' %}
+    </section>
+
+    <section class="article">
+      <header>
+        Случайная статья из нашего <a href="">словаря</a>
+        <i class="random"></i>
+      </header>
+      {% include 'scraps/stubdata/article-angel.htm' %}
+    </section>
+
+    <section class="links">
+      <header>
+        Случайная <a href="">ссылка</a> <i class="random"></i>
+      </header>
+      {% include 'scraps/stubdata/ref1.htm' %}
+    </section>
+
+  </div>
+
+  <footer id="footer">
+    {% include 'scraps/patrons.htm' %}
+  </footer>
 
 {% endblock %}

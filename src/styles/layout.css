@@ -1,0 +1,26 @@
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+header#header {
+  position: relative;
+  width: var(--main-width);
+  height: 9em;
+  margin-left: var(--main-margin-left);
+}
+
+div#main {
+  margin-left: var(--main-margin-left);
+}
+
+footer#footer {
+  border-top: 0.125em solid #dcded2;
+  margin: 3.75em;
+}
+
+section.article,
+section.links {
+  width: var(--main-width);
+}
