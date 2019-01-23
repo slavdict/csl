@@ -1,5 +1,6 @@
 const exec = require('child_process').exec,
-    { src, dest, parallel, series } = require('gulp');
+    { src, dest, parallel, series } = require('gulp'),
+      merge = require('merge-stream');
 
 // Gulp plugins
 const ext = require('gulp-ext'),
@@ -99,17 +100,24 @@ function css() {
 }
 
 function assets() {
-  src('src/icons/*').pipe(dest('.build'));
-  src('src/fonts/*').pipe(dest('.build/fonts'));
-  src('src/images/*').pipe(dest('.build/img'));
-  src('node_modules/jquery/dist/jquery.min.js').pipe(dest('.build/js'));
-  src('node_modules/knockout/build/output/knockout-latest.js')
-    .pipe(rename('knockout.min.js')).pipe(dest('.build/js'));
-  return src('robots.txt').pipe(dest('.build'));
+  return merge(
+    src('src/icons/*').pipe(dest('.build')),
+    src('src/fonts/*').pipe(dest('.build/fonts')),
+    src('src/images/*').pipe(dest('.build/img')),
+    src('node_modules/jquery/dist/jquery.min.js').pipe(dest('.build/js')),
+    src('node_modules/knockout/build/output/knockout-latest.js')
+      .pipe(rename('knockout.min.js')).pipe(dest('.build/js')),
+    src('robots.txt').pipe(dest('.build'))
+  );
 }
 
 function sync() {
-  return src('.build/*').pipe(dest('build'));
+  return merge(
+    src('.build/*').pipe(dest('build')),
+    src('.build/img/*').pipe(dest('build/img')),
+    src('.build/fonts/*').pipe(dest('build/fonts')),
+    src('.build/js/*').pipe(dest('build/js'))
+  );
 }
 
 exports.html = series(html, sync);
