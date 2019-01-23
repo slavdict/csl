@@ -1,11 +1,9 @@
 @charset 'utf-8';
 @import './variables.css';
 
-:root {
-  --civil-font-size: 0.93em;
-  --address-font-size: 0.7em;
-  --greek-font-size: var(--civil-font-size);
-}
+$--civil-font-size: 0.93em;
+$--address-font-size: 0.7em;
+$--greek-font-size: $--civil-font-size;
 
 /* div.Letter */
 /* div.Entry */
@@ -39,14 +37,15 @@
 /* span.Valency */
 
 div.Entry {
-  margin-top: 2em;
+  margin-bottom: $--ygap;
   text-align: justify;
   line-height: 1.5em;
   column-width: 20em;
+  column-gap: $--xgap;
 }
 
 div.Entry * {
-  font-family: var(--civil-font1);
+  font-family: $--civil-font1;
 }
 
 div.FirstParagraph {
@@ -64,7 +63,7 @@ div.CollogroupParagraph {
 span.Headword,
 span.SubHeadword,
 span.CSLSegmentEm {
-  font-family: var(--csl-font1);
+  font-family: $--csl-font1;
 }
 
 span.Headword,
@@ -77,7 +76,7 @@ span.CSLSegmentEm {
 }
 
 span.CSLSegment {
-  font-family: var(--csl-font2);
+  font-family: $--csl-font2;
   font-style: normal;
 }
 
@@ -87,12 +86,12 @@ span.Conj,
 span.Valency,
 span.Latin,
 span.Address {
-  font-family: var(--civil-font1);
-  font-size: var(--civil-font-size);
+  font-family: $--civil-font1;
+  font-size: $--civil-font-size;
 }
 
 span.Address {
-  font-size: var(--address-font-size);
+  font-size: $--address-font-size;
 }
 
 span.CgMeaningNumber {
@@ -106,14 +105,14 @@ span.Em {
 }
 
 span.Greek {
-  font-family: var(--greek-font);
-  font-size: var(--greek-font-size);
+  font-family: $--greek-font;
+  font-size: $--greek-font-size;
 }
 
 span.MeaningNumber,
 span.CgMeaningNumber {
-  font-family: var(--civil-font1);
-  font-size: var(--civil-font-size);
+  font-family: $--civil-font1;
+  font-size: $--civil-font-size;
   font-weight: bold;
 }
 
@@ -160,6 +159,6 @@ span.HomonymNumber {
   font-size: 0.583em;
   position: relative;
   vertical-align: top;
-  color: black;
+  color: $--black;
   top: -0.2em;
 }

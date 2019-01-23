@@ -1,10 +1,13 @@
 {% extends 'scraps/webpage.html.njk' %}
+{% from 'scraps/svg_use.njk' import svg_use %}
+
 {% block main %}
+  {% include 'scraps/random.svg' %}
 
   <header id="header">
 
     <figure id="logo">
-      {% include 'images/yus.svg' %}
+      {% include 'scraps/yus.svg' %}
       <figcaption>Церковнославянский<br>язык<br>сегодня</figcaption>
     </figure>
 
@@ -22,26 +25,31 @@
 
     <section class="video">
       <header>
-        Случайные лекции из нашего <a href="">видеоархива</a>
-        <i class="random"></i>
+        Случайные лекции из&nbsp;нашего <a href="">видеоархива</a>
+        <a class="random" href="">{{ svg_use('icon-random') }}</a>
       </header>
-      {% include 'scraps/stubdata/video-pichxadze1.htm' %}
-      {% include 'scraps/stubdata/video-kagarlickij1.htm' %}
+      <div class="main">
+        {% include 'scraps/stubdata/video-pichxadze1.htm' %}
+        {% include 'scraps/stubdata/video-kagarlickij1.htm' %}
+        {% include 'scraps/stubdata/video-sedakova1.htm' %}
+      </div>
     </section>
 
     <section class="article">
       <header>
-        Случайная статья из нашего <a href="">словаря</a>
-        <i class="random"></i>
+        Случайная статья из&nbsp;нашего <a href="">словаря</a>
+        <a class="random" href="">{{ svg_use('icon-random') }}</a>
       </header>
       {% include 'scraps/stubdata/article-angel.htm' %}
     </section>
 
-    <section class="links">
+    <section class="refs">
       <header>
-        Случайная <a href="">ссылка</a> <i class="random"></i>
+        Случайная <a href="">ссылка</a>
+        <a class="random" href="">{{ svg_use('icon-random') }}</a>
       </header>
       {% include 'scraps/stubdata/ref1.htm' %}
+      {% include 'scraps/stubdata/ref2.htm' %}
     </section>
 
   </div>

@@ -5,6 +5,9 @@
     "baseDir": "build"
   },
   "injectChanges": true,
+  "reloadThrottle": 0,
+  "reloadDelay": 500,
+  "reloadDebounce": 500,
   "logLevel": "silent",
   "browser": ["google-chrome"]
 }

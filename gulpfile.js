@@ -1,5 +1,5 @@
 const exec = require('child_process').exec,
-    { src, dest, parallel } = require('gulp');
+    { src, dest, parallel, series } = require('gulp');
 
 // Gulp plugins
 const ext = require('gulp-ext'),
@@ -80,13 +80,13 @@ function html() {
       minifyCSS: true,
       minifyJS: true,
     })))
-    .pipe(dest('build'));
+    .pipe(dest('.build'));
 }
 
 function js() {
   return src('src/app.js', { sourcemaps: true })
     .pipe(rollup(rollupInputOpts, rollupOutputOpts))
-    .pipe(dest('build/js', { sourcemaps: true }));
+    .pipe(dest('.build/js', { sourcemaps: true }));
 }
 
 function css() {
@@ -95,21 +95,26 @@ function css() {
       plugins = [easyImport(), sassLikeVars(), customProps(cpOpts), calc(),
                  cssPresetEnv(cpeOpts), cssNano()];
   return src('src/styles/main.css').pipe(postcss(plugins))
-    .pipe(rename('csl.css')).pipe(dest('build'));
+    .pipe(rename('csl.css')).pipe(dest('.build'));
 }
 
-function etc(callback) {
-  src('src/icons/*').pipe(dest('build'));
-  src('src/fonts/*').pipe(dest('build/fonts'));
-  src('src/images/*').pipe(dest('build/img'));
-  src('node_modules/jquery/dist/jquery.min.js').pipe(dest('build/js'));
+function assets() {
+  src('src/icons/*').pipe(dest('.build'));
+  src('src/fonts/*').pipe(dest('.build/fonts'));
+  src('src/images/*').pipe(dest('.build/img'));
+  src('node_modules/jquery/dist/jquery.min.js').pipe(dest('.build/js'));
   src('node_modules/knockout/build/output/knockout-latest.js')
-    .pipe(rename('knockout.min.js')).pipe(dest('build/js'));
-  return src('robots.txt').pipe(dest('build'));
+    .pipe(rename('knockout.min.js')).pipe(dest('.build/js'));
+  return src('robots.txt').pipe(dest('.build'));
 }
 
-exports.html = html;
-exports.js = js;
-exports.css = css;
-exports.etc = etc;
-exports.default = parallel(html, css, js, etc);
+function sync() {
+  return src('.build/*').pipe(dest('build'));
+}
+
+exports.html = series(html, sync);
+exports.js = series(js, sync);
+exports.css = series(css, sync);
+exports.assets = series(assets, sync);
+exports.sync = sync;
+exports.default = series(parallel(css, js, assets, html), sync);

@@ -1,26 +1,68 @@
+@import 'variables.css';
 
 body {
   overflow-y: scroll;
   overflow-x: hidden;
+
+  & > svg {
+    display: none;
+  }
 }
 
 header#header {
   position: relative;
-  width: var(--main-width);
-  height: 9em;
-  margin-left: var(--main-margin-left);
+  width: $--main-width;
+  height: 9rem;
+  margin: 0 auto;
 }
 
 div#main {
-  margin-left: var(--main-margin-left);
+  width: $--main-width;
+  margin: 0 auto;
 }
 
 footer#footer {
-  border-top: 0.125em solid #dcded2;
-  margin: 3.75em;
+  border-top: 0.125rem solid $--light-gray;
+  width: calc($--main-width + 30rem);
+  margin: 3.75rem auto;
+}
+
+div#legend {
+  margin-top: 3.1875rem;
+  width: 43.0625rem;
+  font-family: $--civil-font1;
+  font: 1rem / 1.5rem;
+  letter-spacing: 0.025rem;
 }
 
 section.article,
-section.links {
-  width: var(--main-width);
+section.video,
+section.refs {
+  position: relative;
+  margin-top: 2.125rem;
+  width: $--main-width;
+
+  & > header {
+    position: absolute;
+    flex: 0 0 auto;
+    left: -15em;
+    width: 14rem;
+    font-family: $--civil-font2;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.025625rem;
+    text-transform: uppercase;
+
+    & a.random {
+      display: block;
+      width: 1rem;
+      height: 1rem;
+
+      & svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
 }

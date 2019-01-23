@@ -5,13 +5,14 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
- 
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 
-   html {
-    color: #222;
+html {
+    color: $--black;
+    font-family: $--civil-font1;
     font-size: 1em;
     line-height: 1.4;
 }
@@ -26,13 +27,8 @@
  * Customize the background color to match your design.
  */
 
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
 ::selection {
-    background: #b3d4fc;
+    background: $--light-gray;
     text-shadow: none;
 }
 
@@ -44,7 +40,7 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid $--light-gray;
     margin: 1em 0;
     padding: 0;
 }

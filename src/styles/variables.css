@@ -1,13 +1,19 @@
+$--civil-font1: 'Roboto';
+$--civil-font2: 'Roboto Condensed';
+$--greek-font: $--civil-font1;
 $--csl-font1: 'Pochaevsk UCS';
 $--csl-font2: 'Pochaevsk Condensed UCS';
 
-:root {
-  --civil-font1: 'Roboto';
-  --civil-font2: 'Roboto Condensed';
-  --greek-font: var(--civil-font1);
-  --csl-font1: $--csl-font1;
-  --csl-font2: $--csl-font2;
+$--red: #f54f4f;
+$--blue: #4299c7;
+$--light-gray: #dcded2;
+$--medium-gray: #a4a699;
+$--dark-gray: #6d6f67;
+$--black: #3a3b37;
 
-  --main-width: 58.625em;
-  --main-margin-left: 18.75em;
-}
+$--main-width: 58.625rem;
+$--main-margin-left: 18.75rem;
+$--xgap: 1.4375rem;
+$--ygap: 4.3125rem;
+
+/* 1450px -- минимальная ширина экрана, необходимая для широкого дизайна сайта */

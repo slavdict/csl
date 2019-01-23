@@ -1,33 +1,30 @@
 @charset 'utf-8';
 @import './variables.css';
 
-:root {
-  --logo-width: 5rem;
-  --logo-height: 6.5rem;
-}
+$--logo-width: 5rem;
+$--logo-height: 6.5rem;
 
 figure#logo {
   position: absolute;
-  width: var(--logo-width);
+  width: $--logo-width;
   height: auto;
   margin: 0;
-  left: calc(- var(--logo-width));
+  left: calc(- $--logo-width);
 
   & figcaption {
     --caption-top-offset: 0.2rem; /* В дизайнерском шаблоне 0.25rem */
     --width: 7.5625rem;
     --height: 3rem;
 
-    font-family: var(--civil-font2);
+    font-family: $--civil-font2;
     text-transform: uppercase;
     font-size: 0.6875rem;
     line-height: 1.45;
     letter-spacing: 0.01875rem;
-    color: #3a3b37;
     width: var(--width);
     height: var(--height);
     position: absolute;
-    left: var(--logo-width);
-    top: calc(var(--logo-height) - var(--caption-top-offset));
+    left: $--logo-width;
+    top: calc($--logo-height - var(--caption-top-offset));
   }
 }

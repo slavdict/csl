@@ -1,0 +1,24 @@
+@import 'variables.css';
+
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+  text-decoration: none;
+  outline: none;
+}
+
+a:link,
+a:visited {
+  color: $--blue;
+}
+
+a:focus,
+a:hover {
+  color: $--red;
+}
+
+a:active {
+  color: $--black;
+}

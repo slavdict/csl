@@ -5,9 +5,19 @@
 @import 'html5boilerplate_main.css';
 @import 'fonts.css';
 @import 'layout.css';
-@import 'layout_debug.css';
+@import 'links.css';
 
 @import 'logo.css';
-@import 'entry.css';
+@import 'menu.css';
+@import 'dict_menu.css';
+@import 'search.css';
 @import 'video.css';
+@import 'article.css';
+@import 'refs.css';
 @import 'patrons.css';
+
+/*
+:hover {
+  outline: 1px dotted gray;
+}
+*/
