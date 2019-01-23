@@ -1,6 +1,54 @@
 footer#footer {
-  figure {
+
+  & .patrons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    width: $--main-width;
+    margin: 0 auto;
   }
-  figcaption {
+
+  & figure {
+    $--width: calc($--main-width / 3 - $--xgap);
+    $--height: 8.5rem;
+    $--sub-width: calc($--width - 5rem);
+
+    width: $--width;
+    margin: 0;
+
+    & picture {
+      width: $--width;
+      height: $--height;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    & img {
+      width: $--sub-width;
+      position: absolute;
+    }
+
+    @nest &.c3 img {
+      /* left: -12.3344%; */
+      bottom: 1.06rem;
+    }
+
+    @nest &.rslovo img {
+      /* left: -7.5%; */
+      bottom: 0.58rem;
+    }
+
+    @nest &.pfond img {
+      /* left: -31%; */
+      bottom: 1.06rem;
+    }
+  }
+
+  & figcaption {
+    font-size: 0.6875rem;
+    color: $--medium-gray;
+    text-align: center;
   }
 }

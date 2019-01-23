@@ -24,7 +24,7 @@ div#main {
 footer#footer {
   border-top: 0.125rem solid $--light-gray;
   width: calc($--main-width + 30rem);
-  margin: 3.75rem auto;
+  margin: 0 auto;
 }
 
 div#legend {
@@ -65,4 +65,12 @@ section.refs {
       }
     }
   }
+}
+
+#version {
+  margin: calc($--ygap * 2) auto $--xgap auto;
+  padding: 0;
+  color: $--medium-gray;
+  font-size: 0.6875rem;
+  text-align: center;
 }
