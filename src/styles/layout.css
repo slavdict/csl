@@ -39,24 +39,42 @@ div#legend {
   letter-spacing: 0.025rem;
 }
 
+@define-mixin section-header {
+  font-family: $--civil-font2;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h1 {
+  --font-size: 2.6775rem;
+  @mixin section-header;
+  letter-spacing: 0.06875rem;
+  font-size: var(--font-size);
+  line-height: calc(var(--font-size) * 1.2);
+  margin: $--ygap 0;
+}
+
+section.video h1 {
+  margin-bottom: 0;
+}
+
 section.article,
+section.index,
 section.video,
 section.refs {
   position: relative;
   margin-top: 2.125rem;
   width: $--main-width;
 
-  & > header {
+  & > header aside {
+    @mixin section-header;
     position: absolute;
     flex: 0 0 auto;
     left: -15rem;
     width: 14rem;
-    font-family: $--civil-font2;
-    font-weight: bold;
     font-size: 1rem;
     line-height: 1.5rem;
     letter-spacing: 0.025625rem;
-    text-transform: uppercase;
 
     & a.random {
       display: block;
@@ -71,10 +89,18 @@ section.refs {
   }
 }
 
+section.index {
+  min-height: 66vh;
+}
+
 #version {
-  margin: calc($--ygap * 2) auto $--xgap auto;
+  margin: $--ygap auto $--xgap auto;
   padding: 0;
-  color: $--medium-gray;
+  color: $--light-gray;
   font-size: 0.6875rem;
   text-align: center;
+
+  &:hover {
+    color: $--dark-gray;
+  }
 }

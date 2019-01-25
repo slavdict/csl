@@ -4,7 +4,7 @@
 {% block main %}
   {% include 'scraps/random.svg' %}
 
-  <header id="header" data-bind="css: { dictOrIndex: section() === 'dictionary' }">
+  <header id="header">
 
     <figure id="logo">
       <a href="./">
@@ -27,8 +27,11 @@
 
     <section class="video" data-bind="visible: !section() || section() === 'video'">
       <header>
-        Случайные лекции из&nbsp;нашего <a href="">видеоархива</a>
-        <a class="random" href="">{{ svg_use('icon-random') }}</a>
+        <aside data-bind="visible: !section()">
+          Случайные лекции из&nbsp;нашего <a href="">видеоархива</a>
+          <a class="random" href="">{{ svg_use('icon-random') }}</a>
+        </aside>
+        <h1 data-bind="visible: section">Видео</h1>
       </header>
       <div class="main">
         {% include 'scraps/stubdata/video-pichxadze1.htm' %}
@@ -38,28 +41,37 @@
     </section>
 
     <section class="article"
-      data-bind="visible: !section() || section() === 'dictionary'">
-      <header data-bind="visible: !section()">
-        Случайная статья из&nbsp;нашего <a href="">словаря</a>
-        <a class="random" href="">{{ svg_use('icon-random') }}</a>
+      data-bind="visible: !section() || section() === 'dictionary' && !indexIsOn()">
+      <header>
+        <aside data-bind="visible: !section()">
+          Случайная статья из&nbsp;нашего <a href="">словаря</a>
+          <a class="random" href="">{{ svg_use('icon-random') }}</a>
+        </aside>
       </header>
       {% include 'scraps/stubdata/article-angel.htm' %}
     </section>
 
     <section class="refs" data-bind="visible: !section() || section() === 'refs'">
       <header>
-        Случайная <a href="">ссылка</a>
-        <a class="random" href="">{{ svg_use('icon-random') }}</a>
+        <aside data-bind="visible: !section()">
+          Случайная <a href="">ссылка</a>
+          <a class="random" href="">{{ svg_use('icon-random') }}</a>
+        </aside>
+        <h1 data-bind="visible: section">Ссылки</h1>
       </header>
       {% include 'scraps/stubdata/ref1.htm' %}
       {% include 'scraps/stubdata/ref2.htm' %}
+    </section>
+
+    <section class="index"
+      data-bind="visible: section() === 'dictionary' && indexIsOn()">
     </section>
 
   </div>
 
   <footer id="footer">
     {% include 'scraps/patrons.htm' %}
-    <div id="version">Версия сайта {{ CSL_VERSION }}</div>
+    <div id="version">Версия портала<br>«{{ CSL_NAME }}»<br>{{ CSL_VERSION }}</div>
   </footer>
 
 {% endblock %}
