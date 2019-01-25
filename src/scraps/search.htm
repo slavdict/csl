@@ -1,5 +1,9 @@
 <div id="search">
-  <input type="text" placeholder="Поиск по церковнославянскому словарю">
+  {% set index_placeholder = 'Поиск по индексу' %}
+  {% set dict_placeholder = 'Поиск по церковнославянскому словарю' %}
+  <input type="text" placeholder="{{ dict_placeholder }}"
+      data-bind="attr: { placeholder: indexIsOn() ?
+          '{{ index_placeholder }}' : '{{ dict_placeholder }}' }">
   <i>{% include 'scraps/search.svg' %}</i>
   <div class="tip1">Например, <a href="">безкровный</a> или <a href="">варити</a></div>
   <div class="tip2"></div>

@@ -4,9 +4,9 @@
 {% block main %}
   {% include 'scraps/random.svg' %}
 
-  <header id="header">
+  <header id="header" data-bind="css: { dictOrIndex: section() === 'dictionary' }">
 
-    <figure id="logo" data-bind="css: { inSection: section() !== null }">
+    <figure id="logo">
       <a href="./">
         {% include 'scraps/yus.svg' %}
       </a>
@@ -21,11 +21,11 @@
 
   <div id="main">
 
-    <div id="legend">{{ CSL_DESCRIPTION }}</div>
+    <div id="legend" data-bind="visible: !section()">{{ CSL_DESCRIPTION }}</div>
 
     {% include 'scraps/search.htm' %}
 
-    <section class="video">
+    <section class="video" data-bind="visible: !section() || section() === 'video'">
       <header>
         Случайные лекции из&nbsp;нашего <a href="">видеоархива</a>
         <a class="random" href="">{{ svg_use('icon-random') }}</a>
@@ -37,15 +37,16 @@
       </div>
     </section>
 
-    <section class="article">
-      <header>
+    <section class="article"
+      data-bind="visible: !section() || section() === 'dictionary'">
+      <header data-bind="visible: !section()">
         Случайная статья из&nbsp;нашего <a href="">словаря</a>
         <a class="random" href="">{{ svg_use('icon-random') }}</a>
       </header>
       {% include 'scraps/stubdata/article-angel.htm' %}
     </section>
 
-    <section class="refs">
+    <section class="refs" data-bind="visible: !section() || section() === 'refs'">
       <header>
         Случайная <a href="">ссылка</a>
         <a class="random" href="">{{ svg_use('icon-random') }}</a>

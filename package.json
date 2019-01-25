@@ -39,6 +39,7 @@
     "postcss-easy-import": "^3.0.0",
     "postcss-env-function": "^2.0.2",
     "postcss-inline": "^1.2.0",
+    "postcss-mixins": "^6.2.1",
     "postcss-nested": "^4.1.0",
     "postcss-preset-env": "^6.5.0",
     "postcss-simple-vars": "^5.0.1",

@@ -27,6 +27,7 @@ const calc = require('postcss-calc'),
       cssPresetEnv = require('postcss-preset-env'),
       customProps = require('postcss-css-variables'),
       easyImport = require('postcss-easy-import'),
+      mixins = require('postcss-mixins'),
       sassLikeVars = require('postcss-simple-vars');
 
 const CSL_ENV = process.env.CSL_ENV || 'development',
@@ -94,8 +95,8 @@ function js() {
 function css() {
   var cpOpts = { preserve: false },
       cpeOpts = { stage: 0 },
-      plugins = [easyImport(), sassLikeVars(), customProps(cpOpts), calc(),
-                 cssPresetEnv(cpeOpts), cssNano()];
+      plugins = [easyImport(), mixins(), sassLikeVars(), customProps(cpOpts),
+                 calc(), cssPresetEnv(cpeOpts), cssNano()];
   return src('src/styles/main.css').pipe(postcss(plugins))
     .pipe(rename('csl.css')).pipe(dest('.build'));
 }

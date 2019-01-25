@@ -14,6 +14,10 @@ header#header {
   width: $--main-width;
   height: 9rem;
   margin: 0 auto;
+
+  &.dictOrIndex {
+    height: 10.5rem;
+  }
 }
 
 div#main {

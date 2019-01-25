@@ -18,6 +18,7 @@ function viewModel() {
   this.version = 'v' + 'CSL_VERSION';
   this.debug = window[';)'].debug;
   this.section = ko.observable();
+  this.indexIsOn = ko.observable(false);
 
   this.section.subscribe(log);
 }
@@ -55,11 +56,20 @@ if (!CSL_ENV_IS_PRODUCTION) log(debugURLs);
 
 log('page routes adjustment');
 page(rootUrl, () => { vM.section(null); });
-page(dictionarySectionUrl, () => { vM.section('dictionary'); });
+page(dictionarySectionUrl, () => {
+  vM.section('dictionary');
+  if (vM.indexIsOn()) {
+    page.redirect(indexUrl);
+  } else {
+    page.redirect(dictionaryUrl);
+  }
+});
 page(dictionaryAboutUrl, () => { log('about dictionary url'); });
+page(dictionaryUrl, () => { vM.section('dictionary'); vM.indexIsOn(false); });
+page(indexUrl, () => { vM.section('dictionary'); vM.indexIsOn(true); });
 page(videoUrl, () => { vM.section('video'); });
 page(refsUrl, () => { vM.section('refs'); });
-page(feedbackUrl, () => { vM.section('feedback'); });
+page(feedbackUrl, () => { log('feedback'); });
 page('*', rootUrl);
 page({ hashbang: true });
 

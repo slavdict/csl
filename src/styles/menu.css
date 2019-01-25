@@ -1,3 +1,42 @@
+@define-mixin menu-list $font-size, $letter-spacing,
+                        $link-timing: $--link-timing {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  & li {
+    list-style: none;
+    font-family: $--civil-font2;
+    font-weight: bold;
+    font-size: $font-size;
+    line-height: 1.41;
+    letter-spacing: $letter-spacing;
+    color: $--black;
+    text-transform: uppercase;
+    white-space: nowrap;
+    position: relative;
+
+    & a:link,
+    & a:visited {
+      color: inherit;
+    }
+
+    & a:hover,
+    & a:focus {
+      color: $--red;
+    }
+  }
+}
+
+$--letter-spacing1: 0.0225rem;
+$--letter-spacing2: 0.037rem;
+
 nav#menu {
   position: absolute;
   width: 35.25rem;
@@ -6,38 +45,7 @@ nav#menu {
   top: 2.15rem;
 
   & ul {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    & li {
-      list-style: none;
-      font-family: $--civil-font2;
-      font-weight: bold;
-      font-size: 1.0625rem;
-      line-height: 1.41;
-      letter-spacing: 0.025rem;
-      color: $--black;
-      text-transform: uppercase;
-      white-space: nowrap;
-      position: relative;
-
-      & a:link,
-      & a:visited {
-        color: inherit;
-      }
-
-      & a:hover,
-      & a:focus {
-        color: $--red;
-      }
-    }
+    @mixin menu-list 1.0625rem, $--letter-spacing1;
   }
 
   & ul ul {
@@ -49,6 +57,7 @@ nav#menu {
     & li {
       font-size: 0.85rem;
       line-height: 0.5rem;
+      letter-spacing: $--letter-spacing2;
       margin-top: 1rem;
     }
   }
@@ -56,4 +65,46 @@ nav#menu {
 
 #burger {
   display: none;
+}
+
+$--dict-menu-width: 20.625rem;
+$--dict-menu-height: 2.5rem;
+
+$--dict-menu-cursor-width1: 3.75rem;
+$--dict-menu-cursor-width2: 8rem;
+$--dict-menu-cursor-height: 0.5rem;
+$--dict-menu-cursor-timing: 0.2s;
+
+nav#dict_menu {
+  position: absolute;
+  width: $--dict-menu-width;
+  height: $--dict-menu-height;
+  top: 8rem;
+  border-bottom: 0.0625rem solid $--red;
+  box-sizing: border-box;
+
+  & ul {
+    @mixin menu-list 0.85rem, $--letter-spacing2;
+
+    & li.active {
+      color: $--red;
+    }
+  }
+}
+
+#dict_menu_cursor {
+  width: $--dict-menu-cursor-width1;
+  height: $--dict-menu-cursor-height;
+  background-color: $--red;
+  position: absolute;
+  bottom: -0.0625rem;
+  left: 0;
+  margin: 0;
+  transition: width $--dict-menu-cursor-timing,
+              left $--dict-menu-cursor-timing;
+
+  &.indexIsOn {
+    width: $--dict-menu-cursor-width2;
+    left: calc($--dict-menu-width - $--dict-menu-cursor-width2);
+  }
 }

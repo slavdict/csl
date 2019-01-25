@@ -1,7 +1,11 @@
-<nav id="dict_menu">
+<nav id="dict_menu" data-bind="visible: section() === 'dictionary'">
   <ul>
-    <li><a href="./dictionary/dict">Словарь</a></li>
-    <li><a href="./dictionary/index">Греческий индекс</a></li>
+    <li data-bind="css: { active: !indexIsOn() }">
+      <a href="./dictionary/dict">Словарь</a>
+    </li>
+    <li data-bind="css: { active: indexIsOn }">
+      <a href="./dictionary/index">Греческий индекс</a>
+    </li>
   </ul>
-  <div id="dictMenuCursor"></div>
+  <div id="dict_menu_cursor" data-bind="css: { indexIsOn: indexIsOn }"></div>
 </nav>

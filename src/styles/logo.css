@@ -32,13 +32,13 @@ figure#logo {
     left: $--logo-width;
     top: calc($--logo-height - var(--caption-top-offset));
   }
+}
 
-  &.inSection {
-    width: $--logo-small-width;
-    left: 0;
+.dictOrIndex figure#logo {
+  width: $--logo-small-width;
+  left: 0;
 
-    & figcaption {
-      display: none;
-    }
+  & figcaption {
+    display: none;
   }
 }
