@@ -9,7 +9,7 @@
     {% include 'scraps/facebook_open_graph.htm' %}
     {% include 'scraps/app_icons.htm' %}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext">
-    <link rel="stylesheet" href="csl.css">
+    <link rel="stylesheet" href="csl.css?v={{ CSL_VERSION }}">
   </head>
   <body>
     {% include 'scraps/safety_curtain.htm' %}
@@ -19,7 +19,7 @@
     {% include 'scraps/script_jquery.htm' %}
     {% include 'scraps/script_knockout.htm' %}
 
-    <script src="js/spa.js"></script>
+    <script src="js/spa.js?v={{ CSL_VERSION }}"></script>
 
     {% include 'scraps/yandex_metrika.htm' %}
     {% include 'scraps/gtag.htm' %}
