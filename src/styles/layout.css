@@ -45,7 +45,7 @@ section.refs {
   & > header {
     position: absolute;
     flex: 0 0 auto;
-    left: -15em;
+    left: -15rem;
     width: 14rem;
     font-family: $--civil-font2;
     font-weight: bold;

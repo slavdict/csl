@@ -10,9 +10,9 @@ section.refs {
     letter-spacing: 0.020625rem;
 
     & .bibliography {
-      margin: 1em 0;
+      margin: 1rem 0;
       background-color: $--light-gray;
-      padding: 1em 1.5em;
+      padding: 1rem 1.5rem;
     }
   }
 

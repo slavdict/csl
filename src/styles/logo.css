@@ -3,6 +3,8 @@
 
 $--logo-width: 5rem;
 $--logo-height: 6.5rem;
+$--logo-small-width: 2.5rem;
+$--logo-small-height: 3.25rem;
 
 figure#logo {
   position: absolute;
@@ -10,6 +12,9 @@ figure#logo {
   height: auto;
   margin: 0;
   left: calc(- $--logo-width);
+
+  --timing: 0.3s;
+  transition: width var(--timing), height var(--timing), left var(--timing);
 
   & figcaption {
     --caption-top-offset: 0.2rem; /* В дизайнерском шаблоне 0.25rem */
@@ -26,5 +31,14 @@ figure#logo {
     position: absolute;
     left: $--logo-width;
     top: calc($--logo-height - var(--caption-top-offset));
+  }
+
+  &.inSection {
+    width: $--logo-small-width;
+    left: 0;
+
+    & figcaption {
+      display: none;
+    }
   }
 }

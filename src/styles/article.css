@@ -1,8 +1,8 @@
 @charset 'utf-8';
 @import './variables.css';
 
-$--civil-font-size: 0.93em;
-$--address-font-size: 0.7em;
+$--civil-font-size: 0.93rem;
+$--address-font-size: 0.7rem;
 $--greek-font-size: $--civil-font-size;
 
 /* div.Letter */
@@ -39,8 +39,8 @@ $--greek-font-size: $--civil-font-size;
 div.Entry {
   margin-bottom: $--ygap;
   text-align: justify;
-  line-height: 1.5em;
-  column-width: 20em;
+  line-height: 1.5rem;
+  column-width: 20rem;
   column-gap: $--xgap;
 }
 
@@ -53,11 +53,11 @@ div.FirstParagraph {
 
 div.CfParagraph,
 div.MeaningParagraph {
-  text-indent: 0.6em;
+  text-indent: 0.6rem;
 }
 
 div.CollogroupParagraph {
-  text-indent: 0.15em;
+  text-indent: 0.15rem;
 }
 
 span.Headword,
@@ -68,11 +68,11 @@ span.CSLSegmentEm {
 
 span.Headword,
 span.SubHeadword {
-  font-size: 1.4em;
+  font-size: 1.4rem;
 }
 
 span.CSLSegmentEm {
-  font-size: 1.24em;
+  font-size: 1.24rem;
 }
 
 span.CSLSegment {
@@ -129,36 +129,36 @@ span.Use {
 }
 
 span.Use {
-  font-size: 1.35em;
+  font-size: 1.35rem;
 }
 
 span.MeaningfulNoAccent {
-  font-size: 0.583em;
+  font-size: 0.583rem;
   position: relative;
   vertical-align: top;
 }
 
 span.Diamond {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   position: relative;
-  vertical-align: -0.05em;
+  vertical-align: -0.05rem;
   display: inline-block;
   padding: 0;
-  margin: 0 -0.15em 0 0.2em;
+  margin: 0 -0.15rem 0 0.2rem;
 }
 
 span.BiblicalAllusion {
   position: relative;
-  vertical-align: -0.05em;
+  vertical-align: -0.05rem;
   left: 0.05rem;
 }
 
 span.HeadwordHomonymNumber,
 span.HeadwordNumber,
 span.HomonymNumber {
-  font-size: 0.583em;
+  font-size: 0.583rem;
   position: relative;
   vertical-align: top;
   color: $--black;
-  top: -0.2em;
+  top: -0.2rem;
 }

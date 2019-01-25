@@ -60,7 +60,7 @@ const rollupInputOpts = {
     resolve({ jsnext: true, main: true, browser: true, }),
     commonjs(),
     //globals(),
-    eslint({ exclude: ['src/styles/**'] }),
+    eslint(),
     babel({ exclude: 'node_modules/**', }),
     replace(Object.assign(nunjucksContext, { exclude: ['node_modules/**'] })),
     CSL_ENV_IS_PRODUCTION && terser(),

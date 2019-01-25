@@ -1,9 +1,9 @@
 nav#menu {
   position: absolute;
-  width: 35.25em;
-  height: 1em;
-  left: 30em;
-  top: 1.9375em;
+  width: 35.25rem;
+  height: 1rem;
+  left: 30rem;
+  top: 2.15rem;
 
   & ul {
     display: flex;
@@ -20,9 +20,9 @@ nav#menu {
       list-style: none;
       font-family: $--civil-font2;
       font-weight: bold;
-      font-size: 1.0625em;
+      font-size: 1.0625rem;
       line-height: 1.41;
-      letter-spacing: 0.025em;
+      letter-spacing: 0.025rem;
       color: $--black;
       text-transform: uppercase;
       white-space: nowrap;
@@ -41,15 +41,15 @@ nav#menu {
   }
 
   & ul ul {
-    height: 4.45em;
-    top: 2em;
+    height: 4.7rem;
+    top: 2rem;
     flex-direction: column;
     justify-content: flex-end;
 
     & li {
-      font-size: 0.85em;
-      line-height: 0.5em;
-      margin-top: 1em;
+      font-size: 0.85rem;
+      line-height: 0.5rem;
+      margin-top: 1rem;
     }
   }
 }

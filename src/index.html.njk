@@ -6,8 +6,8 @@
 
   <header id="header">
 
-    <figure id="logo">
-      <a href="http://{{ CSL_DOMAIN_NAME }}/">
+    <figure id="logo" data-bind="css: { inSection: section() !== null }">
+      <a href="./">
         {% include 'scraps/yus.svg' %}
       </a>
       <figcaption>Церковнославянский<br>язык<br>сегодня</figcaption>
