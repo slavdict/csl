@@ -1,29 +1,52 @@
 <div class="patrons">
 
+  {% set url_c3 = 'http://www.ruslang.ru/centre_church-slav' %}
+  {% set url_rslovo = 'http://rodnoeslovo.ru/' %}
+  {% set url_pfond = 'https://президентскиегранты.рф/' %}
+
+<a href="{{ url_c3 }}">
+
   <figure class="c3">
     <picture>
       <img src="img/c3.png">
     </picture>
-    <figcaption>Научный центр по&nbsp;изучению церковнославянского языка
+    <figcaption>
+      Научный центр по&nbsp;изучению церковнославянского языка
       Института русского языка им.&nbsp;В.&nbsp;В.&nbsp;Виноградова
-      Российской академии наук</figcaption>
+      Российской академии наук
+    </figcaption>
   </figure>
+
+</a>
+
+<a href="{{ url_rslovo }}">
 
   <figure class="rslovo">
     <picture>
       <img src="img/rslovo.png">
     </picture>
-    <figcaption>Некоммерческое партнерство по&nbsp;содействию в&nbsp;поддержке
-      и сохранении русского языка «Родное&nbsp;слово»</figcaption>
+    <figcaption>
+      Некоммерческое партнерство по&nbsp;содействию в&nbsp;поддержке
+      и сохранении русского языка «Родное&nbsp;слово»
+    </figcaption>
   </figure>
+
+</a>
+
+<a href="{{ url_pfond }}">
 
   <figure class="pfond">
     <picture>
       <img src="img/pgrants_logo.png">
     </picture>
-    <figcaption>Работа выполнена с&nbsp;использованием гранта Президента
+    <figcaption>
+      Работа выполнена с&nbsp;использованием гранта Президента
       Российской Федерации на&nbsp;развитие гражданского общества,
-      предоставленного Фондом президентских грантов</figcaption>
+      предоставленного Фондом президентских грантов
+    </figcaption>
   </figure>
 
+</a>
+
 </div>
+{# vim: set ft=jinja.html: #}
