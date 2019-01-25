@@ -6,6 +6,8 @@ import page from 'page';
 
 import initKnockout from './scripts/init.knockout.js';
 
+import { videos } from './scripts/videoData.js';
+
 /* eslint-disable-next-line no-undef */
 if (!CSL_ENV_IS_PRODUCTION) log('CSL portal');
 
@@ -19,8 +21,7 @@ function viewModel() {
   this.debug = window[';)'].debug;
   this.section = ko.observable();
   this.indexIsOn = ko.observable(false);
-
-  this.section.subscribe(log);
+  this.videos = videos;
 }
 const vM = new viewModel();
 initKnockout(ko, vM);

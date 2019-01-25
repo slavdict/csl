@@ -28,7 +28,8 @@
     }
 
     & a:hover,
-    & a:focus {
+    & a:focus,
+    &.active {
       color: $--red;
     }
   }
@@ -85,10 +86,6 @@ nav#dict_menu {
 
   & ul {
     @mixin menu-list 0.85rem, $--letter-spacing2;
-
-    & li.active {
-      color: $--red;
-    }
   }
 }
 

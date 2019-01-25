@@ -15,7 +15,6 @@
 
     {% include 'scraps/slovnik.htm' %}
     {% include 'scraps/menu.htm' %}
-    {% include 'scraps/dict_menu.htm' %}
 
   </header>
 
@@ -25,18 +24,37 @@
 
     {% include 'scraps/search.htm' %}
 
-    <section class="video" data-bind="visible: !section() || section() === 'video'">
+    <section class="video" data-bind="visible: !section()">
       <header>
-        <aside data-bind="visible: !section()">
+        <aside>
           Случайные лекции из&nbsp;нашего <a href="">видеоархива</a>
           <a class="random" href="">{{ svg_use('icon-random') }}</a>
         </aside>
-        <h1 data-bind="visible: section">Видео</h1>
       </header>
       <div class="main">
         {% include 'scraps/stubdata/video-pichxadze1.htm' %}
-        {% include 'scraps/stubdata/video-kagarlickij1.htm' %}
         {% include 'scraps/stubdata/video-sedakova1.htm' %}
+      </div>
+    </section>
+
+    <section class="video" data-bind="visible: section() === 'video'">
+      <header>
+        <h1>Видео</h1>
+      </header>
+      <div class="main">
+        <!-- ko foreach: videos -->
+          <figure>
+            <iframe width="1270" height="480" frameborder="0"
+              data-bind="attr: { src: 'https://www.youtube.com/embed/' + id }"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope;
+              picture-in-picture" allowfullscreen></iframe>
+            <figcaption>
+              <header data-bind="text: title"></header>
+              <div class="speaker" data-bind="text: speaker"></div>
+              <legend data-bind="text: legend"></legend>
+            </figcaption>
+          </figure>
+        <!-- /ko -->
       </div>
     </section>
 
