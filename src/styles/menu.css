@@ -33,6 +33,16 @@
       color: $--red;
     }
   }
+
+  & li.disabled {
+    color: $--light-gray;
+
+    & a:hover,
+    & a:focus,
+    &.active {
+      color: inherit;
+    }
+  }
 }
 
 $--letter-spacing1: 0.0225rem;
@@ -74,7 +84,7 @@ $--dict-menu-height: 2.5rem;
 $--dict-menu-cursor-width1: 3.75rem;
 $--dict-menu-cursor-width2: 8rem;
 $--dict-menu-cursor-height: 0.5rem;
-$--dict-menu-cursor-timing: 0.2s;
+$--dict-menu-cursor-timing: 0.8s;
 
 nav#dict_menu {
   position: absolute;
@@ -103,5 +113,7 @@ nav#dict_menu {
   &.indexIsOn {
     width: $--dict-menu-cursor-width2;
     left: calc($--dict-menu-width - $--dict-menu-cursor-width2);
+    transition: width $--dict-menu-cursor-timing,
+                left $--dict-menu-cursor-timing;
   }
 }

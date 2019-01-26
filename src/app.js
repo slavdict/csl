@@ -55,7 +55,10 @@ const rootUrl = '/',
 /* eslint-disable-next-line no-undef */
 if (!CSL_ENV_IS_PRODUCTION) log(debugURLs);
 
-log('page routes adjustment');
+page(rootUrl, videoUrl);
+page(videoUrl, () => { vM.section('video'); });
+page('*', videoUrl);
+/*
 page(rootUrl, () => { vM.section(null); });
 page(dictionarySectionUrl, () => {
   vM.section('dictionary');
@@ -72,6 +75,7 @@ page(videoUrl, () => { vM.section('video'); });
 page(refsUrl, () => { vM.section('refs'); });
 page(feedbackUrl, () => { log('feedback'); });
 page('*', rootUrl);
+*/
 page({ hashbang: true });
 
 jQuery('#safetyCurtain').fadeOut();

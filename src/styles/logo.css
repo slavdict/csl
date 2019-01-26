@@ -13,7 +13,7 @@ figure#logo {
   margin: 0;
   left: calc(- $--logo-width);
 
-  --timing: 0.3s;
+  --timing: 0.8s;
   transition: width var(--timing), height var(--timing), left var(--timing);
 
   & figcaption {

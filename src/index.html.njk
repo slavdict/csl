@@ -20,8 +20,9 @@
 
   <div id="main">
 
-    <div id="legend" data-bind="visible: !section()">{{ CSL_DESCRIPTION }}</div>
+    <div id="legend">{{ CSL_DESCRIPTION }}</div>
 
+    {#
     {% include 'scraps/search.htm' %}
 
     <section class="video" data-bind="visible: !section()">
@@ -36,10 +37,14 @@
         {% include 'scraps/stubdata/video-sedakova1.htm' %}
       </div>
     </section>
+    #}
 
     <section class="video" data-bind="visible: section() === 'video'">
       <header>
-        <h1>Видео</h1>
+        <aside>
+          Лекции из&nbsp;нашего<br>видеоархива
+        </aside>
+        {# <h1>Видео</h1> #}
       </header>
       <div class="main">
         <!-- ko foreach: videos -->
@@ -58,6 +63,7 @@
       </div>
     </section>
 
+    {#
     <section class="article"
       data-bind="visible: !section() || section() === 'dictionary' && !indexIsOn()">
       <header>
@@ -84,6 +90,7 @@
     <section class="index"
       data-bind="visible: section() === 'dictionary' && indexIsOn()">
     </section>
+    #}
 
   </div>
 

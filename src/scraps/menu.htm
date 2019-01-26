@@ -1,19 +1,19 @@
 <nav id="menu">
   <i id="burger"></i>
   <ul>
-    <li data-bind="css: { active: section() === 'dictionary' }">
+    <li class="disabled" data-bind="css: { active: section() === 'dictionary' }">
       <a href="./dictionary">Словарь</a>
       <ul>
-        <li><a href="./dictionary/about">О словаре</a></li>
+        <li class="disabled"><a href="./dictionary/about">О словаре</a></li>
       </ul>
     </li>
-    <li data-bind="css: { active: section() === 'video' }">
+    <li>{# <li data-bind="css: { active: section() === 'video' }"> #}
       <a href="./video">Видео</a>
     </li>
-    <li data-bind="css: { active: section() === 'refs' }">
+    <li class="disabled" data-bind="css: { active: section() === 'refs' }">
       <a href="./refs">Ссылки</a>
     </li>
-    <li><a href="./feedback">Обратная связь</a></li>
+    <li class="disabled"><a href="./feedback">Обратная связь</a></li>
   </ul>
 </nav>
 
