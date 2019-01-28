@@ -60,6 +60,7 @@ nav#menu {
   }
 
   & ul ul {
+    display: none;
     height: 4.7rem;
     top: 2rem;
     flex-direction: column;
@@ -71,6 +72,10 @@ nav#menu {
       letter-spacing: $--letter-spacing2;
       margin-top: 1rem;
     }
+  }
+
+  & ul li.active ul {
+    display: flex;
   }
 }
 
