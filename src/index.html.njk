@@ -20,15 +20,16 @@
 
   <div id="main">
 
-    <div id="legend">{{ CSL_DESCRIPTION }}</div>
+    <div id="legend" data-bind="visible: !section()">{{ CSL_DESCRIPTION }}</div>
 
     {#
     {% include 'scraps/search.htm' %}
+    #}
 
     <section class="video" data-bind="visible: !section()">
       <header>
         <aside>
-          Случайные лекции из&nbsp;нашего <a href="">видеоархива</a>
+          Случайные лекции из&nbsp;нашего <a href=".{{ urls.video }}">видеоархива</a>
           <a class="random" href="">{{ svg_use('icon-random') }}</a>
         </aside>
       </header>
@@ -37,14 +38,10 @@
         {% include 'scraps/stubdata/video-sedakova1.htm' %}
       </div>
     </section>
-    #}
 
     <section class="video" data-bind="visible: section() === 'video'">
       <header>
-        <aside>
-          Лекции из&nbsp;нашего<br>видеоархива
-        </aside>
-        {# <h1>Видео</h1> #}
+        <h1>Видео</h1>
       </header>
       <div class="main">
         <!-- ko foreach: videos -->
@@ -63,34 +60,31 @@
       </div>
     </section>
 
-    {#
     <section class="article"
       data-bind="visible: !section() || section() === 'dictionary' && !indexIsOn()">
       <header>
         <aside data-bind="visible: !section()">
-          Случайная статья из&nbsp;нашего <a href="">словаря</a>
+          Случайная статья из&nbsp;нашего <a href=".{{ urls.entries }}">словаря</a>
           <a class="random" href="">{{ svg_use('icon-random') }}</a>
         </aside>
       </header>
       {% include 'scraps/stubdata/article-angel.htm' %}
     </section>
 
-    <section class="refs" data-bind="visible: !section() || section() === 'refs'">
+    <section class="refs" data-bind="visible: !section()">
       <header>
         <aside data-bind="visible: !section()">
-          Случайная <a href="">ссылка</a>
+          Случайная <a href=".{{ urls.refs }}">ссылка</a>
           <a class="random" href="">{{ svg_use('icon-random') }}</a>
         </aside>
         <h1 data-bind="visible: section">Ссылки</h1>
       </header>
       {% include 'scraps/stubdata/ref1.htm' %}
-      {% include 'scraps/stubdata/ref2.htm' %}
     </section>
 
     <section class="index"
       data-bind="visible: section() === 'dictionary' && indexIsOn()">
     </section>
-    #}
 
   </div>
 

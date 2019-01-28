@@ -1,25 +1,50 @@
+const CSL_ENV = process.env.CSL_ENV || 'development',
+      CSL_ENV_IS_PRODUCTION = process.env.CSL_ENV === 'production',
+      CSL_VERSION = require('./package.json').version;
+
+const nunjucksContext = {
+  CSL_DOMAIN_NAME: 'церковнославянский.онлайн',
+  CSL_NAME: 'Церковнославянский язык сегодня',
+  CSL_SHORT_NAME: 'Цсл язык сегодня',
+  CSL_VERY_SHORT_NAME: 'Цсл сегодня',
+  CSL_DESCRIPTION: 'Перед вами пилотная версия популяризаторского портала, работа над которым еще только начинается. Пока что посетителям доступны видеолекции по истории церковнославянского языка и книжности. В ближайшее время появится электронная версия Большого словаря церковнославянского языка Нового времени. Чуть позже — греко-славянский индекс и аннотированный путеводитель по ресурсам Интернета, связанным с церковнославянским языком.',
+  CSL_VERSION: CSL_VERSION,
+  CSL_ENV: CSL_ENV,
+  CSL_ENV_IS_PRODUCTION: CSL_ENV_IS_PRODUCTION,
+
+  urls: {
+    dictionary: '/словарь',
+    entries: '/словарь/статьи',
+    index: '/словарь/индекс',
+    about: '/словарь/описание',
+    video: '/видео',
+    refs: '/ссылки',
+    feedback: '/обратная-связь',
+  }
+};
+
 const exec = require('child_process').exec,
     { src, dest, parallel, series } = require('gulp'),
       merge = require('merge-stream');
 
 // Gulp plugins
-const ext = require('gulp-ext'),
+const babel = require('gulp-babel'),
+      eslint = require('gulp-eslint'),
+      ext = require('gulp-ext'),
       gulpif = require('gulp-if'),
       htmlmin = require('gulp-htmlmin'),
       nunjucks = require('gulp-nunjucks'),
       postcss = require('gulp-postcss'),
       rename = require('gulp-rename'),
-      rollup = require('gulp-better-rollup');
+      rollup = require('gulp-better-rollup'),
+      terser = require('gulp-terser');
 
 // Rollup plugins
-const babel = require('rollup-plugin-babel'),
-      eslint = require('rollup-plugin-eslint').eslint,
-      resolve = require('rollup-plugin-node-resolve'),
-      //builtins = require('rollup-plugin-node-builtins'),
-      //globals = require('rollup-plugin-node-globals'),
+const //builtins = require('rollup-plugin-node-builtins'),
       commonjs = require('rollup-plugin-commonjs'),
-      replace = require('rollup-plugin-replace'),
-      terser = require('rollup-plugin-terser').terser;
+      //globals = require('rollup-plugin-node-globals'),
+      jscc = require('rollup-plugin-jscc'),
+      resolve = require('rollup-plugin-node-resolve');
 
 // PostCSS plugins
 const calc = require('postcss-calc'),
@@ -29,21 +54,6 @@ const calc = require('postcss-calc'),
       easyImport = require('postcss-easy-import'),
       mixins = require('postcss-mixins'),
       sassLikeVars = require('postcss-simple-vars');
-
-const CSL_ENV = process.env.CSL_ENV || 'development',
-      CSL_ENV_IS_PRODUCTION = process.env.CSL_ENV === 'production',
-      CSL_VERSION = require('./package.json').version;
-
-const nunjucksContext = {
-  CSL_NAME: 'Церковнославянский язык сегодня',
-  CSL_SHORT_NAME: 'Цсл язык сегодня',
-  CSL_VERY_SHORT_NAME: 'Цсл сегодня',
-  CSL_DESCRIPTION: 'Перед вами пилотная версия популяризаторского портала, работа над которым еще только начинается. Пока что посетителям доступны видеолекции по истории церковнославянского языка и книжности. В ближайшее время появится электронная версия Большого словаря церковнославянского языка Нового времени. Чуть позже — греко-славянский индекс и аннотированный путеводитель по ресурсам Интернета, связанным с церковнославянским языком.',
-  CSL_DOMAIN_NAME: 'csl.ruslang.ru',
-  CSL_VERSION: CSL_VERSION,
-  CSL_ENV: CSL_ENV,
-  CSL_ENV_IS_PRODUCTION: CSL_ENV_IS_PRODUCTION
-};
 
 const rollupOutputOpts = {
   file: 'spa.js',
@@ -61,10 +71,7 @@ const rollupInputOpts = {
     resolve({ jsnext: true, main: true, browser: true, }),
     commonjs(),
     //globals(),
-    eslint(),
-    babel({ exclude: 'node_modules/**', }),
-    replace(Object.assign(nunjucksContext, { exclude: ['node_modules/**'] })),
-    CSL_ENV_IS_PRODUCTION && terser(),
+    jscc({ values: { _CONFIG: nunjucksContext }, exclude: 'node_modules/**'}),
   ],
 };
 
@@ -89,6 +96,9 @@ function html() {
 function js() {
   return src('src/app.js', { sourcemaps: true })
     .pipe(rollup(rollupInputOpts, rollupOutputOpts))
+    .pipe(eslint())
+    .pipe(babel({ exclude: 'node_modules/**' }))
+    .pipe(gulpif(CSL_ENV_IS_PRODUCTION, terser()))
     .pipe(dest('.build/js', { sourcemaps: true }));
 }
 

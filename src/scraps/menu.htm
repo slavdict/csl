@@ -2,28 +2,28 @@
   <i id="burger"></i>
   <ul>
     <li class="disabled" data-bind="css: { active: section() === 'dictionary' }">
-      <a href="./dictionary">Словарь</a>
+      <a href=".{{ urls.dictionary }}">Словарь</a>
       <ul>
-        <li class="disabled"><a href="./dictionary/about">О словаре</a></li>
+        <li class="disabled"><a href=".{{ urls.about }}">О словаре</a></li>
       </ul>
     </li>
     <li>{# <li data-bind="css: { active: section() === 'video' }"> #}
-      <a href="./video">Видео</a>
+      <a href=".{{ urls.video }}">Видео</a>
     </li>
     <li class="disabled" data-bind="css: { active: section() === 'refs' }">
-      <a href="./refs">Ссылки</a>
+      <a href=".{{ urls.refs }}">Ссылки</a>
     </li>
-    <li class="disabled"><a href="./feedback">Обратная связь</a></li>
+    <li class="disabled"><a href=".{{ urls.feedback }}">Обратная связь</a></li>
   </ul>
 </nav>
 
 <nav id="dict_menu" data-bind="visible: section() === 'dictionary'">
   <ul>
     <li data-bind="css: { active: !indexIsOn() }">
-      <a href="./dictionary/dict">Словарь</a>
+      <a href=".{{ urls.entries }}">Словарь</a>
     </li>
     <li data-bind="css: { active: indexIsOn }">
-      <a href="./dictionary/index">Греческий индекс</a>
+      <a href=".{{ urls.index }}">Греческий индекс</a>
     </li>
   </ul>
   <div id="dict_menu_cursor" data-bind="css: { indexIsOn: indexIsOn }"></div>

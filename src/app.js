@@ -8,8 +8,8 @@ import initKnockout from './scripts/init.knockout.js';
 
 import { videos } from './scripts/videoData.js';
 
-/* eslint-disable-next-line no-undef */
-if (!CSL_ENV_IS_PRODUCTION) log('CSL portal');
+// eslint-disable-next-line no-undef
+if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log('CSL portal');
 
 const qs = window.URLSearchParams && (new URLSearchParams(document.location.search));
 window[';)'] = {
@@ -17,7 +17,6 @@ window[';)'] = {
 };
 
 function viewModel() {
-  this.version = 'v' + 'CSL_VERSION';
   this.debug = window[';)'].debug;
   this.section = ko.observable();
   this.indexIsOn = ko.observable(false);
@@ -26,22 +25,22 @@ function viewModel() {
 const vM = new viewModel();
 initKnockout(ko, vM);
 
-/* eslint-disable-next-line no-undef */
-if (!CSL_ENV_IS_PRODUCTION) window.vM = vM;
+// eslint-disable-next-line no-undef
+if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) window.vM = vM;
 
 // Настройка клиентской маршрутизации
 const rootUrl = '/',
-      dictionarySectionUrl = '/dictionary',
-      dictionaryUrl = dictionarySectionUrl + '/dict',
-      indexUrl = dictionarySectionUrl + '/index',
-      dictionaryAboutUrl = dictionarySectionUrl + '/about',
-      videoUrl = '/video',
-      refsUrl = '/refs',
-      feedbackUrl = '/feedback',
+      dictionaryUrl = '$_CONFIG.urls.dictionary',
+      entriesUrl = '$_CONFIG.urls.entries',
+      indexUrl = '$_CONFIG.urls.index',
+      dictionaryAboutUrl = '$_CONFIG.urls.about',
+      videoUrl = '$_CONFIG.urls.video',
+      refsUrl = '$_CONFIG.urls.refs',
+      feedbackUrl = '$_CONFIG.urls.feedback',
       debugURLs = [
         rootUrl,
-        dictionarySectionUrl,
         dictionaryUrl,
+        entriesUrl,
         indexUrl,
         dictionaryAboutUrl,
         '/dictionary/-search',
@@ -52,30 +51,28 @@ const rootUrl = '/',
         refsUrl,
         feedbackUrl,
       ];
-/* eslint-disable-next-line no-undef */
-if (!CSL_ENV_IS_PRODUCTION) log(debugURLs);
 
-page(rootUrl, videoUrl);
-page(videoUrl, () => { vM.section('video'); });
-page('*', videoUrl);
-/*
+// eslint-disable-next-line no-undef
+if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log(debugURLs);
+
 page(rootUrl, () => { vM.section(null); });
-page(dictionarySectionUrl, () => {
+/*
+page(dictionaryUrl, () => {
   vM.section('dictionary');
   if (vM.indexIsOn()) {
     page.redirect(indexUrl);
   } else {
-    page.redirect(dictionaryUrl);
+    page.redirect(entriesUrl);
   }
 });
 page(dictionaryAboutUrl, () => { log('about dictionary url'); });
-page(dictionaryUrl, () => { vM.section('dictionary'); vM.indexIsOn(false); });
+page(entriesUrl, () => { vM.section('dictionary'); vM.indexIsOn(false); });
 page(indexUrl, () => { vM.section('dictionary'); vM.indexIsOn(true); });
-page(videoUrl, () => { vM.section('video'); });
-page(refsUrl, () => { vM.section('refs'); });
-page(feedbackUrl, () => { log('feedback'); });
-page('*', rootUrl);
 */
+page(videoUrl, () => { vM.section('video'); });
+//page(refsUrl, () => { vM.section('refs'); });
+//page(feedbackUrl, () => { log('feedback'); });
+page('*', rootUrl);
 page({ hashbang: true });
 
 jQuery('#safetyCurtain').fadeOut();
