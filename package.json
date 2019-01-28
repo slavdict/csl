@@ -1,6 +1,6 @@
 {
   "name": "csl",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "Церковнославянский язык сегодня",
   "license": "CC0-1.0",
   "main": "build/js/spa.js",
@@ -9,7 +9,7 @@
     "build": "gulp",
     "lint": "eslint",
     "lint-all": "clear; find src/ -name '*.js' | xargs eslint",
-    "production": "rm -fr build .build; CSL_ENV=production gulp; git --work-tree=../slavdict.github.io --git-dir=../slavdict.github.io/.git checkout master; rsync -av --delete --exclude CNAME --exclude .git build/ ../slavdict.github.io/",
+    "production": "rm -fr build .build; CSL_ENV=production gulp; git --work-tree=../slavdict.github.io --git-dir=../slavdict.github.io/.git checkout master; rsync -av --delete --exclude CNAME --exclude .git --exclude now.json build/ ../slavdict.github.io/",
     "serve": "lite-server -c lite-server.config.json",
     "test": "echo 'Error: no test specified' && exit 1",
     "watch": "find -type f -path './src/*' -o -path './package.json' -o -path './gulpfile.js' | entr -s 'npm-run-all --silent --parallel lint-all build'"

@@ -22,3 +22,12 @@ a:hover {
 a:active {
   color: $--black;
 }
+
+a.disabled,
+a.disabled:link,
+a.disabled:visited,
+a.disabled:hover,
+a.disabled:focus,
+a.disabled:active {
+  color: $--medium-gray;
+}
