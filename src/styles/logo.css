@@ -34,6 +34,17 @@ figure#logo {
   }
 }
 
+a:link figure#logo figcaption,
+a:visited figure#logo figcaption,
+a:active figure#logo figcaption {
+  color: $--black;
+}
+
+a:hover figure#logo figcaption,
+a:focus figure#logo figcaption {
+  color: $--red;
+}
+
 .dictOrIndex figure#logo {
   width: $--logo-small-width;
   left: 0;
