@@ -23,7 +23,9 @@
     position: relative;
 
     & a:link,
-    & a:visited {
+    & a:visited,
+    &.disabled a:hover,
+    &.disabled a:focus {
       color: inherit;
     }
 
@@ -32,15 +34,29 @@
     &.active {
       color: $--red;
     }
-  }
 
-  & li.disabled {
-    color: $--light-gray;
+    &.disabled a:before {
+      $_font-size: 0.8rem;
 
-    & a:hover,
-    & a:focus,
-    &.active {
-      color: inherit;
+      display: block;
+      position: absolute;
+      top: calc($_font-size * -1.66);
+      left: calc($_font-size * -5.33);
+      padding: calc($_font-size / 3) $_font-size;
+      background-color: $--medium-gray;
+      content: "Скоро!";
+      font-family: $--civil-font1;
+      text-transform: none;
+      font-size: $_font-size;
+      color: white;
+      /* border-radius: 0.1875rem; */
+      opacity: 0;
+      transition: opacity 0.8s;
+    }
+
+    &.disabled a:hover:before,
+    &.disabled a:focus:before {
+      opacity: 1;
     }
   }
 }

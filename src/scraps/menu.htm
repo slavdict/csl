@@ -4,10 +4,10 @@
     <li class="disabled" data-bind="css: { active: section() === 'dictionary' }">
       <a href=".{{ urls.dictionary }}">Словарь</a>
       <ul>
-        <li class="disabled"><a href=".{{ urls.about }}">О словаре</a></li>
+        <li><a href=".{{ urls.about }}">О словаре</a></li>
       </ul>
     </li>
-    <li>{# <li data-bind="css: { active: section() === 'video' }"> #}
+    <li data-bind="css: { active: section() === 'video' }">
       <a href=".{{ urls.video }}">Видео</a>
     </li>
     <li class="disabled" data-bind="css: { active: section() === 'refs' }">

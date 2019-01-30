@@ -1,3 +1,8 @@
+@custom-media --mobile (max-width: 320px);
+@custom-media --tablet ();
+@custom-media --laptop (max-width: 1449px);
+@custom-media --desktop ();
+
 $--civil-font1: 'Roboto';
 $--civil-font2: 'Roboto Condensed';
 $--greek-font: $--civil-font1;
