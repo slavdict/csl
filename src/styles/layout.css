@@ -54,8 +54,12 @@ h1 {
   margin: $--ygap 0;
 }
 
-section.video h1 {
-  margin-bottom: 0;
+section.video {
+  margin-top: 2.125rem;
+
+  & h1 {
+    margin-bottom: 0;
+  }
 }
 
 section.article,
@@ -63,7 +67,6 @@ section.index,
 section.video,
 section.refs {
   position: relative;
-  margin-top: 2.125rem;
   width: $--main-width;
 
   & > header aside {

@@ -13,7 +13,11 @@
     <li class="disabled" data-bind="css: { active: section() === 'refs' }">
       <a href=".{{ urls.refs }}">Ссылки</a>
     </li>
-    <li class="disabled"><a href=".{{ urls.feedback }}">Обратная связь</a></li>
+    <li>
+      <a href="mailto:csl_centr@mail.ru?subject=[{{ CSL_VERY_SHORT_NAME }}]">
+        Обратная связь
+      </a>
+    </li>
   </ul>
 </nav>
 

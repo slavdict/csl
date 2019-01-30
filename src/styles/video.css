@@ -1,8 +1,6 @@
 @import './variables.css';
 
 section.video {
-  $--video-width: 35.625rem;
-
   width: $--main-width;
 
   & div.main {
