@@ -13,6 +13,10 @@ import { refs } from './scraps/stubdata/refsData.js';
 // eslint-disable-next-line no-undef
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log('CSL portal');
 
+if (document.location.hostname === '$_CONFIG.CSL_IDN_REDIRECT') {
+  document.location = 'https://$_CONFIG.CSL_IDN/';
+}
+
 const qs = window.URLSearchParams && (new URLSearchParams(document.location.search));
 window[';)'] = {
   debug: qs && qs.has('debug') || false,

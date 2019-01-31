@@ -5,6 +5,7 @@ const CSL_ENV = process.env.CSL_ENV || 'development',
 const nunjucksContext = {
   CSL_IDN: 'церковнославянский.онлайн',
   CSL_IDN_PUNYCODE: 'xn--80adbjsgcdgtdgcxue6e3i.xn--80asehdb',
+  CSL_IDN_REDIRECT: 'csl.ruslang.ru',
   CSL_NAME: 'Церковнославянский язык сегодня',
   CSL_SHORT_NAME: 'Цсл язык сегодня',
   CSL_VERY_SHORT_NAME: 'Цсл сегодня',
