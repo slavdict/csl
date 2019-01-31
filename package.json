@@ -1,6 +1,6 @@
 {
   "name": "csl",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "description": "Церковнославянский язык сегодня",
   "license": "CC0-1.0",
   "main": "build/js/spa.js",

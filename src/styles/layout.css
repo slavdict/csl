@@ -92,6 +92,14 @@ section.refs {
   }
 }
 
+section.article > header aside {
+  top: 0.2rem;
+}
+
+section.refs > header aside {
+  top: 0.35rem;
+}
+
 section.index {
   min-height: 66vh;
 }
