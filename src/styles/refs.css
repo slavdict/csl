@@ -3,9 +3,19 @@ section.refs {
   margin: 0;
   line-height: 1.5rem;
 
+  & div.main {
+    width: calc($--video-width * 2 + $--xgap);
+    column-count: 2;
+    column-width: $--video-width;
+    column-gap: $--xgap;
+    column-fill: balance;
+    overflow-x: hidden;
+    margin-bottom: $--ygap;
+  }
+
   & figure {
     padding: 0;
-    margin: 0 0 $--ygap 0;
+    margin: 0;
     font-size: 0.8125rem;
     letter-spacing: 0.020625rem;
 
@@ -19,5 +29,7 @@ section.refs {
   & figcaption {
     font-size: 1rem;
     letter-spacing: 0.025625rem;
+    column-span: all;
+    margin-bottom: 1rem;
   }
 }
