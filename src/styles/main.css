@@ -4,9 +4,10 @@
 @import '../../node_modules/normalize.css/normalize.css';
 @import 'html5boilerplate_main.css';
 @import 'fonts.css';
-@import 'layout.css';
 @import 'links.css';
 
+@import 'layout.css';
+@import 'site_legend.css';
 @import 'logo.css';
 @import 'menu.css';
 @import 'search.css';
@@ -14,3 +15,4 @@
 @import 'article.css';
 @import 'refs.css';
 @import 'patrons.css';
+@import 'version.css';

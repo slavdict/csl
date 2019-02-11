@@ -1,7 +1,8 @@
 @custom-media --mobile (max-width: 320px);
-@custom-media --tablet ();
-@custom-media --laptop (max-width: 1449px);
-@custom-media --desktop ();
+@custom-media --tablet (320px < width <= 768px);
+@custom-media --laptop (768px < width < 1450px);
+@custom-media --desktop (min-width: 1450px);
+/* 1450px -- минимальная ширина экрана, необходимая для широкого дизайна сайта */
 
 $--civil-font1: 'Roboto';
 $--civil-font2: 'Roboto Condensed';
@@ -16,10 +17,22 @@ $--medium-gray: #a4a699;
 $--dark-gray: #6d6f67;
 $--black: #3a3b37;
 
-$--main-width: 58.625rem;
-$--main-margin-left: 18.75rem;
-$--video-width: 35.625rem;
-$--xgap: 1.4375rem;
-$--ygap: 4.3125rem;
+:root {
 
-/* 1450px -- минимальная ширина экрана, необходимая для широкого дизайна сайта */
+  --main-width-desktop: 58.625rem;
+  --main-width-mobile: 93.75vw;
+
+  --main-margin-left: 18.75rem;
+
+  --video-width-desktop: 35.625rem;
+  --video-width-mobile: 100vw;
+
+  --video-height-desktop: calc(var(--video-width-desktop) * 9 / 16);
+  --video-height-mobile: calc(var(--video-width-mobile) * 9 / 16);
+
+  --main-gap-mobile: calc((100vw - var(--main-width-mobile)) / 2);
+
+  --xgap: 1.4375rem;
+  --ygap: 4.3125rem;
+
+}

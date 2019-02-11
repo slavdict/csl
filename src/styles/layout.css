@@ -11,7 +11,6 @@ body {
 
 header#header {
   position: relative;
-  width: $--main-width;
   height: 9rem;
   margin: 0 auto;
 
@@ -21,22 +20,12 @@ header#header {
 }
 
 div#main {
-  width: $--main-width;
   margin: 0 auto;
 }
 
 footer#footer {
   border-top: 0.125rem solid $--light-gray;
-  width: calc($--main-width + 30rem);
   margin: 0 auto;
-}
-
-div#legend {
-  margin-top: 3.1875rem;
-  width: 43.0625rem;
-  font-family: $--civil-font1;
-  font: 1rem / 1.5rem;
-  letter-spacing: 0.025rem;
 }
 
 @define-mixin section-header {
@@ -47,11 +36,12 @@ div#legend {
 
 h1 {
   --font-size: 2.6775rem;
+
   @mixin section-header;
   letter-spacing: 0.06875rem;
   font-size: var(--font-size);
   line-height: calc(var(--font-size) * 1.2);
-  margin: $--ygap 0;
+  margin: var(--ygap) 0;
 }
 
 section.video {
@@ -67,7 +57,6 @@ section.index,
 section.video,
 section.refs {
   position: relative;
-  width: $--main-width;
 
   & > header aside {
     @mixin section-header;
@@ -132,14 +121,30 @@ section.index {
   min-height: 66vh;
 }
 
-#version {
-  margin: $--ygap auto $--xgap auto;
-  padding: 0;
-  color: $--light-gray;
-  font-size: 0.6875rem;
-  text-align: center;
+@media (--desktop), (--laptop) {
+  header#header,
+  div#main {
+    width: var(--main-width-desktop);
+  }
+  footer#footer {
+    width: calc(var(--main-width-desktop) + 30rem);
+  }
+  section.article,
+  section.index,
+  section.video,
+  section.refs {
+    width: var(--main-width-desktop);
+  }
+}
 
-  &:hover {
-    color: $--dark-gray;
+@media (--mobile), (--tablet) {
+  header#header,
+  div#main,
+  footer#footer,
+  section.article,
+  section.index,
+  section.video,
+  section.refs {
+    width: var(--main-width-mobile);
   }
 }

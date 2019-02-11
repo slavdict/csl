@@ -1,30 +1,30 @@
 @import './variables.css';
 
 section.video {
-  width: $--main-width;
+  width: var(--main-width-desktop);
 
   & div.main {
     position: relative;
     display: flex;
     flex-flow: row wrap;
-    width: calc($--video-width * 2 + $--xgap * 2);
+    width: calc(var(--video-width-desktop) * 2 + var(--xgap) * 2);
     padding-top: 4.1rem;
   }
 
   & figure {
-    width: $--video-width;
-    margin: 0 $--xgap $--ygap 0;
+    width: var(--video-width-desktop);
+    margin: 0 var(--xgap) var(--ygap) 0;
     padding: 0;
 
     & iframe {
-      width: $--video-width;
-      height: 20rem;
+      width: var(--video-width-desktop);
+      height: var(--video-height-desktop);
       margin: 0;
     }
   }
 
   & figcaption {
-    margin: $--xgap 0 0 0;
+    margin: var(--xgap) 0 0 0;
 
     & header {
       font-family: $--civil-font2;
@@ -44,6 +44,31 @@ section.video {
 
     & .speaker {
       color: $--medium-gray;
+    }
+  }
+}
+
+@media (--mobile) {
+  section.video {
+    width: var(--main-width-mobile);
+
+    & div.main {
+      width: var(--main-width-mobile);
+    }
+
+    & figure {
+      width: var(--video-width-mobile);
+
+      & iframe {
+        position: relative;
+        width: var(--video-width-mobile);
+        height: var(--video-height-mobile);
+        left: calc(- var(--main-gap-mobile));
+      }
+
+      & figcaption {
+        margin: var(--main-gap-mobile) 0 0 0;
+      }
     }
   }
 }

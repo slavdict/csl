@@ -5,12 +5,12 @@ footer#footer {
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: baseline;
-    width: $--main-width;
+    width: var(--main-width-desktop);
     margin: 0 auto;
   }
 
   & figure {
-    $--width: calc($--main-width / 3 - $--xgap);
+    $--width: calc(var(--main-width-desktop) / 3 - var(--xgap));
     $--height: 8.5rem;
     $--sub-width: calc($--width - 5rem);
 

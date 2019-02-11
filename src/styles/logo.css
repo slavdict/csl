@@ -14,7 +14,9 @@ figure#logo {
   left: calc(- $--logo-width);
 
   --timing: 0.8s;
-  transition: width var(--timing), height var(--timing), left var(--timing);
+  transition: width var(--timing),
+              height var(--timing),
+              left var(--timing);
 
   & figcaption {
     --caption-top-offset: 0.2rem; /* В дизайнерском шаблоне 0.25rem */
@@ -31,6 +33,12 @@ figure#logo {
     position: absolute;
     left: $--logo-width;
     top: calc($--logo-height - var(--caption-top-offset));
+  }
+}
+
+@media (--mobile) {
+  figure#logo {
+    left: 0;
   }
 }
 

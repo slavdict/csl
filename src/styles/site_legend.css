@@ -1,0 +1,15 @@
+@import 'variables.css';
+
+div#legend {
+  margin-top: 3.1875rem;
+  width: 43.0625rem;
+  font-family: $--civil-font1;
+  font: 1rem / 1.5rem;
+  letter-spacing: 0.025rem;
+}
+
+@media (--mobile) {
+  div#legend {
+    width: auto;
+  }
+}

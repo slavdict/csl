@@ -1,0 +1,13 @@
+@import './variables.css';
+
+#version {
+  margin: var(--ygap) auto var(--xgap) auto;
+  padding: 0;
+  color: $--light-gray;
+  font-size: 0.6875rem;
+  text-align: center;
+
+  &:hover {
+    color: $--dark-gray;
+  }
+}

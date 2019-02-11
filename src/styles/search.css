@@ -5,7 +5,7 @@ $--search-padding: 0.8rem;
 #search {
   margin-top: calc(3.875rem - $--search-padding);
   position: relative;
-  width: $--main-width;
+  width: var(--main-width-desktop);
 
   & input {
     box-sizing: border-box;
