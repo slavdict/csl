@@ -10,10 +10,16 @@ section.article div.main {
   margin-bottom: var(--ygap);
   text-align: justify;
   line-height: 1.5rem;
-  column-count: 2;
-  column-width: var(--video-width-desktop);
+  columns: 2 var(--video-width-desktop);
   column-gap: var(--xgap);
   overflow-x: hidden;
+}
+
+@media (--mobile) {
+  section.article div.main {
+    width: auto;
+    columns: auto auto;
+  }
 }
 
 /* div.Letter */
@@ -49,6 +55,12 @@ section.article div.main {
 
 div.Entry {
   break-before: column;
+}
+
+@media (--mobile) {
+  div.Entry {
+    break-before: auto;
+  }
 }
 
 div.Entry * {

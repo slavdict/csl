@@ -65,9 +65,14 @@ section.video {
         height: var(--video-height-mobile);
         left: calc(- var(--main-gap-mobile));
       }
+    }
 
-      & figcaption {
-        margin: var(--main-gap-mobile) 0 0 0;
+    & figcaption {
+      margin: var(--main-gap-mobile) 0 0 0;
+
+      & .speaker,
+      & legend {
+        margin-top: var(--main-gap-mobile);
       }
     }
   }

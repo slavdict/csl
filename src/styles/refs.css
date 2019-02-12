@@ -5,8 +5,7 @@ section.refs {
 
   & div.main {
     width: calc(var(--video-width-desktop) * 2 + var(--xgap));
-    column-count: 2;
-    column-width: var(--video-width-desktop);
+    columns: 2 var(--video-width-desktop);
     column-gap: var(--xgap);
     column-fill: balance;
     overflow-x: hidden;
@@ -31,5 +30,19 @@ section.refs {
     letter-spacing: 0.025625rem;
     column-span: all;
     margin-bottom: 1rem;
+  }
+}
+
+@media (--mobile) {
+  section.refs {
+    & div.main {
+      width: auto;
+      columns: auto auto;
+    }
+
+    & figure .bibliography {
+      margin: var(--main-gap-mobile) 0;
+      padding: var(--main-gap-mobile) calc(1.5 * var(--main-gap-mobile));
+    }
   }
 }
