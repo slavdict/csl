@@ -93,3 +93,7 @@ fieldset {
 textarea {
   resize: vertical;
 }
+
+.hidden {
+  display: none !important;
+}

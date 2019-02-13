@@ -51,11 +51,19 @@ function viewModel() {
   this.debug = window[';)'].debug;
   this.section = ko.observable();
   this.indexIsOn = ko.observable(false);
+  this.isMobileMenuHidden = ko.observable(true);
   this.videos = videos;
   this.randomVideos = ko.observableArray(getRandom(videos, 2, []));
   this.randomArticles = ko.observableArray(getRandom(articles, 2, []));
   this.randomRefs = ko.observableArray(getRandom(refs, 1, []));
 
+  this.hideMobileMenu = function () {
+    self.isMobileMenuHidden(true);
+    return true; // Propogate click events
+  };
+  this.toggleMobileMenu = function () {
+    self.isMobileMenuHidden(!self.isMobileMenuHidden());
+  };
   this.getRandomVideos = function () {
     self.randomVideos(getRandom(videos, 2, self.randomVideos()));
   };
@@ -99,7 +107,7 @@ const rootUrl = '/',
 // eslint-disable-next-line no-undef
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log(debugURLs);
 
-page(rootUrl, () => { vM.section(null); });
+page(rootUrl, () => { vM.section(null); vM.isMobileMenuHidden(true); });
 /*
 page(dictionaryUrl, () => {
   vM.section('dictionary');

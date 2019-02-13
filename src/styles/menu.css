@@ -166,7 +166,6 @@ nav#dict_menu {
     top: 0;
 
     & ul {
-      display: none;
       display: flex;
       flex-flow: column nowrap;
       width: 100vw;
@@ -179,6 +178,7 @@ nav#dict_menu {
       left: calc(-1 * var(--main-gap-mobile));
       justify-content: space-between;
       @mixin strut-shadow;
+      z-index: 400;
     }
 
     & ul ul {
@@ -191,6 +191,12 @@ nav#dict_menu {
       left: 8.5rem;
       padding: 0;
       box-shadow: none;
+    }
+
+    & ul li.disabled a:before {
+      left: unset;
+      right: 3rem;
+      top: -0.25rem;
     }
 
     & i.x {
