@@ -35,14 +35,28 @@ section.refs {
 
 @media (--mobile) {
   section.refs {
+    overflow-x: visible;
+
     & div.main {
       width: auto;
       columns: auto auto;
+      overflow-x: visible;
     }
 
-    & figure .bibliography {
-      margin: var(--main-gap-mobile) 0;
-      padding: var(--main-gap-mobile) calc(1.5 * var(--main-gap-mobile));
+    & figure {
+      position: relative;
+
+      & .bibliography {
+        width: 100vw;
+        position: relative;
+        left: calc(-1 * var(--main-gap-mobile));
+        margin: var(--main-gap-mobile) 0;
+        padding: var(--main-gap-mobile);
+      }
+    }
+
+    & figcaption {
+      margin-bottom: var(--main-gap-mobile);
     }
   }
 }

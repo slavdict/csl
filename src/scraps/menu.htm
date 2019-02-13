@@ -1,5 +1,6 @@
 <nav id="menu">
-  <i id="burger"></i>
+  <i id="burger">{% include 'scraps/burger.svg' %}</i>
+  <i class="x">{{ svg_use('icon-times') }}</i>
   <ul>
     <li class="disabled" data-bind="css: { active: section() === 'dictionary' }">
       <a href=".{{ urls.dictionary }}">Словарь</a>

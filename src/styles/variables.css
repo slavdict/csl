@@ -1,4 +1,4 @@
-@custom-media --mobile (max-width: 320px);
+@custom-media --mobile (width < 768px);
 @custom-media --tablet (320px < width <= 768px);
 @custom-media --laptop (768px < width < 1450px);
 @custom-media --desktop (min-width: 1450px);
@@ -35,4 +35,15 @@ $--black: #3a3b37;
   --xgap: 1.4375rem;
   --ygap: 4.3125rem;
 
+}
+
+@define-mixin csl-header {
+  font-family: $--civil-font2;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@define-mixin strut-shadow {
+  /* Тень от всплывающих меню, расположенных враспорку на экране мобильника */
+  box-shadow: 0 0.3rem 1.25rem 0.15rem rgba(220, 222, 210, 0.75);
 }

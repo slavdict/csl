@@ -2,6 +2,7 @@
 
 section.video {
   width: var(--main-width-desktop);
+  margin-top: 2.125rem;
 
   & div.main {
     position: relative;
@@ -27,10 +28,8 @@ section.video {
     margin: var(--xgap) 0 0 0;
 
     & header {
-      font-family: $--civil-font2;
+      @mixin csl-header;
       font-size: 1rem;
-      font-weight: bold;
-      text-transform: uppercase;
       letter-spacing: 0.025rem;
     }
 
@@ -51,13 +50,16 @@ section.video {
 @media (--mobile) {
   section.video {
     width: var(--main-width-mobile);
+    margin-top: calc(var(--main-gap-mobile) * 5);
 
     & div.main {
       width: var(--main-width-mobile);
+      padding-top: 0;
     }
 
     & figure {
-      width: var(--video-width-mobile);
+      width: var(--main-width-mobile) /* sic! */;
+      margin: 0 0 calc(var(--main-gap-mobile) * 3) 0;
 
       & iframe {
         position: relative;
@@ -69,6 +71,7 @@ section.video {
 
     & figcaption {
       margin: var(--main-gap-mobile) 0 0 0;
+      width: var(--main-width-mobile);
 
       & .speaker,
       & legend {

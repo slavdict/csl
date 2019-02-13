@@ -11,5 +11,6 @@ div#legend {
 @media (--mobile) {
   div#legend {
     width: auto;
+    margin-bottom: calc(var(--main-gap-mobile) * 7);
   }
 }

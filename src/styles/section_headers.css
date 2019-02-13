@@ -1,0 +1,80 @@
+@import 'variables.css';
+
+h1 {
+  --font-size: 2.6775rem;
+
+  @mixin csl-header;
+  letter-spacing: 0.06875rem;
+  font-size: var(--font-size);
+  line-height: calc(var(--font-size) * 1.2);
+  margin: var(--ygap) 0;
+}
+
+section {
+  position: relative;
+
+  & > header aside {
+    @mixin csl-header;
+    position: absolute;
+    flex: 0 0 auto;
+    left: -15rem;
+    width: 14rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.025625rem;
+
+    & a.random {
+      --dimension: 1rem;
+
+      display: block;
+      width: var(--dimension);
+      height: var(--dimension);
+
+      & svg {
+        width: var(--dimension);
+        height: var(--dimension);
+      }
+    }
+  }
+}
+
+section.video h1 {
+  margin-bottom: 0;
+}
+
+section.article > header aside {
+  top: 0.2rem;
+}
+
+section.refs > header aside {
+  top: 0.35rem;
+}
+
+@media (--mobile) {
+  section > header aside {
+    position: relative;
+    left: 0;
+    margin-bottom: calc(var(--main-gap-mobile) * 3);
+
+    & a.random {
+      --dimension: 1.25rem;
+
+      width: var(--dimension);
+      height: var(--dimension);
+
+      & svg {
+        width: var(--dimension);
+        height: var(--dimension);
+      }
+    }
+
+  }
+
+  section.video header {
+    margin-bottom: calc(var(--main-gap-mobile) * 2);
+  }
+
+  h1 {
+    margin-bottom: calc(var(--main-gap-mobile) * 3);
+  }
+}

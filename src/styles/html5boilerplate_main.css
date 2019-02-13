@@ -16,10 +16,15 @@ html {
     font-size: 1rem;
     line-height: 1.4;
 }
+
 @media (--laptop) {
   html {
     font-size: 0.8rem;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /*

@@ -52,3 +52,13 @@ footer#footer {
     text-align: center;
   }
 }
+
+@media (--mobile) {
+  footer#footer {
+    & .patrons {
+      width: var(--main-width-mobile);
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+    }
+  }
+}

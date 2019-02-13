@@ -28,95 +28,6 @@ footer#footer {
   margin: 0 auto;
 }
 
-@define-mixin section-header {
-  font-family: $--civil-font2;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-h1 {
-  --font-size: 2.6775rem;
-
-  @mixin section-header;
-  letter-spacing: 0.06875rem;
-  font-size: var(--font-size);
-  line-height: calc(var(--font-size) * 1.2);
-  margin: var(--ygap) 0;
-}
-
-section.video {
-  margin-top: 2.125rem;
-
-  & h1 {
-    margin-bottom: 0;
-  }
-}
-
-section.article,
-section.index,
-section.video,
-section.refs {
-  position: relative;
-
-  & > header aside {
-    @mixin section-header;
-    position: absolute;
-    flex: 0 0 auto;
-    left: -15rem;
-    width: 14rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    letter-spacing: 0.025625rem;
-
-    & a.random {
-      display: block;
-      width: 1rem;
-      height: 1rem;
-
-      & svg {
-        width: 1rem;
-        height: 1rem;
-      }
-    }
-
-    /*
-    & a.disabled {
-      position: relative;
-
-      &:before {
-        $_font-size: 0.8rem;
-
-        display: block;
-        position: absolute;
-        top: calc($_font-size * -2);
-        right: calc($_font-size * -4.8);
-        padding: calc($_font-size / 9 * 2) calc($_font-size * 2 / 3);
-        background-color: $--light-gray;
-        content: "Скоро!";
-        font-family: $--civil-font1;
-        text-transform: none;
-        font-size: $_font-size;
-        color: white;
-        pacity: 0;
-        transition: opacity 0.6s;
-      }
-
-      &:hover:before {
-        opacity: 1;
-      }
-    }
-    */
-  }
-}
-
-section.article > header aside {
-  top: 0.2rem;
-}
-
-section.refs > header aside {
-  top: 0.35rem;
-}
-
 section.index {
   min-height: 66vh;
 }
@@ -129,22 +40,21 @@ section.index {
   footer#footer {
     width: calc(var(--main-width-desktop) + 30rem);
   }
-  section.article,
-  section.index,
-  section.video,
-  section.refs {
+  section {
     width: var(--main-width-desktop);
   }
 }
 
 @media (--mobile), (--tablet) {
+  body {
+    width: 100vw;
+    overflow-x: hidden !important;
+  }
+
   header#header,
   div#main,
   footer#footer,
-  section.article,
-  section.index,
-  section.video,
-  section.refs {
+  section {
     width: var(--main-width-mobile);
   }
 }
