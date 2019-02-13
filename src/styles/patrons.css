@@ -59,6 +59,7 @@ footer#footer {
       width: var(--main-width-mobile);
       flex-flow: column nowrap;
       justify-content: flex-start;
+      align-items: center;
     }
   }
 }
