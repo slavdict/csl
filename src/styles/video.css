@@ -54,7 +54,7 @@ section.video {
 
     & div.main {
       width: var(--main-width-mobile);
-      padding-top: 0;
+      padding: 0;
     }
 
     & figure {

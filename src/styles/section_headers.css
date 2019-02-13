@@ -54,7 +54,7 @@ section.refs > header aside {
   section > header aside {
     position: relative;
     left: 0;
-    margin-bottom: calc(var(--main-gap-mobile) * 3);
+    margin: 0 0 calc(var(--main-gap-mobile) * 3) 0;
 
     & a.random {
       --dimension: 1.25rem;

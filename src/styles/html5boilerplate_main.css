@@ -11,16 +11,22 @@
    ========================================================================== */
 
 html {
-    color: $--black;
-    font-family: $--civil-font1;
-    font-size: 1rem;
-    line-height: 1.4;
+  color: $--black;
+  font-family: $--civil-font1;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 @media (--laptop) {
   html {
     font-size: 0.8rem;
   }
+}
+
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 * {
@@ -38,8 +44,8 @@ html {
  */
 
 ::selection {
-    background: $--light-gray;
-    text-shadow: none;
+  background: $--light-gray;
+  text-shadow: none;
 }
 
 /*
@@ -47,12 +53,12 @@ html {
  */
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid $--light-gray;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid $--light-gray;
+  margin: 1em 0;
+  padding: 0;
 }
 
 /*
@@ -67,7 +73,7 @@ iframe,
 img,
 svg,
 video {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 /*
@@ -75,9 +81,9 @@ video {
  */
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -85,5 +91,5 @@ fieldset {
  */
 
 textarea {
-    resize: vertical;
+  resize: vertical;
 }

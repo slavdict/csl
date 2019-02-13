@@ -1,9 +1,6 @@
 @import 'variables.css';
 
 body {
-  overflow-y: scroll;
-  overflow-x: hidden;
-
   & > svg {
     display: none;
   }
@@ -46,11 +43,6 @@ section.index {
 }
 
 @media (--mobile), (--tablet) {
-  body {
-    width: 100vw;
-    overflow-x: hidden !important;
-  }
-
   header#header,
   div#main,
   footer#footer,
