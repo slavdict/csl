@@ -4,7 +4,8 @@
   <i class="x hidden" data-bind="css: { hidden: isMobileMenuHidden },
                           click: hideMobileMenu">
     {{ svg_use('icon-times') }}</i>
-  <ul class="hidden" data-bind="css: { hidden: isMobileMenuHidden }">
+  <ul class="menuInitState"
+    data-bind="css: { menuInitState: isMobileMenuHidden }">
     <li class="disabled" data-bind="css: { active: section() === 'dictionary' }">
       <a href=".{{ urls.dictionary }}">Словарь</a>
       <ul>

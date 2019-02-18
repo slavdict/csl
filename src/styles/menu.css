@@ -214,6 +214,10 @@ nav#dict_menu {
         height: 1rem;
       }
     }
+
+    & .menuInitState {
+      display: none;
+    }
   }
   nav#dict_menu {
     width: var(--main-width-mobile);
