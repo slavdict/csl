@@ -66,6 +66,7 @@ section.video {
         width: var(--video-width-mobile);
         height: var(--video-height-mobile);
         left: calc(- var(--main-gap-mobile));
+        margin-right: calc(- var(--main-gap-mobile));
       }
     }
 
