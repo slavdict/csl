@@ -11,6 +11,8 @@ import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
 import { refs } from './scraps/stubdata/refsData.js';
 
+const exampleSearchQueries = ['аромат', 'безкровный', 'варити'];
+
 // eslint-disable-next-line no-undef
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log('CSL portal');
 
@@ -46,6 +48,10 @@ function getRandom(arrayToChooseFrom, N, excludeResults) {
   return array;
 }
 
+function getRandomItem(arrayToChooseFrom, excludeItem) {
+  return getRandom(arrayToChooseFrom, 1, [excludeItem])[0];
+}
+
 function viewModel() {
   let self = this;
 
@@ -57,6 +63,7 @@ function viewModel() {
   this.randomVideos = ko.observableArray(getRandom(videos, 2, []));
   this.randomArticles = ko.observableArray(getRandom(articles, 2, []));
   this.randomRefs = ko.observableArray(getRandom(refs, 1, []));
+  this.randomSearchQuery = ko.observable(getRandomItem(exampleSearchQueries));
 
   this.entryQuery = ko.observable();
   this.indexQuery = ko.observable();
