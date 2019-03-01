@@ -1,6 +1,6 @@
 {
   "name": "csl",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Церковнославянский язык сегодня",
   "license": "CC0-1.0",
   "main": "build/js/spa.js",
@@ -12,14 +12,14 @@
     "lint-all": "clear; find src/ -name '*.js' | xargs eslint",
     "production": "rm -fr build .build; CSL_ENV=production gulp; git --work-tree=../slavdict.github.io --git-dir=../slavdict.github.io/.git checkout master; rsync -av --delete --exclude CNAME --exclude .git --exclude .gitignore --exclude now.json --exclude *.pdf build/ ../slavdict.github.io/",
     "serve": "lite-server -c lite-server.config.json",
-    "sync-data": "rm -fr build/{e,xp,xf}; cp -R .temp/slavdict_generated/entries build/e; cp -R .temp/slavdict_generated/partial_index build/xp; cp -R .temp/slavdict_generated/full_index build/xf",
+    "sync-data": "rm -fr build/e build/xp build/xf; cp -R .temp/slavdict_generated/entries build/e; cp -R .temp/slavdict_generated/partial_index build/xp; cp -R .temp/slavdict_generated/full_index build/xf",
     "test": "echo 'Error: no test specified' && exit 1",
     "watch": "find -type f -path './src/*' -o -path './package.json' -o -path './gulpfile.js' | entr -s 'npm-run-all --silent --parallel lint-all build'"
   },
   "dependencies": {
     "debug": "^4.1.0",
     "jquery": "^3.3.1",
-    "knockout": "^3.4.2",
+    "knockout": "^3.5",
     "normalize.css": "^8.0.1",
     "page": "^1.11.3"
   },

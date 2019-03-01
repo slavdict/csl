@@ -6,7 +6,7 @@
     {{ svg_use('icon-times') }}</i>
   <ul class="menuInitState"
     data-bind="css: { menuInitState: isMobileMenuHidden }">
-    <li class="disabled" data-bind="css: { active: section() === 'dictionary' }">
+    <li data-bind="css: { active: section() === 'dictionary' }">
       <a href=".{{ urls.dictionary }}">Словарь</a>
       <ul>
         <li><a href=".{{ urls.about }}">О словаре</a></li>

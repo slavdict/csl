@@ -4,9 +4,13 @@
 <div id="search" data-bind="visible: ['video', 'refs'].indexOf(section()) &lt; 0">
   <input type="text" placeholder="{{ dict_placeholder }}"
       data-bind="attr: { placeholder: indexIsOn() ?
-          '{{ index_placeholder }}' : '{{ dict_placeholder }}' }">
+          '{{ index_placeholder }}' : '{{ dict_placeholder }}' },
+          value: indexIsOn() ? indexQuery : entryQuery,
+          valueUpdate: 'input'">
   <i>{% include 'scraps/search.svg' %}</i>
   <div class="tip1">Например, <a href="">безкровный</a> или <a href="">варити</a></div>
   <div class="tip2"></div>
-  <div class="results"></div>
+  <ul class="hints" data-bind="foreach: hints">
+    <li><span class="CSLSegment" data-bind="text: e"></span></li>
+  </ul>
 </div>

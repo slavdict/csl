@@ -5,6 +5,7 @@ import ko from 'knockout';
 import page from 'page';
 
 import initKnockout from './scripts/init.knockout.js';
+import { searchEntries } from './scripts/searchEntries.js';
 
 import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
@@ -57,6 +58,10 @@ function viewModel() {
   this.randomArticles = ko.observableArray(getRandom(articles, 2, []));
   this.randomRefs = ko.observableArray(getRandom(refs, 1, []));
 
+  this.entryQuery = ko.observable();
+  this.indexQuery = ko.observable();
+  this.hints = ko.observableArray();
+
   this.hideMobileMenu = function () {
     self.isMobileMenuHidden(true);
     return true; // Propogate click events
@@ -73,6 +78,15 @@ function viewModel() {
   this.getRandomRefs = function () {
     self.randomRefs(getRandom(refs, 1, self.randomRefs()));
   };
+
+  ko.computed(function () {
+    const query = (self.entryQuery() || '').toLowerCase().replace(/[^а-щы-я]+/g, '');
+    if (query) {
+      searchEntries(query).then(self.hints, () => self.hints([]));
+    } else {
+      self.hints([]);
+    }
+  });
 }
 const vM = new viewModel();
 initKnockout(ko, vM);
@@ -108,7 +122,6 @@ const rootUrl = '/',
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log(debugURLs);
 
 page(rootUrl, () => { vM.section(null); vM.isMobileMenuHidden(true); });
-/*
 page(dictionaryUrl, () => {
   vM.section('dictionary');
   if (vM.indexIsOn()) {
@@ -117,12 +130,20 @@ page(dictionaryUrl, () => {
     page.redirect(entriesUrl);
   }
 });
-page(dictionaryAboutUrl, () => { log('about dictionary url'); });
+page(dictionaryAboutUrl, () => {
+  jQuery.getJSON('./test', function (data) {
+    log('get json:', data);
+  });
+  jQuery.ajax('./toc', {
+    success: function (data) {
+      log('get text:', data);
+    }
+  });
+});
 page(entriesUrl, () => { vM.section('dictionary'); vM.indexIsOn(false); });
 page(indexUrl, () => { vM.section('dictionary'); vM.indexIsOn(true); });
-*/
 page(videoUrl, () => { vM.section('video'); });
-//page(refsUrl, () => { vM.section('refs'); });
+page(refsUrl, () => { /* vM.section('refs'); */ });
 //page(feedbackUrl, () => { log('feedback'); });
 page('*', rootUrl);
 page({ hashbang: true });

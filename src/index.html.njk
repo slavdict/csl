@@ -23,9 +23,7 @@
 
     <div id="legend" data-bind="visible: !section()">{{ CSL_DESCRIPTION }}</div>
 
-    {#
     {% include 'scraps/search.htm' %}
-    #}
 
     <section class="video" data-bind="visible: !section()">
       <header>
@@ -78,7 +76,7 @@
       <header>
         <aside data-bind="visible: !section()">
           Случайные статьи из&nbsp;нашего
-          <a class="disabled" href=".{{ urls.entries }}">словаря</a>
+          <a href=".{{ urls.entries }}">словаря</a>
           <a class="random" href="" data-bind="click: getRandomArticles">
             {{ svg_use('icon-random') }}</a>
         </aside>
