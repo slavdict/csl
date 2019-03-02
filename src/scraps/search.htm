@@ -1,6 +1,27 @@
 {% set index_placeholder = 'Поиск по индексу' %}
 {% set dict_placeholder = 'Поиск по церковнославянскому словарю' %}
 
+<script id="searchHint">
+  <a data-bind="attr: { href: './словарь/статьи/' + ($data.i ? $data.i : $data.r.i) }">
+    <span class="Headword" data-bind="text: e"></span>
+    <!-- ko if: $data.o -->
+      <span class="HomonymNumber" data-bind="text: o"></span>
+      <!-- ko if: $data.p -->
+        <span class="Em" data-bind="text: p"></span>
+      <!-- /ko -->
+      <!-- ko if: $data.g -->
+        <span class="HomonymGloss" data-bind="text: g"></span>
+      <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: $data.r -->
+      <span class="qv">
+        ⟶
+      </span>
+      <!-- ko template: { name: 'searchHint', data: $data.r } --><!-- /ko -->
+    <!-- /ko -->
+  </a>
+</script>
+
 <div id="search" data-bind="visible: ['video', 'refs'].indexOf(section()) &lt; 0">
   <input type="text" placeholder="{{ dict_placeholder }}"
       data-bind="attr: { placeholder: shouldSearchGrIx() ?
@@ -11,7 +32,7 @@
   <div class="tip1">Например, <a href="" data-bind="text: randomSearchQuery,
   click: function(){ entryQuery(randomSearchQuery()); }"></a></div>
   <div class="tip2"></div>
-  <ul class="hints" data-bind="foreach: hints">
-    <li><span class="CSLSegment" data-bind="text: e"></span></li>
+  <ul class="hints" data-bind="foreach: hints, visible: hints().length">
+    <li data-bind="template: { name: 'searchHint', data: $data }"></li>
   </ul>
 </div>

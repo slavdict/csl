@@ -1,6 +1,7 @@
 @import 'variables.css';
 
 $--search-padding: 0.8rem;
+$--search-width: 58.125rem;
 
 #search {
   margin-top: calc(3.875rem - $--search-padding);
@@ -8,7 +9,7 @@ $--search-padding: 0.8rem;
   width: var(--main-width-desktop);
 
   & input {
-    width: 58.125rem;
+    width: $--search-width;
     padding: 1.048rem 0;
     border: none;
     border-bottom: 0.0625rem solid $--medium-gray;
@@ -39,5 +40,47 @@ $--search-padding: 0.8rem;
     font-size: 0.6875rem;
     line-height: 1rem;
     letter-spacing: 0.0175rem;
+  }
+
+  & .hints {
+    list-style: none;
+    width: $--search-width;
+    background-color: white;
+    padding: 1.375rem 1.5rem;
+    position: absolute;
+    top: 3rem;
+    z-index: 500;
+    @mixin strut-shadow;
+
+    & li {
+      position: relative;
+      padding: 0.15rem 0;
+      cursor: pointer;
+
+      & a:link,
+      & a:visited,
+      & a:active {
+        color: inherit;
+      }
+
+      & a:focus,
+      & a:hover {
+        color: $--red;
+      }
+    }
+
+    & .qv {
+      color: $--red;
+      padding: 0 0.4rem;
+    }
+    & .HomonymGloss {
+      font-variant: small-caps;
+    }
+    & .HomonymNumber {
+      font-size: 0.75rem;
+      left: -0.1rem;
+      top: 0.15rem;
+      color: inherit;
+    }
   }
 }
