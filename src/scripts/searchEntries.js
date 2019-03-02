@@ -57,6 +57,8 @@ function onNodeSuccess(value) {
     if ((nodename + postfix).startsWith(query)) return hints;
     else return NOHINTS;
   }
+
+  return hints || [];
 }
 
 function searchEntries(query) {
