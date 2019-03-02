@@ -11,7 +11,8 @@ import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
 import { refs } from './scraps/stubdata/refsData.js';
 
-const exampleSearchQueries = ['аромат', 'безкровный', 'варити'];
+const exampleSearchQueries = ['аромат', 'бескровный', 'белость', 'варити',
+  'восплачевопльствити'];
 
 // eslint-disable-next-line no-undef
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log('CSL portal');
@@ -87,7 +88,12 @@ function viewModel() {
   };
 
   ko.computed(function () {
-    const query = (self.entryQuery() || '').toLowerCase().replace(/[^а-щы-я]+/g, '');
+    const query = (self.entryQuery() || '')
+      .toLowerCase()
+      .replace(/ъ[иы]/g, 'ы')
+      .replace(/[^а-щы-я]+/g, '')
+      .replace(/^(бе|во|в|и|ни|ра|чре|чере)з([кпстфхцчшщ])/, '$1с$2');
+    log('Query:', query);
     if (query) {
       searchEntries(query).then(self.hints, () => self.hints([]));
     } else {
