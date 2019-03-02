@@ -3,9 +3,9 @@
 
 <div id="search" data-bind="visible: ['video', 'refs'].indexOf(section()) &lt; 0">
   <input type="text" placeholder="{{ dict_placeholder }}"
-      data-bind="attr: { placeholder: indexIsOn() ?
+      data-bind="attr: { placeholder: shouldSearchGrIx() ?
           '{{ index_placeholder }}' : '{{ dict_placeholder }}' },
-          value: indexIsOn() ? indexQuery : entryQuery,
+          value: shouldSearchGrIx() ? indexQuery : entryQuery,
           valueUpdate: 'input'">
   <i>{% include 'scraps/search.svg' %}</i>
   <div class="tip1">Например, <a href="" data-bind="text: randomSearchQuery,

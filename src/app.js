@@ -59,6 +59,11 @@ function viewModel() {
   this.debug = window[';)'].debug;
   this.section = ko.observable();
   this.indexIsOn = ko.observable(false);
+  this.shouldSearchGrIx = ko.pureComputed(function () {
+    const a = self.indexIsOn(),
+          b = self.section() === 'dicionary';
+    return a && b;
+  });
   this.isMobileMenuHidden = ko.observable(true);
   this.videos = videos;
   this.randomVideos = ko.observableArray(getRandom(videos, 2, []));
