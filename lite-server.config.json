@@ -1,10 +1,14 @@
 {
   "port": 4000,
-  "files": ["build/**/*.{html,css,js}"],
+  "files": [
+    "build/index.html",
+    "build/csl.css",
+    "build/js/**/*.js}"
+  ],
   "server": {
     "baseDir": "build"
   },
-  "injectChanges": true,
+  "injectChanges": false,
   "reloadThrottle": 0,
   "reloadDelay": 500,
   "reloadDebounce": 500,
