@@ -1,5 +1,5 @@
 {% set index_placeholder = 'Поиск по индексу' %}
-{% set dict_placeholder = 'Поиск по церковнославянскому словарю' %}
+{% set dict_placeholder = 'Поиск по словарю' %}
 
 <script type="text/html" id="searchHint">
   <a data-bind="attr: { href: './словарь/статьи/' + ($data.i ? $data.i : $data.r.i) }">
@@ -22,14 +22,15 @@
   </a>
 </script>
 
-<div id="search" data-bind="visible: ['dictionary', 'video', 'refs'].indexOf(section()) < 0
+<div id="search" data-bind="
+  visible: ['dictionary', 'video', 'refs'].indexOf(section()) < 0
     || section() === 'dictionary' && !aboutIsOn(),
   css: { inDict: section() === 'dictionary' }">
-  <input type="text" placeholder="{{ dict_placeholder }}"
-      data-bind="attr: { placeholder: shouldSearchGrIx() ?
-          '{{ index_placeholder }}' : '{{ dict_placeholder }}' },
-          value: shouldSearchGrIx() ? indexQuery : entryQuery,
-          valueUpdate: 'input'">
+  <input type="text" placeholder="{{ dict_placeholder }}" data-bind="
+      attr: { placeholder: shouldSearchGrIx() ?
+        '{{ index_placeholder }}' : '{{ dict_placeholder }}' },
+      value: shouldSearchGrIx() ? indexQuery : entryQuery,
+      valueUpdate: 'input'">
   <i>{% include 'scraps/search.svg' %}</i>
   <div class="tip1">Например, <a href="" data-bind="text: randomSearchQuery,
   click: function(){ entryQuery(randomSearchQuery()); }"></a></div>

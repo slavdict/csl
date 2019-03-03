@@ -1,7 +1,4 @@
-import log from './log.js';
 import jQuery from 'jquery';
-
-false && log('Модуль поиска по частичному индексу');
 
 const index = {},
       indexUrl = '/xp/',

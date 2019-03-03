@@ -182,9 +182,12 @@ function goEntries() {
   vM.aboutIsOn(false);
 }
 function goIndex() {
+  page.redirect(dictionaryUrl);
+  /*
   vM.section('dictionary');
   vM.indexIsOn(true);
   vM.aboutIsOn(false);
+  */
 }
 function goVideos() {
   vM.section('video');
@@ -196,7 +199,6 @@ function goRefs(ctx) {
     const elem = jQuery('#' + fragment[0]),
           header = jQuery('#header');
     if (elem.length > 0) {
-      log(header.offset().top, elem.offset().top);
       jQuery('body').animate({
         scrollTop: -header.offset().top + elem.offset().top,
       }, 2000);
