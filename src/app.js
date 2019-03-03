@@ -121,7 +121,7 @@ function viewModel() {
 
   self._refs = ko.computed(function () {
     if (self.section() === 'refs') {
-      jQuery.ajax('/refs.html', { dataType: 'text' }).then(function (text) {
+      jQuery.ajax('/refs.htm', { dataType: 'text' }).then(function (text) {
         jQuery('#refs .main').append(text);
         self._refs.dispose();
         delete self._refs;
@@ -207,7 +207,7 @@ function goRefs(ctx) {
 }
 function loadEntry(ctx, next) {
   const id = ctx.params.entryId;
-  jQuery.ajax('/e/' + id, { dataType: 'text' }).then((text) => {
+  jQuery.ajax(`/e/${ id }.htm`, { dataType: 'text' }).then((text) => {
     vM.article(text);
     vM.entryQuery('');
   }, () => {

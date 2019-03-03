@@ -2,7 +2,7 @@
 
 ## Словари старославянского языка
 
-### [Slovník jazyka staroslověnského — Словарь старославянского языка](https://azbyka.ru/otechnik/Spravochniki/slovnik-jazyka-staroslavenskogo/)<a id="sjs"></a>
+### <a id="sjs"></a>[Slovník jazyka staroslověnského — Словарь старославянского языка](https://azbyka.ru/otechnik/Spravochniki/slovnik-jazyka-staroslavenskogo/)
 
 Фундаментальный словарь старославянского языка, то есть языка древнейших
 славянских письменных памятников, соотносимых с языком переводов Кирилла
@@ -219,7 +219,7 @@ XIX века»](http://www.ruslang.ru/doc/lingistoch/2012-2013/12-kraveckij.pdf
 
 ## Авторские словари
 
-### [«Словарь речений из богослужебных книг» протоиерея Александра Ивановича Невоструева](http://pstgu.ru/faculties/philological/science/slov_Nevostr)<a id="nevostr"></a>
+### <a id="nevostr"></a>[«Словарь речений из богослужебных книг» протоиерея Александра Ивановича Невоструева](http://pstgu.ru/faculties/philological/science/slov_Nevostr)
 
 Словарь церковнославянского языка, ориентированный на язык книг,
 используемых в богослужении Русской церкви. Словарь был подготовлен в 1847–1874

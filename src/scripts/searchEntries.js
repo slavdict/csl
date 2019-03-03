@@ -7,11 +7,19 @@ const index = {},
       KEY_INDEX = 'i',
       KEY_POSTFIX = 'p';
 
+function nodeConvert(nodename) {
+  let s = '';
+  for (let char of nodename) {
+    s += char.charCodeAt(0).toString(36);
+  }
+  return s;
+}
+
 function searchInNode(nodename, query) {
   var deferred,
       value = { nodename: nodename, query: query };
   if (!index[nodename]) {
-    deferred = jQuery.getJSON(indexUrl + nodename).then(
+    deferred = jQuery.getJSON(indexUrl + nodeConvert(nodename) + '.json').then(
       function (data) {
         index[nodename] = data;
         value.ix = data;
