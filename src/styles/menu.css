@@ -219,7 +219,12 @@ nav#dict_menu {
       display: none;
     }
   }
+
   nav#dict_menu {
     width: var(--main-width-mobile);
+  }
+
+  #dict_menu_cursor.indexIsOn {
+      left: calc(var(--main-width-mobile) - $--dict-menu-cursor-width2);
   }
 }
