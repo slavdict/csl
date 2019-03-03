@@ -2,6 +2,7 @@
 
 $--search-padding: 0.8rem;
 $--search-width: 58.125rem;
+$--search-icon-dimension: 2.5rem;
 
 #search {
   margin-top: calc(3.875rem - $--search-padding);
@@ -30,12 +31,12 @@ $--search-width: 58.125rem;
   }
 
   & i {
-    --dimension: 2.5rem;
+    --shift: calc(0.3rem + $--search-icon-dimension);
     position: absolute;
-    width: var(--dimension);
-    height: var(--dimension);
+    width: $--search-icon-dimension;
+    height: $--search-icon-dimension;
     top: 0.85rem;
-    right: calc(-0.3rem - var(--dimension));
+    right: calc(-1 * var(--shift));
     color: $--red;
   }
 
@@ -85,6 +86,20 @@ $--search-width: 58.125rem;
       left: -0.1rem;
       top: 0.15rem;
       color: inherit;
+    }
+  }
+}
+
+@media (--mobile) {
+  #search {
+    --shift: calc(0.5rem + $--search-icon-dimension);
+    width: calc(var(--main-width-mobile) - var(--shift));
+
+    & input {
+      width: calc(var(--main-width-mobile) - var(--shift));
+    }
+    & .hints {
+      width: var(--main-width-mobile);
     }
   }
 }

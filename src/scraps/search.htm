@@ -1,7 +1,7 @@
 {% set index_placeholder = 'Поиск по индексу' %}
 {% set dict_placeholder = 'Поиск по церковнославянскому словарю' %}
 
-<script id="searchHint">
+<script type="text/html" id="searchHint">
   <a data-bind="attr: { href: './словарь/статьи/' + ($data.i ? $data.i : $data.r.i) }">
     <span class="Headword" data-bind="text: e"></span>
     <!-- ko if: $data.o -->
