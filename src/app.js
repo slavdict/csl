@@ -74,6 +74,7 @@ function viewModel() {
   this.entryQuery = ko.observable();
   this.indexQuery = ko.observable();
   this.hints = ko.observableArray();
+  this.article = ko.observable();
 
   this.hideMobileMenu = function () {
     self.isMobileMenuHidden(true);
@@ -116,6 +117,7 @@ if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) window.vM = vM;
 const rootUrl = '/',
       dictionaryUrl = '$_CONFIG.urls.dictionary',
       entriesUrl = '$_CONFIG.urls.entries',
+      particularEntryUrl = entriesUrl + '/:entryId',
       indexUrl = '$_CONFIG.urls.index',
       dictionaryAboutUrl = '$_CONFIG.urls.about',
       videoUrl = '$_CONFIG.urls.video',
@@ -136,33 +138,57 @@ const rootUrl = '/',
         feedbackUrl,
       ];
 
-// eslint-disable-next-line no-undef
-if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log(debugURLs);
-
-page(rootUrl, () => { vM.section(null); vM.isMobileMenuHidden(true); });
-page(dictionaryUrl, () => {
+function goRoot() {
+  vM.section(null);
+  vM.isMobileMenuHidden(true);
+}
+function goDictionary() {
   vM.section('dictionary');
   if (vM.indexIsOn()) {
     page.redirect(indexUrl);
   } else {
     page.redirect(entriesUrl);
   }
-});
-page(dictionaryAboutUrl, () => {
-  jQuery.getJSON('./test', function (data) {
-    log('get json:', data);
+}
+function goDictionaryAbout() {
+}
+function goEntries() {
+  vM.section('dictionary');
+  vM.indexIsOn(false);
+}
+function goIndex() {
+  vM.section('dictionary');
+  vM.indexIsOn(true);
+}
+function goVideos() {
+  vM.section('video');
+}
+function goRefs() {
+  // vM.section('refs');
+}
+function loadEntry(ctx, next) {
+  const id = ctx.params.entryId;
+  jQuery.ajax('/e/' + id, { dataType: 'text' }).then((text) => {
+    vM.article(text);
+    vM.entryQuery('');
+  }, () => {
+    log('can not load entry', id);
   });
-  jQuery.ajax('./toc', {
-    success: function (data) {
-      log('get text:', data);
-    }
-  });
-});
-page(entriesUrl, () => { vM.section('dictionary'); vM.indexIsOn(false); });
-page(indexUrl, () => { vM.section('dictionary'); vM.indexIsOn(true); });
-page(videoUrl, () => { vM.section('video'); });
-page(refsUrl, () => { /* vM.section('refs'); */ });
-//page(feedbackUrl, () => { log('feedback'); });
+  next();
+}
+
+// eslint-disable-next-line no-undef
+if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log(debugURLs);
+
+page(rootUrl, goRoot);
+page(dictionaryUrl, goDictionary);
+page(dictionaryAboutUrl, goDictionaryAbout);
+page(entriesUrl, goEntries);
+page(particularEntryUrl, loadEntry, goEntries);
+page(indexUrl, goIndex);
+page(videoUrl, goVideos);
+page(refsUrl, goRefs);
+//page(feedbackUrl, goFeedback);
 page('*', rootUrl);
 page({ hashbang: true });
 

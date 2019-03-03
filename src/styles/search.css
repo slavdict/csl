@@ -8,6 +8,10 @@ $--search-width: 58.125rem;
   position: relative;
   width: var(--main-width-desktop);
 
+  &.inDict {
+    margin-top: 5rem;
+  }
+
   & input {
     width: $--search-width;
     padding: 1.048rem 0;

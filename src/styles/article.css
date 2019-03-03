@@ -5,7 +5,7 @@ $--civil-font-size: 0.93rem;
 $--address-font-size: 0.7rem;
 $--greek-font-size: $--civil-font-size;
 
-section.article div.main {
+section.randomArticle div.main {
   width: calc(var(--video-width-desktop) * 2 + var(--xgap));
   margin-bottom: var(--ygap);
   text-align: justify;
@@ -15,8 +15,13 @@ section.article div.main {
   overflow-x: hidden;
 }
 
+section#article {
+  margin: 3rem 0 4rem;
+  line-height: 1.5rem;
+}
+
 @media (--mobile) {
-  section.article div.main {
+  section.randomArticle div.main {
     width: auto;
     columns: auto auto;
   }
