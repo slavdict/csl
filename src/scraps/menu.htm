@@ -9,8 +9,9 @@
     <li data-bind="css: { active: section() === 'dictionary' }">
       <a href=".{{ urls.dictionary }}">Словарь</a>
       <ul>
-        <li><a href=".{{ urls.about }}" data-bind="css: { active: aboutIsOn }"
-            >О словаре</a></li>
+        <li data-bind="css: { active: aboutIsOn }">
+          <a href=".{{ urls.about }}">О словаре</a>
+        </li>
       </ul>
     </li>
     <li data-bind="css: { active: section() === 'video' },
@@ -28,7 +29,8 @@
   </ul>
 </nav>
 
-<nav id="dict_menu" data-bind="visible: section() === 'dictionary'">
+<nav id="dict_menu" data-bind="visible: section() === 'dictionary',
+                               css: { nofocus: aboutIsOn }">
   <ul>
     <li data-bind="css: { active: !indexIsOn() }">
       <a href=".{{ urls.entries }}">Словарь</a>

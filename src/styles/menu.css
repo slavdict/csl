@@ -78,7 +78,7 @@ nav#menu {
 
   & ul ul {
     display: none;
-    height: 4.7rem;
+    height: 4.6rem;
     top: 2rem;
     flex-direction: column;
     justify-content: flex-end;
@@ -118,9 +118,23 @@ nav#dict_menu {
   height: $--dict-menu-height;
   top: 8rem;
   border-bottom: 0.0625rem solid $--red;
+  transition: border-bottom $--dict-menu-cursor-timing;
 
   & ul {
     @mixin menu-list 0.85rem, $--letter-spacing2;
+  }
+
+  &.nofocus {
+    border-bottom-color: $--black;
+
+    & #dict_menu_cursor {
+      background-color: $--black;
+    }
+
+    & li.active {
+      color: $--black;
+      transition: color $--dict-menu-cursor-timing;
+    }
   }
 }
 
@@ -133,12 +147,14 @@ nav#dict_menu {
   left: 0;
   margin: 0;
   transition: width $--dict-menu-cursor-timing,
+              background-color $--dict-menu-cursor-timing,
               left $--dict-menu-cursor-timing;
 
   &.indexIsOn {
     width: $--dict-menu-cursor-width2;
     left: calc($--dict-menu-width - $--dict-menu-cursor-width2);
     transition: width $--dict-menu-cursor-timing,
+                background-color $--dict-menu-cursor-timing,
                 left $--dict-menu-cursor-timing;
   }
 }
