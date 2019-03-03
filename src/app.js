@@ -59,6 +59,7 @@ function viewModel() {
   this.debug = window[';)'].debug;
   this.section = ko.observable();
   this.indexIsOn = ko.observable(false);
+  this.aboutIsOn = ko.observable(false);
   this.shouldSearchGrIx = ko.pureComputed(function () {
     const a = self.indexIsOn(),
           b = self.section() === 'dicionary';
@@ -106,6 +107,19 @@ function viewModel() {
       self.hints([]);
     }
   });
+
+  self.aboutIsOn.loadData = ko.computed(function () {
+    if (self.aboutIsOn()) {
+      jQuery.ajax('/about.htm', { dataType: 'text' }).then(function (text) {
+        log('about ok');
+        jQuery('#about').append(text);
+        self.aboutIsOn.loadData.dispose();
+        delete self.aboutIsOn.loadData;
+      }, function () {
+        log('no about');
+      });
+    }
+  });
 }
 const vM = new viewModel();
 initKnockout(ko, vM);
@@ -144,21 +158,23 @@ function goRoot() {
 }
 function goDictionary() {
   vM.section('dictionary');
-  if (vM.indexIsOn()) {
-    page.redirect(indexUrl);
-  } else {
-    page.redirect(entriesUrl);
-  }
+  if (vM.aboutIsOn()) page.redirect(dictionaryAboutUrl);
+  if (vM.indexIsOn()) page.redirect(indexUrl);
+  page.redirect(entriesUrl);
 }
 function goDictionaryAbout() {
+  vM.section('dictionary');
+  vM.aboutIsOn(true);
 }
 function goEntries() {
   vM.section('dictionary');
   vM.indexIsOn(false);
+  vM.aboutIsOn(false);
 }
 function goIndex() {
   vM.section('dictionary');
   vM.indexIsOn(true);
+  vM.aboutIsOn(false);
 }
 function goVideos() {
   vM.section('video');

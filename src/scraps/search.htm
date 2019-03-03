@@ -22,7 +22,8 @@
   </a>
 </script>
 
-<div id="search" data-bind="visible: ['video', 'refs'].indexOf(section()) < 0,
+<div id="search" data-bind="visible: ['dictionary', 'video', 'refs'].indexOf(section()) < 0
+    || section() === 'dictionary' && !aboutIsOn(),
   css: { inDict: section() === 'dictionary' }">
   <input type="text" placeholder="{{ dict_placeholder }}"
       data-bind="attr: { placeholder: shouldSearchGrIx() ?

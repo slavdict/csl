@@ -9,7 +9,8 @@
     <li data-bind="css: { active: section() === 'dictionary' }">
       <a href=".{{ urls.dictionary }}">Словарь</a>
       <ul>
-        <li><a href=".{{ urls.about }}">О словаре</a></li>
+        <li><a href=".{{ urls.about }}" data-bind="css: { active: aboutIsOn }"
+            >О словаре</a></li>
       </ul>
     </li>
     <li data-bind="css: { active: section() === 'video' },

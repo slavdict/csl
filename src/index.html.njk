@@ -88,8 +88,12 @@
     </section>
 
     <section id="article"
-      data-bind="visible: section() === 'dictionary' && !indexIsOn()">
+      data-bind="visible: section() === 'dictionary' && !indexIsOn() && !aboutIsOn()">
       <div class="Entry" data-bind="html: article"></div>
+    </section>
+
+    <section id="about"
+      data-bind="visible: section() === 'dictionary' && aboutIsOn()">
     </section>
 
     <section class="refs" data-bind="visible: !section()">
