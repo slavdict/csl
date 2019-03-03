@@ -1,4 +1,4 @@
-section.refs {
+section.randomRefs {
   padding: 0;
   margin: 0;
   line-height: 1.5rem;
@@ -34,7 +34,7 @@ section.refs {
 }
 
 @media (--mobile) {
-  section.refs {
+  section.randomRefs {
     overflow-x: visible;
 
     & div.main {

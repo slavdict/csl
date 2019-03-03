@@ -96,18 +96,24 @@
       data-bind="visible: section() === 'dictionary' && aboutIsOn()">
     </section>
 
-    <section class="refs" data-bind="visible: !section()">
+    <section class="randomRefs" data-bind="visible: !section()">
       <header>
         <aside data-bind="visible: !section()">
-          Случайная <a class="disabled" href=".{{ urls.refs }}">ссылка</a>
+          Случайная <a href=".{{ urls.refs }}">ссылка</a>
           <a class="random" href="" data-bind="click: getRandomRefs">
             {{ svg_use('icon-random') }}</a>
         </aside>
-        <h1 data-bind="visible: section">Ссылки</h1>
       </header>
       <div class="main" data-bind="foreach: randomRefs">
         <div data-bind="html: $data"></div>
       </div>
+    </section>
+
+    <section id="refs" data-bind="visible: section() === 'refs'">
+      <header>
+        <h1>Ссылки</h1>
+      </header>
+      <div class="main"></div>
     </section>
 
     <section class="index"

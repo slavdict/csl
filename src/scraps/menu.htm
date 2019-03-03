@@ -9,7 +9,8 @@
     <li data-bind="css: { active: section() === 'dictionary' }">
       <a href=".{{ urls.dictionary }}">Словарь</a>
       <ul>
-        <li data-bind="css: { active: aboutIsOn }">
+        <li data-bind="css: { active: aboutIsOn },
+                       click: hideMobileMenu">
           <a href=".{{ urls.about }}">О словаре</a>
         </li>
       </ul>
@@ -18,7 +19,8 @@
                    click: hideMobileMenu">
       <a href=".{{ urls.video }}">Видео</a>
     </li>
-    <li class="disabled" data-bind="css: { active: section() === 'refs' }">
+    <li data-bind="css: { active: section() === 'refs' },
+                   click: hideMobileMenu">
       <a href=".{{ urls.refs }}">Ссылки</a>
     </li>
     <li data-bind="click: hideMobileMenu">

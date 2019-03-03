@@ -36,6 +36,7 @@ const babel = require('gulp-babel'),
       ext = require('gulp-ext'),
       gulpif = require('gulp-if'),
       htmlmin = require('gulp-htmlmin'),
+      markdown = require('gulp-markdown'),
       nunjucks = require('gulp-nunjucks'),
       postcss = require('gulp-postcss'),
       rename = require('gulp-rename'),
@@ -123,6 +124,7 @@ function assets() {
     src('node_modules/knockout/build/output/knockout-latest.js')
       .pipe(rename('knockout.min.js')).pipe(dest('.build/js')),
     src('src/scraps/about.htm').pipe(dest('.build')),
+    src('src/scraps/refs.md').pipe(markdown()).pipe(dest('.build')),
     src('robots.txt').pipe(dest('.build'))
   );
 }

@@ -100,7 +100,6 @@ function viewModel() {
       .replace(/ъ[иы]/g, 'ы')
       .replace(/[^а-щы-я]+/g, '')
       .replace(/^(бе|во|в|и|ни|ра|чре|чере)з([кпстфхцчшщ])/, '$1с$2');
-    log('Query:', query);
     if (query) {
       searchEntries(query).then(self.hints, () => self.hints([]));
     } else {
@@ -111,12 +110,23 @@ function viewModel() {
   self.aboutIsOn.loadData = ko.computed(function () {
     if (self.aboutIsOn()) {
       jQuery.ajax('/about.htm', { dataType: 'text' }).then(function (text) {
-        log('about ok');
         jQuery('#about').append(text);
         self.aboutIsOn.loadData.dispose();
         delete self.aboutIsOn.loadData;
       }, function () {
-        log('no about');
+        log('no about file');
+      });
+    }
+  });
+
+  self._refs = ko.computed(function () {
+    if (self.section() === 'refs') {
+      jQuery.ajax('/refs.html', { dataType: 'text' }).then(function (text) {
+        jQuery('#refs .main').append(text);
+        self._refs.dispose();
+        delete self._refs;
+      }, function () {
+        log('no refs file');
       });
     }
   });
@@ -179,8 +189,19 @@ function goIndex() {
 function goVideos() {
   vM.section('video');
 }
-function goRefs() {
-  // vM.section('refs');
+function goRefs(ctx) {
+  vM.section('refs');
+  const fragment = ctx.path.split('#').slice(1, 2);
+  if (fragment.length === 1) {
+    const elem = jQuery('#' + fragment[0]),
+          header = jQuery('#header');
+    if (elem.length > 0) {
+      log(header.offset().top, elem.offset().top);
+      jQuery('body').animate({
+        scrollTop: -header.offset().top + elem.offset().top,
+      }, 2000);
+    }
+  }
 }
 function loadEntry(ctx, next) {
   const id = ctx.params.entryId;
@@ -203,7 +224,7 @@ page(entriesUrl, goEntries);
 page(particularEntryUrl, loadEntry, goEntries);
 page(indexUrl, goIndex);
 page(videoUrl, goVideos);
-page(refsUrl, goRefs);
+page(refsUrl + '*', goRefs);
 //page(feedbackUrl, goFeedback);
 page('*', rootUrl);
 page({ hashbang: true });

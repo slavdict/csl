@@ -1,6 +1,6 @@
 {
   "name": "csl",
-  "version": "0.10.12",
+  "version": "0.10.14",
   "description": "Церковнославянский язык сегодня",
   "license": "CC0-1.0",
   "main": "build/js/spa.js",
@@ -21,7 +21,7 @@
     "jquery": "^3.3.1",
     "knockout": "^3.5",
     "normalize.css": "^8.0.1",
-    "page": "^1.11.3"
+    "page": "^1.11.4"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -34,6 +34,7 @@
     "gulp-ext": "^1.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^2.0.2",
+    "gulp-markdown": "^3.0.0",
     "gulp-nunjucks": "^4.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
