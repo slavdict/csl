@@ -82,6 +82,10 @@ function viewModel() {
   this.hints = ko.observableArray();
   this.grixResults = ko.observableArray();
   this.article = ko.observable();
+  this.searchTranslit = function () {
+    let value = this.c ? this.c : this.t;
+    self.indexQuery(value);
+  };
 
   this.hideMobileMenu = function () {
     self.isMobileMenuHidden(true);
@@ -101,11 +105,7 @@ function viewModel() {
   };
 
   ko.computed(function () {
-    const query = (self.entryQuery() || '')
-      .toLowerCase()
-      .replace(/ъ[иы]/g, 'ы')
-      .replace(/[^а-щы-я]+/g, '')
-      .replace(/^(бе|во|в|и|ни|ра|чре|чере)з([кпстфхцчшщ])/, '$1с$2');
+    const query = cyrillicPreprocess((self.entryQuery() || '').toLowerCase());
     if (query) {
       searchEntries(query).then(self.hints, () => self.hints([]));
     } else {
