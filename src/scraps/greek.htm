@@ -1,0 +1,28 @@
+<script type="text/html" id="greekCsl">
+  <span class="Headword" data-bind="text: e,
+    click: function () { $root.grixResults($data.c); }"></span>
+  <!-- ko if: $data.o -->
+    <span class="HomonymNumber" data-bind="text: o"></span>
+    <!-- ko if: $data.p -->
+      <span class="Em" data-bind="text: p"></span>
+    <!-- /ko -->
+    <!-- ko if: $data.g -->
+      <span class="HomonymGloss" data-bind="text: g"></span>
+    <!-- /ko -->
+  <!-- /ko -->
+</script>
+
+<script type="text/html" id="greekGreek">
+  <span data-bind="click: function () { $root.grixResults($data.t); },
+    text: $data.g">
+  </span>
+</script>
+
+<!-- ko foreach: grixResults -->
+  <!-- ko template: { name: $data.c ? 'greekCsl' : 'greekGreek',
+                      data: $data } --><!-- /ko -->
+  <span class="qv">
+    ⟶
+  </span>
+  <!-- ko foreach: $data.h --><!-- ko if: $index() > 0 -->, <!-- /ko --><!-- ko template: { name: $data.c ? 'greekCsl' : 'greekGreek', data: $data } --><!-- /ko --><!-- /ko -->
+<!-- /ko -->

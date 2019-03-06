@@ -92,6 +92,11 @@
       <div class="Entry" data-bind="html: article"></div>
     </section>
 
+    <section id="greek"
+      data-bind="visible: section() === 'dictionary' && indexIsOn() && !aboutIsOn()">
+      {% include 'scraps/greek.htm' %}
+    </section>
+
     <section id="about"
       data-bind="visible: section() === 'dictionary' && aboutIsOn()">
     </section>

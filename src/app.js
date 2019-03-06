@@ -5,7 +5,8 @@ import ko from 'knockout';
 import page from 'page';
 
 import initKnockout from './scripts/init.knockout.js';
-import { searchEntries } from './scripts/searchEntries.js';
+import { searchEntries, searchGrix, searchGrixRev,
+  cyrillicPreprocess, nonCyrillicPreprocess } from './scripts/searchEntries.js';
 
 import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
@@ -13,6 +14,10 @@ import { refs } from './scraps/stubdata/refsData.js';
 
 const exampleSearchQueries = ['аромат', 'бескровный', 'белость', 'варити',
   'восплачевопльствити'];
+/*
+const exampleSearchQueriesLa = [''];
+const exampleSearchQueriesGr = [''];
+*/
 
 // eslint-disable-next-line no-undef
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log('CSL portal');
@@ -75,6 +80,7 @@ function viewModel() {
   this.entryQuery = ko.observable();
   this.indexQuery = ko.observable();
   this.hints = ko.observableArray();
+  this.grixResults = ko.observableArray();
   this.article = ko.observable();
 
   this.hideMobileMenu = function () {
@@ -104,6 +110,23 @@ function viewModel() {
       searchEntries(query).then(self.hints, () => self.hints([]));
     } else {
       self.hints([]);
+    }
+  });
+
+  ko.computed(function () {
+    let query = (self.indexQuery() || '').toLowerCase(),
+        searchFunc;
+    if (query.search(/[а-я]/g) >= 0) {
+      query = cyrillicPreprocess(query);
+      searchFunc = searchGrix;
+    } else {
+      query = nonCyrillicPreprocess(query);
+      searchFunc = searchGrixRev;
+    }
+    if (query) {
+      searchFunc(query).then(self.grixResults, () => self.grixResults([]));
+    } else {
+      self.grixResults([]);
     }
   });
 
@@ -182,12 +205,9 @@ function goEntries() {
   vM.aboutIsOn(false);
 }
 function goIndex() {
-  page.redirect(dictionaryUrl);
-  /*
   vM.section('dictionary');
   vM.indexIsOn(true);
   vM.aboutIsOn(false);
-  */
 }
 function goVideos() {
   vM.section('video');

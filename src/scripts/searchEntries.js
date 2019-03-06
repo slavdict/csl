@@ -1,11 +1,26 @@
 import jQuery from 'jquery';
 
-const index = {},
-      indexUrl = '/xp/',
+const indices = {
+        entries: { ix: {}, url: '/xp/' },
+        grix: { ix: {}, url: '/xg/' },
+        grixRev: { ix: {}, url: '/xgr/' },
+      },
       rootNode = '_ix',
       KEY_HINTS = 'h',
       KEY_INDEX = 'i',
+      KEY_GREEK_RESULTS = 'r',
       KEY_POSTFIX = 'p';
+
+function cyrillicPreprocess(text) {
+  text = text.replace(/ъ[иы]/g, 'ы')
+    .replace(/[^а-щы-я]+/g, '')
+    .replace(/^(бе|во|в|и|ни|ра|чре|чере)з([кпстфхцчшщ])/, '$1с$2');
+  return text;
+}
+
+function nonCyrillicPreprocess(text) {
+  return text;
+}
 
 function nodeConvert(nodename) {
   let s = '';
@@ -15,17 +30,16 @@ function nodeConvert(nodename) {
   return s;
 }
 
-function searchInNode(nodename, query) {
+function searchInNode(index, indexUrl, nodename, query) {
   var deferred,
-      value = { nodename: nodename, query: query };
+      value = { nodename: nodename, query: query, url: indexUrl };
   if (!index[nodename]) {
-    deferred = jQuery.getJSON(indexUrl + nodeConvert(nodename) + '.json').then(
-      function (data) {
-        index[nodename] = data;
-        value.ix = data;
-        return value;
-      }
-    );
+    let path = indexUrl + nodeConvert(nodename) + '.json';
+    deferred = jQuery.getJSON(path).then(data => {
+      index[nodename] = data;
+      value.ix = data;
+      return value;
+    });
   } else {
     deferred = jQuery.Deferred();
     value.ix = index[nodename];
@@ -35,39 +49,54 @@ function searchInNode(nodename, query) {
   return deferred;
 }
 
-function onNodeSuccess(value) {
-  const query = value.query,
-        nodename = value.nodename,
-        isRootNode = nodename === rootNode,
-        n = isRootNode ? 0 : nodename.length,
-        char = query.slice(n, n + 1),
-        ix = value.ix[KEY_INDEX],
-        hints = value.ix[KEY_HINTS],
-        postfix = value.ix[KEY_POSTFIX],
-        NOHINTS = [];
+function onNodeSuccess(keyname) {
+  return function (value) {
+    const query = value.query,
+          nodename = value.nodename,
+          isRootNode = nodename === rootNode,
+          n = isRootNode ? 0 : nodename.length,
+          char = query.slice(n, n + 1),
+          ix = value.ix[KEY_INDEX],
+          results = value.ix[keyname],
+          postfix = value.ix[KEY_POSTFIX],
+          NORESULTS = [];
 
-  if (ix) {
-    if (query === nodename && !isRootNode) return hints;
-    else if (query.startsWith(nodename) || isRootNode) {
-      if (ix.indexOf(char) >= 0) {
-        const sproutNode = query.slice(0, n + 1);
-        return searchInNode(sproutNode, query).then(onNodeSuccess);
-      } else return NOHINTS;
-    } else {
-      return NOHINTS;
+    if (ix) {
+      if (query === nodename && !isRootNode) return results;
+      else if (query.startsWith(nodename) || isRootNode) {
+        if (ix.indexOf(char) >= 0) {
+          const sproutNode = query.slice(0, n + 1);
+          return searchInNode(value.ix, value.url, sproutNode, query)
+            .then(onNodeSuccess(keyname));
+        } else return NORESULTS;
+      } else {
+        return NORESULTS;
+      }
     }
-  }
 
-  if (postfix) {
-    if ((nodename + postfix).startsWith(query)) return hints;
-    else return NOHINTS;
-  }
+    if (postfix) {
+      if ((nodename + postfix).startsWith(query)) return results;
+      else return NORESULTS;
+    }
 
-  return hints || [];
+    return results || [];
+  };
 }
 
 function searchEntries(query) {
-  return searchInNode(rootNode, query).then(onNodeSuccess);
+  return searchInNode(indices['entries'].ix, indices['entries'].url,
+    rootNode, query).then(onNodeSuccess(KEY_HINTS));
 }
 
-export { searchEntries };
+function searchGrix(query) {
+  return searchInNode(indices['grix'].ix, indices['grix'].url, rootNode, query)
+    .then(onNodeSuccess(KEY_GREEK_RESULTS));
+}
+
+function searchGrixRev(query) {
+  return searchInNode(indices['grixRev'].ix, indices['grixRev'].url,
+    rootNode, query).then(onNodeSuccess(KEY_GREEK_RESULTS));
+}
+
+export { searchEntries, searchGrix, searchGrixRev,
+  cyrillicPreprocess, nonCyrillicPreprocess };
