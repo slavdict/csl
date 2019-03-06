@@ -12,12 +12,11 @@ import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
 import { refs } from './scraps/stubdata/refsData.js';
 
-const exampleSearchQueries = ['аромат', 'бескровный', 'белость', 'варити',
+const exampleSearchQueries = ['аромат', 'абие', 'бескровный', 'белость', 'варити',
   'восплачевопльствити'];
-/*
-const exampleSearchQueriesLa = [''];
-const exampleSearchQueriesGr = [''];
-*/
+const exampleIxQueries = ['абие', 'вдохновение', 'воздаяти', 'вред', 'вода'];
+const exampleIxQueriesGr = ['ἀνταποδίδωμι', 'γάμος', 'ὑλικός', 'χάρις'];
+const exampleIxQueriesLa = ['ballo', 'makarios', 'thearestos', 'phthano'];
 
 // eslint-disable-next-line no-undef
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log('CSL portal');
@@ -76,6 +75,26 @@ function viewModel() {
   this.randomArticles = ko.observableArray(getRandom(articles, 2, []));
   this.randomRefs = ko.observableArray(getRandom(refs, 1, []));
   this.randomSearchQuery = ko.observable(getRandomItem(exampleSearchQueries));
+  this.randomIxQuery = ko.observable(getRandomItem(exampleIxQueries));
+  this.randomIxQueryGr = ko.observable(getRandomItem(exampleIxQueriesGr));
+  this.randomIxQueryLa = ko.observable(getRandomItem(exampleIxQueriesLa));
+
+  this.randomSearchQuery.nextRandom = function () {
+    let random = getRandomItem(exampleSearchQueries, self.randomSearchQuery());
+    self.randomSearchQuery(random);
+  };
+  this.randomIxQuery.nextRandom = function () {
+    let random = getRandomItem(exampleIxQueries, self.randomIxQuery());
+    self.randomIxQuery(random);
+  };
+  this.randomIxQueryGr.nextRandom = function () {
+    let random = getRandomItem(exampleIxQueriesGr, self.randomIxQueryGr());
+    self.randomIxQueryGr(random);
+  };
+  this.randomIxQueryLa.nextRandom = function () {
+    let random = getRandomItem(exampleIxQueriesLa, self.randomIxQueryLa());
+    self.randomIxQueryLa(random);
+  };
 
   this.entryQuery = ko.observable();
   this.indexQuery = ko.observable();
