@@ -2,7 +2,7 @@
 {% set dict_placeholder = 'Поиск по словарю' %}
 
 <script type="text/html" id="searchHint">
-  <a data-bind="attr: { href: './словарь/статьи/' + ($data.i ? $data.i : $data.r.i) }">
+  <a data-bind="attr: { href: '.{{ urls.entries }}/' + ($data.i ? $data.i : $data.r.i) }">
     <span class="Headword" data-bind="text: e"></span>
     <!-- ko if: $data.o -->
       <span class="HomonymNumber" data-bind="text: o"></span>
@@ -28,27 +28,27 @@
   css: { inDict: section() === 'dictionary' }">
 
   <input type="text" placeholder="{{ dict_placeholder }}"
-      data-bind="value: entryQuery, valueUpdate: 'input', visible: !indexIsOn()">
+      data-bind="value: entryQuery, valueUpdate: 'input',
+        visible: !indexIsOn() || !section()">
   <input type="text" placeholder="{{ index_placeholder }}"
-      data-bind="value: indexQuery, valueUpdate: 'input', visible: indexIsOn">
+      data-bind="value: indexQuery, valueUpdate: 'input',
+        visible: indexIsOn() && section() === 'dictionary'">
 
   <i>{% include 'scraps/search.svg' %}</i>
 
-  <div class="tip1" data-bind="visible: !indexIsOn()">Например,
-    <a href="" data-bind="text: randomSearchQuery,
-    click: function(){ entryQuery(randomSearchQuery());
-      randomSearchQuery.nextRandom(); }"></a></div>
+  <div class="tip1" data-bind="visible: !indexIsOn() || !section()">Например,
+    <a data-bind="text: randomSearchQuery,
+      attr: { href: '.{{ urls.entries }}/' + randomSearchQuery() }"></a>
+  </div>
 
-  <div class="tip1" data-bind="visible: indexIsOn">Например,
-    <a href="" data-bind="text: randomIxQuery,
-    click: function(){ indexQuery(randomIxQuery());
-      randomIxQuery.nextRandom(); }"></a>,
-    <a href="" data-bind="text: randomIxQueryLa,
-    click: function(){ indexQuery(randomIxQueryLa());
-      randomIxQueryLa.nextRandom(); }"></a> или
-    <a href="" data-bind="text: randomIxQueryGr,
-    click: function(){ indexQuery(randomIxQueryGr());
-      randomIxQueryGr.nextRandom(); }"></a>
+  <div class="tip1" data-bind="visible: indexIsOn() &&
+    section() === 'dictionary'">Например,
+    <a data-bind="text: randomIxQuery,
+      attr: { href: '.{{ urls.index }}/' + randomIxQuery() }"></a>,
+    <a data-bind="text: randomIxQueryLa,
+      attr: { href: '.{{ urls.index }}/' + randomIxQueryLa() }"></a> или
+    <a data-bind="text: randomIxQueryGr,
+      attr: { href: '.{{ urls.index }}/' + randomIxQueryGr() }"></a>
   </div>
 
   <div class="tip2"></div>

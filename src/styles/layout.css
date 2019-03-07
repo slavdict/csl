@@ -25,7 +25,7 @@ footer#footer {
   margin: 0 auto;
 }
 
-section.index,
+section#greek,
 section#article,
 section#about {
   min-height: 50vh;

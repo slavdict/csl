@@ -101,10 +101,6 @@ function viewModel() {
   this.hints = ko.observableArray();
   this.grixResults = ko.observableArray();
   this.article = ko.observable();
-  this.searchTranslit = function () {
-    let value = this.c ? this.c : this.t;
-    self.indexQuery(value);
-  };
 
   this.hideMobileMenu = function () {
     self.isMobileMenuHidden(true);
@@ -183,12 +179,14 @@ if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) window.vM = vM;
 const rootUrl = '/',
       dictionaryUrl = '$_CONFIG.urls.dictionary',
       entriesUrl = '$_CONFIG.urls.entries',
-      particularEntryUrl = entriesUrl + '/:entryId',
+      particularEntryUrl = entriesUrl + '/:entryId(\\d+)',
+      findEntryUrl = entriesUrl + '/:query',
       indexUrl = '$_CONFIG.urls.index',
+      findGreekUrl = indexUrl + '/:query',
       dictionaryAboutUrl = '$_CONFIG.urls.about',
       videoUrl = '$_CONFIG.urls.video',
       refsUrl = '$_CONFIG.urls.refs',
-      feedbackUrl = '$_CONFIG.urls.feedback',
+      //feedbackUrl = '$_CONFIG.urls.feedback',
       debugURLs = [
         rootUrl,
         dictionaryUrl,
@@ -201,7 +199,7 @@ const rootUrl = '/',
         '/dictionary/-article-tip',
         videoUrl,
         refsUrl,
-        feedbackUrl,
+        //feedbackUrl,
       ];
 
 function goRoot() {
@@ -210,29 +208,35 @@ function goRoot() {
 }
 function goDictionary() {
   vM.section('dictionary');
+  vM.isMobileMenuHidden(true);
   if (vM.aboutIsOn()) page.redirect(dictionaryAboutUrl);
   if (vM.indexIsOn()) page.redirect(indexUrl);
   page.redirect(entriesUrl);
 }
 function goDictionaryAbout() {
   vM.section('dictionary');
+  vM.isMobileMenuHidden(true);
   vM.aboutIsOn(true);
 }
 function goEntries() {
   vM.section('dictionary');
   vM.indexIsOn(false);
   vM.aboutIsOn(false);
+  vM.randomSearchQuery.nextRandom();
 }
-function goIndex() {
+function goIndex(ctx) {
   vM.section('dictionary');
   vM.indexIsOn(true);
   vM.aboutIsOn(false);
+  renewRandomGreek(ctx);
 }
 function goVideos() {
   vM.section('video');
+  vM.isMobileMenuHidden(true);
 }
 function goRefs(ctx) {
   vM.section('refs');
+  vM.isMobileMenuHidden(true);
   const fragment = ctx.path.split('#').slice(1, 2);
   if (fragment.length === 1) {
     const elem = jQuery('#' + fragment[0]),
@@ -254,6 +258,35 @@ function loadEntry(ctx, next) {
   });
   next();
 }
+function findEntry(ctx) {
+  const query = ctx.params.query;
+  vM.entryQuery(query);
+  if (vM.section()) {
+    vM.aboutIsOn(false);
+    vM.indexIsOn(false);
+    vM.section('dictionary');
+  }
+}
+function findGreek(ctx, next) {
+  const query = ctx.params.query;
+  vM.indexQuery(query);
+  next();
+}
+function renewRandomGreek(ctx) {
+  if (ctx.params.query) {
+    if (ctx.params.query.search(/[а-яА-Я]/) >= 0) {
+      vM.randomIxQuery.nextRandom();
+    } else if (ctx.params.query.search(/[a-zA-Z]/) >= 0) {
+      vM.randomIxQueryLa.nextRandom();
+    } else if (ctx.params.query.length > 0) {
+      vM.randomIxQueryGr.nextRandom();
+    }
+  } else {
+    vM.randomIxQuery.nextRandom();
+    vM.randomIxQueryLa.nextRandom();
+    vM.randomIxQueryGr.nextRandom();
+  }
+}
 
 // eslint-disable-next-line no-undef
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log(debugURLs);
@@ -263,7 +296,9 @@ page(dictionaryUrl, goDictionary);
 page(dictionaryAboutUrl, goDictionaryAbout);
 page(entriesUrl, goEntries);
 page(particularEntryUrl, loadEntry, goEntries);
+page(findEntryUrl, findEntry);
 page(indexUrl, goIndex);
+page(findGreekUrl, findGreek, goIndex);
 page(videoUrl, goVideos);
 page(refsUrl + '*', goRefs);
 //page(feedbackUrl, goFeedback);

@@ -1,6 +1,5 @@
 <script type="text/html" id="greekCsl">
-  <span class="Headword" data-bind="text: e,
-                                    click: $root.searchTranslit"></span>
+  <span class="Headword" data-bind="text: e"></span>
   <!-- ko if: $data.o -->
     <span class="HomonymNumber" data-bind="text: o"></span>
     <!-- ko if: $data.p -->
@@ -13,18 +12,27 @@
 </script>
 
 <script type="text/html" id="greekGreek">
-  <span data-bind="click: $root.searchTranslit, text: $data.g">
-  </span>
+  <a data-bind="attr: { href: '.{{ urls.index }}/' + $data.g }">
+    <span data-bind="text: $data.g">
+    </span>
+  </a>
 </script>
 
-<div data-bind="foreach: grixResults">
-  <div>
-    <!-- ko template: { name: $data.c ? 'greekCsl' : 'greekGreek',
-                        data: $data } --><!-- /ko -->
+<ul data-bind="foreach: grixResults">
+  <li>
+    <!-- ko if: $data.c -->
+      <a data-bind="attr: { href: '.{{ urls.entries }}/' + $data.i },
+          template: { name: 'greekCsl', data: $data }"></a>
+    <!-- /ko -->
+    <!-- ko ifnot: $data.c -->
+      <!-- ko template: { name: 'greekGreek', data: $data } --><!-- /ko -->
+    <!-- /ko -->
     <span class="qv">
       ⟶
     </span>
     <!-- ko foreach: $data.h --><!-- ko if: $index() > 0 -->, <!-- /ko --><!-- ko template: { name: 'greekGreek', data: $data } --><!-- /ko --><!-- /ko -->
-    <!-- ko foreach: $data.r --><!-- ko if: $index() > 0 -->, <!-- /ko --><!-- ko template: { name: 'greekCsl', data: $data } --><!-- /ko --><!-- /ko -->
-  </div>
-</div>
+    <!-- ko foreach: $data.r --><!-- ko if: $index() > 0 -->, <!-- /ko --><a
+      data-bind="attr: { href: '.{{ urls.index }}/' + $data.c },
+        template: { name: 'greekCsl', data: $data }"></a><!-- /ko -->
+  </li>
+</ul>

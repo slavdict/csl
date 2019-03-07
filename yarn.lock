@@ -552,8 +552,8 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
 
 "@types/node@*":
-  version "11.10.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.10.4.tgz#3f5fc4f0f322805f009e00ab35a2ff3d6b778e42"
+  version "11.10.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.10.5.tgz#fbaca34086bdc118011e1f05c47688d432f2d571"
 
 "@types/q@^1.5.1":
   version "1.5.1"
@@ -832,11 +832,11 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
 autoprefixer@^9.4.9:
-  version "9.4.9"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.4.9.tgz#0d3eb86bc1d1228551abcf55220d6fd246b6cb31"
+  version "9.4.10"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.4.10.tgz#e1be61fc728bacac8f4252ed242711ec0dcc6a7b"
   dependencies:
     browserslist "^4.4.2"
-    caniuse-lite "^1.0.30000939"
+    caniuse-lite "^1.0.30000940"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.14"
@@ -1107,9 +1107,9 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000939:
-  version "1.0.30000939"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000939.tgz#b9ab7ac9e861bf78840b80c5dfbc471a5cd7e679"
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000939, caniuse-lite@^1.0.30000940:
+  version "1.0.30000941"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000941.tgz#f0810802b2ab8d27f4b625d4769a610e24d5a42c"
 
 chalk@^0.5.0:
   version "0.5.1"
@@ -1896,8 +1896,8 @@ eslint-visitor-keys@^1.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
 eslint@^5.0.1:
-  version "5.15.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.15.0.tgz#f313a2f7c7628d39adeefdba4a9c41f842012c9e"
+  version "5.15.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.15.1.tgz#8266b089fd5391e0009a047050795b1d73664524"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.9.1"
@@ -3795,8 +3795,8 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
 nunjucks@^3.0.0:
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/nunjucks/-/nunjucks-3.1.7.tgz#0bd25f29ef9d11826350e762836286c518c98706"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/nunjucks/-/nunjucks-3.2.0.tgz#53e95f43c9555e822e8950008a201b1002d49933"
   dependencies:
     a-sync-waterfall "^1.0.0"
     asap "^2.0.3"
@@ -4906,9 +4906,9 @@ redent@^1.0.0:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
 
-regenerate-unicode-properties@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-7.0.0.tgz#107405afcc4a190ec5ed450ecaa00ed0cafa7a4c"
+regenerate-unicode-properties@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.0.1.tgz#58a4a74e736380a7ab3c5f7e03f303a941b31289"
   dependencies:
     regenerate "^1.4.0"
 
@@ -4944,15 +4944,15 @@ regexpp@^2.0.1:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-2.0.1.tgz#8d19d31cf632482b589049f8281f93dbcba4d07f"
 
 regexpu-core@^4.1.3, regexpu-core@^4.2.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-4.4.0.tgz#8d43e0d1266883969720345e70c275ee0aec0d32"
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-4.5.3.tgz#72f572e03bb8b9f4f4d895a0ccc57e707f4af2e4"
   dependencies:
     regenerate "^1.4.0"
-    regenerate-unicode-properties "^7.0.0"
+    regenerate-unicode-properties "^8.0.1"
     regjsgen "^0.5.0"
     regjsparser "^0.6.0"
     unicode-match-property-ecmascript "^1.0.4"
-    unicode-match-property-value-ecmascript "^1.0.2"
+    unicode-match-property-value-ecmascript "^1.1.0"
 
 regjsgen@^0.5.0:
   version "0.5.0"
@@ -5899,13 +5899,13 @@ unicode-match-property-ecmascript@^1.0.4:
     unicode-canonical-property-names-ecmascript "^1.0.4"
     unicode-property-aliases-ecmascript "^1.0.4"
 
-unicode-match-property-value-ecmascript@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-1.0.2.tgz#9f1dc76926d6ccf452310564fd834ace059663d4"
+unicode-match-property-value-ecmascript@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-1.1.0.tgz#5b4b426e08d13a80365e0d657ac7a6c1ec46a277"
 
 unicode-property-aliases-ecmascript@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.0.4.tgz#5a533f31b4317ea76f17d807fa0d116546111dd0"
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.0.5.tgz#a9cc6cc7ce63a0a3023fc99e341b94431d405a57"
 
 union-value@^1.0.0:
   version "1.0.0"
