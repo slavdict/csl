@@ -23,36 +23,36 @@ const transliterations = [
     [/^\u03c1\u0314?/g, 'rh'], // ро в начале слова или с густым придыханием
     [/\u03c1\u03c1\u0314?/g, 'rrh'], // двойное ро в середине слова
     [/(.+)\u0314/g, 'h$1'], // густое придыхание переводим в h
-    ['\u03b1', 'a'],
-    ['\u03b2', 'b'],
-    ['\u03b3', 'g'],
-    ['\u03b4', 'd'],
-    ['\u03b5', 'e'],
-    ['\u03b6', 'z'],
-    ['\u03b7', 'e'],
-    ['\u03b8', 'th'],
-    ['\u03b9', 'i'],
-    ['\u03ba', 'k'],
-    ['\u03bb', 'l'],
-    ['\u03bc', 'm'],
-    ['\u03bd', 'n'],
-    ['\u03be', 'x'],
-    ['\u03bf', 'o'],
-    ['\u03c0', 'p'],
-    ['\u03c1', 'r'],
+    [/\u03b1/g, 'a'],
+    [/\u03b2/g, 'b'],
+    [/\u03b3/g, 'g'],
+    [/\u03b4/g, 'd'],
+    [/\u03b5/g, 'e'],
+    [/\u03b6/g, 'z'],
+    [/\u03b7/g, 'e'],
+    [/\u03b8/g, 'th'],
+    [/\u03b9/g, 'i'],
+    [/\u03ba/g, 'k'],
+    [/\u03bb/g, 'l'],
+    [/\u03bc/g, 'm'],
+    [/\u03bd/g, 'n'],
+    [/\u03be/g, 'x'],
+    [/\u03bf/g, 'o'],
+    [/\u03c0/g, 'p'],
+    [/\u03c1/g, 'r'],
     [/[\u03c2\u03c3]/g, 's'],
-    ['\u03c4', 't'],
-    ['\u03c5', 'y'],
-    ['\u03c6', 'ph'],
-    ['\u03c7', 'ch'],
-    ['\u03c8', 'ps'],
-    ['\u03c9', 'o'],
+    [/\u03c4/g, 't'],
+    [/\u03c5/g, 'y'],
+    [/\u03c6/g, 'ph'],
+    [/\u03c7/g, 'ch'],
+    [/\u03c8/g, 'ps'],
+    [/\u03c9/g, 'o'],
 
     [/[^a-zA-Z]/g, ''],
 
     [/g([gkxc])/g, 'n$1'],
     [/([aeo])y/g, '$1u'],
-    ['yi', 'ui'],
+    [/yi/g, 'ui'],
 ];
 
 function nonCyrillicPreprocess(text) {
@@ -62,7 +62,7 @@ function nonCyrillicPreprocess(text) {
     text = text.replace(src, dst);
   }
   // latin
-  text = text.replace('rh', 'r').replace('ph', 'f');
+  text = text.replace(/rh/g, 'r').replace(/ph/g, 'f');
   return text;
 }
 
