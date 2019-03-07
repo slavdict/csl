@@ -98,6 +98,7 @@ function viewModel() {
 
   this.entryQuery = ko.observable();
   this.indexQuery = ko.observable();
+  this.searchInProgress = ko.observable(false);
   this.hints = ko.observableArray();
   this.grixResults = ko.observableArray();
   this.article = ko.observable();
@@ -122,8 +123,12 @@ function viewModel() {
   ko.computed(function () {
     const query = cyrillicPreprocess((self.entryQuery() || '').toLowerCase());
     if (query) {
-      searchEntries(query).then(self.hints, () => self.hints([]));
+      self.searchInProgress(true);
+      searchEntries(query)
+        .then(self.hints, () => self.hints([]))
+        .always(() => self.searchInProgress(false));
     } else {
+      self.searchInProgress(false);
       self.hints([]);
     }
   });
@@ -139,8 +144,12 @@ function viewModel() {
       searchFunc = searchGrixRev;
     }
     if (query) {
-      searchFunc(query).then(self.grixResults, () => self.grixResults([]));
+      self.searchInProgress(true);
+      searchFunc(query)
+        .then(self.grixResults, () => self.grixResults([]))
+        .always(() => self.searchInProgress(false));
     } else {
+      self.searchInProgress(false);
       self.grixResults([]);
     }
   });

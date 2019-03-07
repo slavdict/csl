@@ -34,6 +34,10 @@
       data-bind="value: indexQuery, valueUpdate: 'input',
         visible: indexIsOn() && section() === 'dictionary'">
 
+  <div class="spinner" data-bind="visible: searchInProgress">
+    <div></div><div></div><div></div><div></div><div></div>
+  </div>
+
   <i>{% include 'scraps/search.svg' %}</i>
 
   <div class="tip1" data-bind="visible: !indexIsOn() || !section()">Например,

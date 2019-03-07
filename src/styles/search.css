@@ -88,6 +88,12 @@ $--search-icon-dimension: 2.5rem;
       color: inherit;
     }
   }
+
+  & .spinner {
+    top: -0.2em;
+    right: -0.55em;
+    transform: scale(0.5);
+  }
 }
 
 @media (--mobile) {
@@ -100,6 +106,10 @@ $--search-icon-dimension: 2.5rem;
     }
     & .hints {
       width: var(--main-width-mobile);
+    }
+
+    & .spinner {
+      right: -1em;
     }
   }
 }
