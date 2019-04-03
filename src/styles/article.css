@@ -42,6 +42,7 @@ section#article {
 /* span.Text */
 /* span.CSLSegment */
 /* span.CSLSegmentEm */
+/* span.CSLSuper */
 /* span.MeaningfulNoAccent */
 /* span.Em */
 /* span.MeaningNumber */
@@ -104,6 +105,11 @@ span.CSLSegment {
   font-style: normal;
 }
 
+span.CSLSuper {
+  font-size: 0.66em;
+  vertical-align: super;
+}
+
 span.Text,
 span.Em,
 span.Conj,
@@ -112,6 +118,10 @@ span.Latin,
 span.Address {
   font-family: $--civil-font1;
   font-size: $--civil-font-size;
+}
+
+span.Text {
+  font-style: normal;
 }
 
 span.Address {
@@ -171,6 +181,11 @@ span.Diamond {
   margin: 0 -0.15rem 0 0.2rem;
 }
 
+.MeaningParagraph .MeaningNumber + span.Diamond {
+  left: -0.8em;
+  margin-right: -0.9em;
+}
+
 span.BiblicalAllusion {
   position: relative;
   vertical-align: -0.05rem;
@@ -185,4 +200,5 @@ span.HomonymNumber {
   vertical-align: top;
   color: $--black;
   top: -0.2rem;
+  font-style: normal;
 }
