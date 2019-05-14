@@ -12,6 +12,10 @@ const kagarlickij = 'Юрий Кагарлицкий, кандидат фило�
 
 export const videos = [
 
+  { id: 'PDYahA9eSxk',
+    title: 'Кирилло-Мефодиевское богослужение',
+    speaker: temchin, legend: '' },
+
   { id: 'Zv1AFOmD-to',
     title: 'Происхождение названия «глаголица»',
     speaker: temchin, legend: '' },

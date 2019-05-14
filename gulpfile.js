@@ -72,7 +72,7 @@ const rollupInputOpts = {
   external: ['jquery', 'knockout'],
   plugins: [
     //builtins(),
-    resolve({ jsnext: true, main: true, browser: true, }),
+    resolve({ mainFields: ['browser', 'jsnext:main', 'module', 'main'] }),
     commonjs(),
     //globals(),
     jscc({ values: { _CONFIG: nunjucksContext }, exclude: 'node_modules/**'}),
