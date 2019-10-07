@@ -10,7 +10,7 @@
     "build-data": "(cd ../slavdict/; pipenv run bin/csl_dumper.py)",
     "lint": "eslint",
     "lint-all": "clear; find src/ -name '*.js' | xargs eslint",
-    "production": "rm -fr build .build; CSL_ENV=production gulp; yarn run sync-data; git --work-tree=../slavdict.github.io --git-dir=../slavdict.github.io/.git checkout master; rsync -av --delete --exclude CNAME --exclude .git --exclude .gitignore --exclude now.json --exclude *.pdf build/ ../slavdict.github.io/",
+    "production": "rm -fr build .build; CSL_ENV=production gulp; yarn run sync-data; git --work-tree=../slavdict.github.io --git-dir=../slavdict.github.io/.git checkout master; rsync -av --checksum --delete --exclude CNAME --exclude .git --exclude .gitignore --exclude now.json --exclude *.pdf build/ ../slavdict.github.io/",
     "serve": "lite-server -c lite-server.config.json",
     "sync-data": "rm -fr build/e build/xp build/xf build/xg build/xgr; cp -R .temp/slavdict_generated/entries build/e; cp -R .temp/slavdict_generated/partial_index build/xp; cp -R .temp/slavdict_generated/greek_index build/xg; cp -R .temp/slavdict_generated/greek_index_reverse build/xgr",
     "test": "echo 'Error: no test specified' && exit 1",
