@@ -314,4 +314,13 @@ page(refsUrl + '*', goRefs);
 page('*', rootUrl);
 page({ hashbang: true });
 
+jQuery('#notifications .open').click(function () {
+  jQuery('#notifications figcaption').slideUp();
+  jQuery('#notifications article').slideDown();
+});
+jQuery('#notifications .close').click(function () {
+  jQuery('#notifications').slideUp(function () {
+    document.body.scrollTop = 0;
+  });
+});
 jQuery('#safetyCurtain').fadeOut();

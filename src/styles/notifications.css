@@ -1,0 +1,61 @@
+@import 'variables.css';
+
+#notifications {
+  background-color: $--light-gray;
+  margin: 0;
+  padding: 0;
+
+  & figure {
+    margin: 0;
+    padding: 0;
+  }
+
+  & figcaption {
+    width: var(--main-width-desktop);
+    margin: 0 auto 0;
+    padding: 1rem 0 1rem 7rem;
+    color: $--black;
+    letter-spacing: 0.05rem;
+    position: relative;
+
+    & .open {
+      color: $--blue;
+      cursor: pointer;
+    }
+
+    & .date {
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  & article {
+    display: none;
+    width: var(--main-width-desktop);
+    margin: 0 auto 0;
+    padding: 2rem 0 4rem;
+    position: relative;
+
+    & h1 {
+      font-size: x-large;
+      margin: 0;
+      line-height: 2.25rem;
+    }
+
+    & .close {
+      color: $--red;
+      cursor: pointer;
+      position: absolute;
+      bottom: 2.5rem;
+      right: 50%;
+    }
+  }
+}
+
+@media (--mobile) {
+  #notifications figcaption,
+  #notifications article {
+    width: var(--main-width-mobile);
+  }
+}
