@@ -319,8 +319,9 @@ jQuery('#notifications .open').click(function () {
   jQuery('#notifications article').slideDown();
 });
 jQuery('#notifications .close').click(function () {
-  jQuery('#notifications').slideUp(function () {
-    document.body.scrollTop = 0;
+  jQuery('#notifications figcaption').slideDown();
+  jQuery('#notifications article').slideUp(function () {
+    document.getElementById('header').scrollIntoView();
   });
 });
 jQuery('#safetyCurtain').fadeOut();

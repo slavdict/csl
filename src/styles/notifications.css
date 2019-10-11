@@ -1,6 +1,7 @@
 @import 'variables.css';
 
 #notifications {
+  color: $--black;
   background-color: $--light-gray;
   margin: 0;
   padding: 0;
@@ -10,24 +11,19 @@
     padding: 0;
   }
 
+  & h1 {
+    font-size: x-large;
+    margin: 0;
+    line-height: 2.25rem;
+  }
+
   & figcaption {
     width: var(--main-width-desktop);
     margin: 0 auto 0;
-    padding: 1rem 0 1rem 7rem;
-    color: $--black;
+    padding: 1rem 0;
     letter-spacing: 0.05rem;
     position: relative;
-
-    & .open {
-      color: $--blue;
-      cursor: pointer;
-    }
-
-    & .date {
-      font-weight: bold;
-      position: absolute;
-      left: 0;
-    }
+    text-align: center;
   }
 
   & article {
@@ -36,20 +32,23 @@
     margin: 0 auto 0;
     padding: 2rem 0 4rem;
     position: relative;
+  }
 
-    & h1 {
-      font-size: x-large;
-      margin: 0;
-      line-height: 2.25rem;
-    }
+  & .open {
+    color: $--blue;
+    cursor: pointer;
+  }
 
-    & .close {
-      color: $--red;
-      cursor: pointer;
-      position: absolute;
-      bottom: 2.5rem;
-      right: 50%;
-    }
+  & .close {
+    color: $--red;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2.5rem;
+    right: 50%;
+  }
+
+  & .red {
+    color: $--red;
   }
 }
 
