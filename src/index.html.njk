@@ -122,6 +122,32 @@
       <header>
         <h1>Ссылки</h1>
       </header>
+      <div class="filters" data-bind="foreach: filterCategories">
+        <div class="category" data-bind="attr: { id: name }">
+          <header data-bind="text: name"></header>
+          <ul data-bind="foreach: filters">
+            <li class="checkbox">
+              <div data-bind="click: toggle">
+                {% include 'scraps/checkbox.svg' %}
+                <label data-bind="text: name"></label>
+              </div>
+              <!-- ko foreach: groups -->
+              <div class="group">
+                <header data-bind="text: name"></header>
+                <ul data-bind="foreach: filters">
+                  <li class="checkbox">
+                    <div data-bind="click: toggle">
+                      {% include 'scraps/checkbox.svg' %}
+                      <label data-bind="text: name"></label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- /ko -->
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="main"></div>
     </section>
 

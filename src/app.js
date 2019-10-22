@@ -11,6 +11,7 @@ import { searchEntries, searchGrix, searchGrixRev,
 import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
 import { refs } from './scraps/stubdata/refsData.js';
+import { filterCategories } from './scripts/filters.js';
 
 const exampleSearchQueries = ['аромат', 'абие', 'бескровный', 'белость', 'варити',
   'восплачевопльствити'];
@@ -166,6 +167,7 @@ function viewModel() {
     }
   });
 
+  self.filterCategories = filterCategories;
   self._refs = ko.computed(function () {
     if (self.section() === 'refs') {
       jQuery.ajax('/refs.htm', { dataType: 'text' }).then(function (text) {
