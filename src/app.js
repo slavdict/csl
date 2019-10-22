@@ -316,6 +316,7 @@ page(refsUrl + '*', goRefs);
 page('*', rootUrl);
 page({ hashbang: true });
 
+/*
 jQuery('#notifications .open').click(function () {
   jQuery('#notifications figcaption').slideUp();
   jQuery('#notifications article').slideDown();
@@ -326,4 +327,6 @@ jQuery('#notifications .close').click(function () {
     document.getElementById('header').scrollIntoView();
   });
 });
+*/
+
 jQuery('#safetyCurtain').fadeOut();
