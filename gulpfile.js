@@ -26,8 +26,7 @@ const nunjucksContext = {
   }
 };
 
-const exec = require('child_process').exec,
-    { src, dest, parallel, series } = require('gulp'),
+const { src, dest, parallel, series } = require('gulp'),
       merge = require('merge-stream');
 
 // Gulp plugins
