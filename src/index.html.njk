@@ -127,24 +127,34 @@
       <div class="filters" data-bind="foreach: filterCategories">
         <div class="category" data-bind="attr: { id: name }">
           <header data-bind="text: name"></header>
-          <ul data-bind="foreach: filters">
+          <ul data-bind="foreach: items">
             <li class="checkbox">
               <div data-bind="click: toggle">
                 {% include 'scraps/checkbox.svg' %}
                 <label data-bind="text: name"></label>
               </div>
-              <!-- ko foreach: groups -->
-              <div class="group">
-                <header data-bind="text: name"></header>
-                <ul data-bind="foreach: filters">
-                  <li class="checkbox">
+              <!-- ko foreach: items -->
+                <!-- ko ifnot: isGroup -->
+                  <div class="group checkbox">
                     <div data-bind="click: toggle">
                       {% include 'scraps/checkbox.svg' %}
                       <label data-bind="text: name"></label>
                     </div>
-                  </li>
-                </ul>
-              </div>
+                  </div>
+                <!-- /ko -->
+                <!-- ko if: isGroup -->
+                <div class="group">
+                  <header data-bind="text: name"></header>
+                  <ul data-bind="foreach: items">
+                    <li class="checkbox">
+                      <div data-bind="click: toggle">
+                        {% include 'scraps/checkbox.svg' %}
+                        <label data-bind="text: name"></label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <!-- /ko -->
               <!-- /ko -->
             </li>
           </ul>
