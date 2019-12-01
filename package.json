@@ -1,13 +1,13 @@
 {
   "name": "csl",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "description": "Церковнославянский язык сегодня",
   "license": "CC0-1.0",
   "main": "build/js/spa.js",
   "private": false,
   "scripts": {
     "build": "gulp",
-    "build-data": "(cd ../slavdict/; pipenv run bin/csl_dumper.py)",
+    "build-data": "(cd ../slavdict/; pipenv run bin/csl_dict_dumper.py; pipenv run bin/csl_refs_dumper.py)",
     "lint": "eslint",
     "lint-all": "clear; find src/ -name '*.js' | xargs eslint",
     "production": "rm -fr build .build; CSL_ENV=production gulp; yarn run sync-data; git --work-tree=../slavdict.github.io --git-dir=../slavdict.github.io/.git checkout master; rsync -av --checksum --delete --exclude CNAME --exclude .git --exclude .gitignore --exclude now.json --exclude *.pdf build/ ../slavdict.github.io/",
