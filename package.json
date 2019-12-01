@@ -1,6 +1,6 @@
 {
   "name": "csl",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "description": "Церковнославянский язык сегодня",
   "license": "CC0-1.0",
   "main": "build/js/spa.js",
@@ -14,7 +14,7 @@
     "serve": "lite-server -c lite-server.config.json",
     "sync-data": "rm -fr build/e build/xp build/xf build/xg build/xgr; cp -R .temp/slavdict_generated/entries build/e; cp -R .temp/slavdict_generated/partial_index build/xp; cp -R .temp/slavdict_generated/greek_index build/xg; cp -R .temp/slavdict_generated/greek_index_reverse build/xgr",
     "test": "echo 'Error: no test specified' && exit 1",
-    "watch": "find -type f -path './src/*' -o -path './package.json' -o -path './gulpfile.js' -o -path '.temp/refs/filtersData.js' | entr -s 'npm-run-all --silent --parallel lint-all build'"
+    "watch": "find -type f -path './src/*' -o -path './package.json' -o -path './gulpfile.js' -o -path './.temp/refs/filterData.js' | entr -s 'npm-run-all --silent --parallel lint-all build'"
   },
   "dependencies": {
     "debug": "^4.1.1",

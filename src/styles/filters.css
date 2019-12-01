@@ -2,33 +2,49 @@
 
 $--checkbox-height: 1.5rem;
 
-svg.checkbox {
-  height: $--checkbox-height;
-  margin-right: 0.5rem;
+.checkbox {
+  user-select: none;
 
-  & .box {
-    fill: $--medium-gray;
-    fill-opacity: 1;
+  & label {
+    color: inherit;
   }
 
-  &.checked .box {
+  &.disabled label {
+    color: $--medium-gray;
+  }
+
+  & svg {
+    height: $--checkbox-height;
+    margin-right: 0.5rem;
+
+    & .box {
+      fill: $--medium-gray;
+      fill-opacity: 1;
+    }
+
+    & .tick {
+      display: inline;
+      fill: $--red;
+      fill-opacity: 0;
+      stroke: #ffffff;
+      stroke-width: 60;
+      stroke-linecap: round;
+      stroke-miterlimit: 4;
+      stroke-dasharray: none;
+      stroke-opacity: 0;
+      paint-order: markers stroke fill;
+    }
+  }
+
+  &.checked svg .box {
     fill: $--black;
   }
 
-  & .tick {
-    display: inline;
-    fill: $--red;
-    fill-opacity: 0;
-    stroke: #ffffff;
-    stroke-width: 60;
-    stroke-linecap: round;
-    stroke-miterlimit: 4;
-    stroke-dasharray: none;
-    stroke-opacity: 0;
-    paint-order: markers stroke fill;
+  &.disabled svg .box {
+    fill-opacity: 0.7;
   }
 
-  &.checked .tick {
+  &.checked svg .tick {
     fill-opacity: 1;
     stroke-opacity: 1;
   }

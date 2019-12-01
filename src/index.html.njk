@@ -128,29 +128,28 @@
         <div class="category" data-bind="attr: { id: name }">
           <header data-bind="text: name"></header>
           <ul data-bind="foreach: items">
-            <li class="checkbox">
-              <div data-bind="click: toggle">
+            <li>
+              <div class="checkbox" data-bind="click: toggle,
+                  css: { checked: checked, disabled: disabled }">
                 {% include 'scraps/checkbox.svg' %}
                 <label data-bind="text: name"></label>
               </div>
               <!-- ko foreach: items -->
                 <!-- ko ifnot: isGroup -->
-                  <div class="group checkbox">
-                    <div data-bind="click: toggle">
-                      {% include 'scraps/checkbox.svg' %}
-                      <label data-bind="text: name"></label>
-                    </div>
+                  <div class="group checkbox" data-bind="click: toggle,
+                  css: { checked: checked, disabled: disabled }">
+                    {% include 'scraps/checkbox.svg' %}
+                    <label data-bind="text: name"></label>
                   </div>
                 <!-- /ko -->
                 <!-- ko if: isGroup -->
                 <div class="group">
                   <header data-bind="text: name"></header>
                   <ul data-bind="foreach: items">
-                    <li class="checkbox">
-                      <div data-bind="click: toggle">
-                        {% include 'scraps/checkbox.svg' %}
-                        <label data-bind="text: name"></label>
-                      </div>
+                    <li class="checkbox" data-bind="click: toggle,
+                        css: { checked: checked, disabled: disabled }">
+                      {% include 'scraps/checkbox.svg' %}
+                      <label data-bind="text: name"></label>
                     </li>
                   </ul>
                 </div>

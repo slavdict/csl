@@ -14,9 +14,20 @@ class Filter {
     this.index = data.index;
     this.checked = ko.observable(false);
     this.items = this.getItems(data);
+    this.disabled = this.index.length === 0;
   }
-  toggle(filter) {
-    filter.checked(!filter.checked());
+  toggle(self, event) {  // NOTE: KnockoutJS будет использовать toggle как функцию,
+    // не привязанную в качестве метода к экземпляру класса, но передаст нужный
+    // нам экземпляр в качестве первого аргумента. Поэтому, если передан первый
+    // аргумент, то используем его в качестве this, а если нет то сам this.
+    self = self || this;
+    console.log(self.name, event);
+    if (self.disabled) return;
+    //self.items.forEach(item => {
+    //  if (item.isGroup) item.items.forEach(i => i.toggle());
+    //  else item.toggle();
+    //});
+    self.checked(!self.checked());
   }
   getItems(data) {
     if (!data.items) return [];

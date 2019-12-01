@@ -1,5 +1,4 @@
-<svg class="checkbox" data-bind="css: { checked: checked }"
-xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
 aria-hidden="true" focusable="false" role="img" viewBox="0 0 490 480"
 version="1.1">
 
