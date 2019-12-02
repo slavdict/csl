@@ -19,15 +19,15 @@ class Annotation {
   getTitle(data) {
     if (!data.title) return undefined;
     if (data.youtubeId) {
-      return `<a href="https://youtu.be/${ data.youtubeId }">${
+      return `<a href="https://youtu.be/${ data.youtubeId }" target="_blank">${
         data.title }</a>`;
     }
-    return `<a href="${ data.url }">${ data.title }</a>`;
+    return `<a href="${ data.url }" target="_blank">${ data.title }</a>`;
   }
   getBib(data) {
     if (!data.bib) return undefined;
     if (data.title) return data.bib;
-    return `<a href="${ data.url }">${ data.bib }</a>`;
+    return `<a href="${ data.url }" target="_blank">${ data.bib }</a>`;
   }
 }
 

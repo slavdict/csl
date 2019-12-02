@@ -184,6 +184,9 @@
             <!-- /ko -->
             <div data-bind="html: annotation"></div>
           </figure>
+          <!-- ko if: $index() + 1 < $parent.refs().length -->
+            <div class="separator"></div>
+          <!-- /ko -->
         <!-- /ko -->
 
       </div>

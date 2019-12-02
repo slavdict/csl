@@ -4,15 +4,6 @@ section#refs {
   margin: 0;
   line-height: 1.5rem;
 
-  & div.main {
-    width: calc(var(--video-width-desktop) * 2 + var(--xgap));
-    columns: 2 var(--video-width-desktop);
-    column-gap: var(--xgap);
-    column-fill: balance;
-    overflow-x: hidden;
-    margin-bottom: var(--ygap);
-  }
-
   & figure {
     padding: 0;
     margin: 0;
@@ -23,6 +14,16 @@ section#refs {
       margin: 1rem 0;
       background-color: $--light-gray;
       padding: 1rem 1.5rem;
+      break-inside: avoid;
+    }
+
+    & p:first-of-type {
+      margin-top: 0;
+    }
+
+    & p:last-of-type {
+      break-before: avoid;
+      margin-bottom: 0;
     }
   }
 
@@ -34,12 +35,37 @@ section#refs {
   }
 }
 
-section#refs figure {
-  margin: 2.2rem 0;
-  border-bottom: 1px solid $--red;
+section.randomRefs {
+  & div.main {
+    width: calc(var(--video-width-desktop) * 2 + var(--xgap));
+    columns: 2 var(--video-width-desktop);
+    column-gap: var(--xgap);
+    column-fill: balance;
+    overflow-x: hidden;
+    margin-bottom: var(--ygap);
+  }
+}
 
-  &:last-of-type {
-    border-bottom: none;
+section#refs {
+  & div.main {
+    margin-bottom: var(--ygap);
+  }
+
+  & figure {
+    margin: 2.2rem 0;
+    width: calc(var(--video-width-desktop) * 2 + var(--xgap));
+    columns: 2 var(--video-width-desktop);
+    column-gap: var(--xgap);
+    column-fill: balance;
+    overflow-x: hidden;
+
+    & .bibliography {
+      margin: 0 0 1rem;
+    }
+  }
+
+  & .separator {
+    border-bottom: 1px solid $--red;
   }
 }
 
@@ -56,6 +82,9 @@ section#refs figure {
 
     & figure {
       position: relative;
+      width: auto;
+      columns: auto auto;
+      overflow-x: visible;
 
       & .bibliography {
         width: 100vw;
