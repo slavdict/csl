@@ -22,12 +22,20 @@ class Annotation {
       return `<a href="https://youtu.be/${ data.youtubeId }" target="_blank">${
         data.title }</a>`;
     }
-    return `<a href="${ data.url }" target="_blank">${ data.title }</a>`;
+    if (data.url) {
+      return `<a href="${ data.url }" target="_blank">${ data.title }</a>`;
+    } else {
+      return data.title;
+    }
   }
   getBib(data) {
     if (!data.bib) return undefined;
     if (data.title) return data.bib;
-    return `<a href="${ data.url }" target="_blank">${ data.bib }</a>`;
+    if (data.url) {
+      return `<a href="${ data.url }" target="_blank">${ data.bib }</a>`;
+    } else {
+      return data.bib;
+    }
   }
 }
 
