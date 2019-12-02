@@ -36,6 +36,11 @@ section#refs {
 
 section#refs figure {
   margin: 2.2rem 0;
+  border-bottom: 1px solid $--red;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 @media (--mobile) {

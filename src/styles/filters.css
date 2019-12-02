@@ -55,17 +55,37 @@ $--checkbox-font-size: 0.75rem;
 .filters {
   border-bottom: 1px solid $--red;
 
-  & .category {
-    & header {
-      font-family: $--civil-font2;
-      font-weight: bold;
-      font-size: calc(3 / 4 * 1.0625);
-      line-height: 1.41;
-      letter-spacing: 0.0225rem;
-      color: $--black;
-      text-transform: uppercase;
-      white-space: nowrap;
+  & header {
+    font-family: $--civil-font2;
+    font-weight: bold;
+    font-size: calc(3 / 4 * 1.0625);
+    line-height: 1.41;
+    letter-spacing: 0.0225rem;
+    color: $--black;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  & header.forRefs {
+    margin: 3rem 0 1rem;
+
+    & a.random {
+      --dimension: 1rem;
+      width: var(--dimension);
+      height: var(--dimension);
+      position: relative;
+
+      & svg {
+        width: var(--dimension);
+        height: var(--dimension);
+        position: absolute;
+        top: 0.2rem;
+        right: -2.2rem;
+      }
     }
+  }
+
+  & .category {
 
     & ul {
       margin: 0.5rem 0 1.85rem;

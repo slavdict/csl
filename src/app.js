@@ -218,6 +218,13 @@ function viewModel() {
       });
     }
   };
+  self.getRandomRefsMain = function () {
+    let lastRefIds = self.refs().map(ref => ref.id),
+        refIds = getRandom(allRefIds, 5, lastRefIds);
+    self.refs.removeAll();
+    self._refsToLoad = refIds;
+    self.getNextAnnotation();
+  };
   ko.computed(function () {
     let refIds = self.refIds(),
         noFilterChecked = self.noFilterChecked();
