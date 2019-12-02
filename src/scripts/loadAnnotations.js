@@ -35,7 +35,11 @@ function asyncGetAnnotation(id) {
   var deferred;
   if (!annotationsRegister[id]) {
     let path = annotationsUrl + String(id) + '.json';
-    deferred = jQuery.getJSON(path).then(data => new Annotation(id, data));
+    deferred = jQuery.getJSON(path).then(data => {
+      let annotation = new Annotation(id, data);
+      annotationsRegister[id] = annotation;
+      return annotation;
+    });
   } else {
     deferred = jQuery.Deferred();
     deferred.resolve(annotationsRegister[id]);

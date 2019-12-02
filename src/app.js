@@ -234,7 +234,7 @@ function viewModel() {
     self.refs.removeAll();
     self._refsToLoad = refIds;
     self.getNextAnnotation();
-  });
+  }).extend({ rateLimit: 500 });
 }
 const vM = new viewModel();
 initKnockout(ko, vM);

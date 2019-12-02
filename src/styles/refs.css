@@ -17,13 +17,18 @@ section#refs {
       break-inside: avoid;
     }
 
+    & p {
+      widows: 3;
+      orphans: 3;
+    }
+
     & p:first-of-type {
       margin-top: 0;
     }
 
     & p:last-of-type {
-      break-before: avoid;
       margin-bottom: 0;
+      break-inside: avoid;
     }
   }
 
