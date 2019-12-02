@@ -3,7 +3,10 @@
 $--checkbox-height: 1.5rem;
 
 .checkbox {
+  $--indent: 2.25rem;
   user-select: none;
+  text-indent: -$--indent;
+  padding-left: $--indent;
 
   & label {
     color: inherit;
@@ -53,7 +56,11 @@ $--checkbox-height: 1.5rem;
 $--checkbox-font-size: 0.75rem;
 
 .filters {
-  border-bottom: 1px solid $--red;
+  width: calc(var(--video-width-desktop) * 2 + var(--xgap));
+  padding-bottom: 1rem;
+  columns: 3 calc((var(--video-width-desktop) * 2 - var(--xgap)) / 3);
+  column-gap: var(--xgap);
+  column-fill: balance;
 
   & header {
     font-family: $--civil-font2;
@@ -66,26 +73,8 @@ $--checkbox-font-size: 0.75rem;
     white-space: nowrap;
   }
 
-  & header.forRefs {
-    margin: 3rem 0 1rem;
-
-    & a.random {
-      --dimension: 1rem;
-      width: var(--dimension);
-      height: var(--dimension);
-      position: relative;
-
-      & svg {
-        width: var(--dimension);
-        height: var(--dimension);
-        position: absolute;
-        top: 0.2rem;
-        right: -2.2rem;
-      }
-    }
-  }
-
   & .category {
+    break-inside: avoid;
 
     & ul {
       margin: 0.5rem 0 1.85rem;
@@ -93,8 +82,6 @@ $--checkbox-font-size: 0.75rem;
 
       & li {
         list-style: none;
-        margin: 0;
-        padding: 0;
         font-size: $--checkbox-font-size;
         letter-spacing: 0.015rem;
         line-height: 2.1rem;
@@ -119,5 +106,11 @@ $--checkbox-font-size: 0.75rem;
         text-transform: none;
       }
     }
+  }
+}
+
+@media (--mobile) {
+  .filters {
+    columns: auto auto;
   }
 }

@@ -1,3 +1,5 @@
+@import 'variables.css';
+
 section.randomRefs,
 section#refs {
   padding: 0;
@@ -34,9 +36,14 @@ section#refs {
 
   & figcaption {
     font-size: 1rem;
+    text-wrap: balance;
     letter-spacing: 0.025625rem;
     column-span: all;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+
+    &:only-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -65,12 +72,40 @@ section#refs {
     overflow-x: hidden;
 
     & .bibliography {
-      margin: 0 0 1rem;
+      margin: 0.4rem 0 1rem;
     }
   }
 
   & .separator {
+    font-family: $--civil-font2;
+    font-weight: bold;
+    font-size: calc(3 / 4 * 1.0625);
+    line-height: 1.41;
+    letter-spacing: 0.0225rem;
+    color: $--black;
+    text-transform: uppercase;
+    white-space: nowrap;
     border-bottom: 1px solid $--red;
+    width: calc(var(--video-width-desktop) * 2 + var(--xgap));
+
+    & header {
+      margin: 1rem 0;
+
+      & a.random {
+        --dimension: 1rem;
+        width: var(--dimension);
+        height: var(--dimension);
+        position: relative;
+
+        & svg {
+          width: var(--dimension);
+          height: var(--dimension);
+          position: absolute;
+          top: 0.2rem;
+          right: -2.2rem;
+        }
+      }
+    }
   }
 }
 
@@ -95,13 +130,17 @@ section#refs {
         width: 100vw;
         position: relative;
         left: calc(-1 * var(--main-gap-mobile));
-        margin: var(--main-gap-mobile) 0;
         padding: var(--main-gap-mobile);
+        margin: calc(var(--main-gap-mobile) / -2.5) 0 var(--main-gap-mobile);
       }
     }
 
     & figcaption {
       margin-bottom: var(--main-gap-mobile);
+    }
+
+    & .separator {
+      width: auto;
     }
   }
 }
