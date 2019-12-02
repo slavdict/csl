@@ -159,7 +159,33 @@
           </ul>
         </div>
       </div>
-      <div class="main"></div>
+
+      <div class="main">
+        <!-- ko if: noFilterChecked -->
+          <h3>Случайные ссылки</h3>
+        <!-- /ko -->
+        <!-- ko if: !noFilterChecked() && refs().length === 0 -->
+          <figure>
+            <p>На основе выбранных фильтров ничего не найдено.</p>
+          </figure>
+        <!-- /ko -->
+        <div data-bind="foreach: refs">
+          <figure>
+            <!-- ko if: $data.title -->
+              <figcaption data-bind="html: title"></figcaption>
+            <!-- /ko -->
+            <!-- ko if: $data.bib -->
+              <div class="bibliography" data-bind="html: bib"></div>
+            <!-- /ko -->
+            <div data-bind="html: annotation"></div>
+          </figure>
+          <!-- ko if: $index() + 1 < $parent.refs().length -->
+            <div class="filters"></div>
+          <!-- /ko -->
+        </div>
+
+      </div>
+
     </section>
 
   </div>

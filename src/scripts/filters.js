@@ -1,20 +1,30 @@
 import { filterData } from '../../.temp/refs/filterData.js';
 import ko from 'knockout';
 
+var allRefIds = [];
+
 class FilterGroup {
-  constructor(data) {
+  constructor(data, selectedFilters) {
     this.name = data.name;
-    this.items = data.items.map(item => new Filter(item));
+    this.items = data.items.map(item => new Filter(item, selectedFilters));
   }
 }
 
 class Filter {
-  constructor(data) {
+  constructor(data, selectedFilters) {
+    this.selectedFilters = selectedFilters;
     this.name = data.name;
     this.index = data.index;
     this.checked = ko.observable(false);
     this.items = this.getItems(data);
     this.disabled = this.index.length === 0;
+
+    this.tune();
+  }
+  tune() {
+    this.index.forEach(ref => {
+      if (allRefIds.indexOf(ref) < 0) allRefIds.push(ref);
+    });
   }
   toggle(self, event) {  // NOTE: KnockoutJS будет использовать toggle как функцию,
     // не привязанную в качестве метода к экземпляру класса, но передаст нужный
@@ -27,14 +37,18 @@ class Filter {
     //  if (item.isGroup) item.items.forEach(i => i.toggle());
     //  else item.toggle();
     //});
-    self.checked(!self.checked());
+    let value = !self.checked();
+    self.checked(value);
+    if (value) self.selectedFilters.push(self);
+    else self.selectedFilters.remove(self);
   }
   getItems(data) {
     if (!data.items) return [];
+    let self = this;
     return data.items.map(item => {
       let Constructor = Filter;
       if (item.items && !item.index) Constructor = FilterGroup;
-      return new Constructor(item);
+      return new Constructor(item, self.selectedFilters);
     });
   }
 }
@@ -45,8 +59,11 @@ FilterGroup.prototype.isGroup = true;
 class FilterCategory {
   constructor(data) {
     this.name = data.name;
-    this.items = data.items.map(item => new Filter(item));
+    this.selectedFilters = ko.observableArray([]);
+    this.items = data.items.map(item => new Filter(item, this.selectedFilters));
   }
 }
 
-export const filterCategories = filterData.map(x => new FilterCategory(x));
+const filterCategories = filterData.map(x => new FilterCategory(x));
+
+export { allRefIds, filterCategories };

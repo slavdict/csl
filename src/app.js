@@ -7,11 +7,12 @@ import page from 'page';
 import initKnockout from './scripts/init.knockout.js';
 import { searchEntries, searchGrix, searchGrixRev,
   cyrillicPreprocess, nonCyrillicPreprocess } from './scripts/searchEntries.js';
+import { asyncGetAnnotation } from './scripts/loadAnnotations.js';
 
 import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
 import { refs } from './scraps/stubdata/refsData.js';
-import { filterCategories } from './scripts/filters.js';
+import { filterCategories, allRefIds } from './scripts/filters.js';
 
 const exampleSearchQueries = ['аромат', 'абие', 'бескровный', 'белость', 'варити',
   'восплачевопльствити'];
@@ -168,16 +169,64 @@ function viewModel() {
   });
 
   self.filterCategories = filterCategories;
-  self._refs = ko.computed(function () {
-    if (self.section() === 'refs') {
-      jQuery.ajax('/refs.htm', { dataType: 'text' }).then(function (text) {
-        jQuery('#refs .main').append(text);
-        self._refs.dispose();
-        delete self._refs;
-      }, function () {
-        log('no refs file');
+  self.refs = ko.observableArray([]);
+  self.refIds = ko.computed(function () {
+    let andList = self.filterCategories.map(category => {
+      let refs = [];
+      category.selectedFilters().forEach(
+        filter => filter.index.forEach(
+          ref => {
+            if (refs.indexOf(ref) < 0) {
+              refs.push(ref);
+            }
+          }
+        )
+      );
+      return refs;
+    });
+    switch (andList.length) {
+    case 0: return [];
+    case 1: return andList[0];
+    default: return andList.reduce((a, b) => {
+      if (a.length > b.length) [a, b] = [b, a];
+      if (b.length > 0 && a.length === 0) return b;
+      let intersection = [];
+      for (let x of a) {
+        if (b.indexOf(x) > -1 && intersection.indexOf(x) < 0) {
+          intersection.push(x);
+        }
+      }
+      return intersection;
+    });
+    }
+  });
+  self.noFilterChecked = ko.computed(function () {
+    for (let category of self.filterCategories) {
+      if (category.selectedFilters().length > 0) return false;
+    }
+    return true;
+  });
+
+  self._refsToLoad = [];
+  self.getNextAnnotation = function () {
+    let list = self._refsToLoad;
+    if (list.length > 0) {
+      asyncGetAnnotation(list[0]).then(ref => {
+        self.refs.push(ref);
+        self._refsToLoad = list.slice(1);
+        self.getNextAnnotation();
       });
     }
+  };
+  ko.computed(function () {
+    let refIds = self.refIds(),
+        noFilterChecked = self.noFilterChecked();
+    if (refIds.length === 0 && noFilterChecked) {
+      refIds = getRandom(allRefIds, 5, []);
+    }
+    self.refs.removeAll();
+    self._refsToLoad = refIds;
+    self.getNextAnnotation();
   });
 }
 const vM = new viewModel();
