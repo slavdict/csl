@@ -1,0 +1,20 @@
+@charset 'utf-8';
+@import './variables.css';
+
+#scroller {
+  box-shadow: 0 0 0.3rem 0.1rem white;
+  background-color: $--medium-gray;
+  width: 0.33rem;
+  height: 0;
+  position: absolute;
+  z-index: 1000;
+  right: 0;
+  transition: width 0.1s ease-out,
+              background-color 0.1s ease-out;
+
+  &:hover,
+  &.grabed {
+    background-color: $--red;
+    width: 0.66rem;
+  }
+}

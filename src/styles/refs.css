@@ -1,16 +1,10 @@
-section.randomRefs {
+@import 'variables.css';
+
+section.randomRefs,
+section#refs {
   padding: 0;
   margin: 0;
   line-height: 1.5rem;
-
-  & div.main {
-    width: calc(var(--video-width-desktop) * 2 + var(--xgap));
-    columns: 2 var(--video-width-desktop);
-    column-gap: var(--xgap);
-    column-fill: balance;
-    overflow-x: hidden;
-    margin-bottom: var(--ygap);
-  }
 
   & figure {
     padding: 0;
@@ -22,19 +16,102 @@ section.randomRefs {
       margin: 1rem 0;
       background-color: $--light-gray;
       padding: 1rem 1.5rem;
+      break-inside: avoid;
+    }
+
+    & p {
+      widows: 3;
+      orphans: 3;
+    }
+
+    & p:first-of-type {
+      margin-top: 0;
+    }
+
+    & p:last-of-type {
+      margin-bottom: 0;
+      break-inside: avoid;
     }
   }
 
   & figcaption {
     font-size: 1rem;
+    text-wrap: balance;
     letter-spacing: 0.025625rem;
     column-span: all;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+
+    &:only-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+section.randomRefs {
+  & div.main {
+    width: calc(var(--video-width-desktop) * 2 + var(--xgap));
+    columns: 2 var(--video-width-desktop);
+    column-gap: var(--xgap);
+    column-fill: balance;
+    overflow-x: hidden;
+    margin-bottom: var(--ygap);
+  }
+}
+
+section#refs {
+  & div.main {
+    margin-bottom: var(--ygap);
+  }
+
+  & figure {
+    margin: 2.2rem 0;
+    width: calc(var(--video-width-desktop) * 2 + var(--xgap));
+    columns: 2 var(--video-width-desktop);
+    column-gap: var(--xgap);
+    column-fill: balance;
+    overflow-x: hidden;
+
+    & .bibliography {
+      margin: 0.4rem 0 1rem;
+    }
+  }
+
+  & .separator {
+    font-family: $--civil-font2;
+    font-weight: bold;
+    font-size: calc(3 / 4 * 1.0625);
+    line-height: 1.41;
+    letter-spacing: 0.0225rem;
+    color: $--black;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-bottom: 1px solid $--red;
+    width: calc(var(--video-width-desktop) * 2 + var(--xgap));
+
+    & header {
+      margin: 1rem 0;
+
+      & a.random {
+        --dimension: 1rem;
+        width: var(--dimension);
+        height: var(--dimension);
+        position: relative;
+
+        & svg {
+          width: var(--dimension);
+          height: var(--dimension);
+          position: absolute;
+          top: 0.2rem;
+          right: -2.2rem;
+        }
+      }
+    }
   }
 }
 
 @media (--mobile) {
-  section.randomRefs {
+  section.randomRefs,
+  section#refs {
     overflow-x: visible;
 
     & div.main {
@@ -45,18 +122,25 @@ section.randomRefs {
 
     & figure {
       position: relative;
+      width: auto;
+      columns: auto auto;
+      overflow-x: visible;
 
       & .bibliography {
         width: 100vw;
         position: relative;
         left: calc(-1 * var(--main-gap-mobile));
-        margin: var(--main-gap-mobile) 0;
         padding: var(--main-gap-mobile);
+        margin: calc(var(--main-gap-mobile) / -2.5) 0 var(--main-gap-mobile);
       }
     }
 
     & figcaption {
       margin-bottom: var(--main-gap-mobile);
+    }
+
+    & .separator {
+      width: auto;
     }
   }
 }

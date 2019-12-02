@@ -124,7 +124,78 @@
       <header>
         <h1>Ссылки</h1>
       </header>
-      <div class="main"></div>
+      <div class="filters">
+        <!-- ko foreach: filterCategories -->
+        <div class="category" data-bind="attr: { id: name }">
+          <header data-bind="text: name"></header>
+          <ul data-bind="foreach: items">
+            <li>
+              <div class="checkbox" data-bind="click: toggle,
+                  css: { checked: checked, disabled: disabled }">
+                {% include 'scraps/checkbox.svg' %}
+                <label data-bind="text: name"></label>
+              </div>
+              <!-- ko foreach: items -->
+                <!-- ko ifnot: isGroup -->
+                  <div class="group checkbox" data-bind="click: toggle,
+                  css: { checked: checked, disabled: disabled }">
+                    {% include 'scraps/checkbox.svg' %}
+                    <label data-bind="text: name"></label>
+                  </div>
+                <!-- /ko -->
+                <!-- ko if: isGroup -->
+                <div class="group">
+                  <header data-bind="text: name"></header>
+                  <ul data-bind="foreach: items">
+                    <li class="checkbox" data-bind="click: toggle,
+                        css: { checked: checked, disabled: disabled }">
+                      {% include 'scraps/checkbox.svg' %}
+                      <label data-bind="text: name"></label>
+                    </li>
+                  </ul>
+                </div>
+                <!-- /ko -->
+              <!-- /ko -->
+            </li>
+          </ul>
+        </div>
+        <!-- /ko -->
+      </div>
+
+      <div class="separator">
+        <!-- ko if: noFilterChecked -->
+          <header>Случайные ссылки
+            <a class="random" href="" data-bind="click: getRandomRefsMain">
+              {{ svg_use('icon-random') }}</a>
+          </header>
+        <!-- /ko -->
+      </div>
+
+      <div class="main">
+        <!-- ko if: !noFilterChecked() && refs().length === 0 -->
+          <figure>
+            <p>На основе выбранных фильтров ничего не найдено.</p>
+          </figure>
+        <!-- /ko -->
+        <!-- ko foreach: refs -->
+          <figure>
+            <!-- ko if: $data.title -->
+              <figcaption data-bind="html: title"></figcaption>
+            <!-- /ko -->
+            <!-- ko if: $data.bib -->
+              <div class="bibliography" data-bind="html: bib"></div>
+            <!-- /ko -->
+            <!-- ko if: $data.annotation -->
+              <div data-bind="html: annotation"></div>
+            <!-- /ko -->
+          </figure>
+          <!-- ko if: $index() + 1 < $parent.refs().length -->
+            <div class="separator"></div>
+          <!-- /ko -->
+        <!-- /ko -->
+
+      </div>
+
     </section>
 
   </div>

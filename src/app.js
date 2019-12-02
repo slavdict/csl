@@ -7,10 +7,12 @@ import page from 'page';
 import initKnockout from './scripts/init.knockout.js';
 import { searchEntries, searchGrix, searchGrixRev,
   cyrillicPreprocess, nonCyrillicPreprocess } from './scripts/searchEntries.js';
+import { asyncGetAnnotation } from './scripts/loadAnnotations.js';
 
 import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
 import { refs } from './scraps/stubdata/refsData.js';
+import { filterCategories, allRefIds } from './scripts/filters.js';
 
 const exampleSearchQueries = ['аромат', 'абие', 'бескровный', 'белость', 'варити',
   'восплачевопльствити'];
@@ -166,17 +168,73 @@ function viewModel() {
     }
   });
 
-  self._refs = ko.computed(function () {
-    if (self.section() === 'refs') {
-      jQuery.ajax('/refs.htm', { dataType: 'text' }).then(function (text) {
-        jQuery('#refs .main').append(text);
-        self._refs.dispose();
-        delete self._refs;
-      }, function () {
-        log('no refs file');
-      });
+  self.filterCategories = filterCategories;
+  self.refs = ko.observableArray([]);
+  self.refIds = ko.computed(function () {
+    let andList = self.filterCategories.map(category => {
+      let refs = [];
+      category.selectedFilters().forEach(
+        filter => filter.index.forEach(
+          ref => {
+            if (refs.indexOf(ref) < 0) {
+              refs.push(ref);
+            }
+          }
+        )
+      );
+      return refs;
+    });
+    switch (andList.length) {
+    case 0: return [];
+    case 1: return andList[0];
+    default: return andList.reduce((a, b) => {
+      if (a.length > b.length) [a, b] = [b, a];
+      if (b.length > 0 && a.length === 0) return b;
+      let intersection = [];
+      for (let x of a) {
+        if (b.indexOf(x) > -1 && intersection.indexOf(x) < 0) {
+          intersection.push(x);
+        }
+      }
+      return intersection;
+    });
     }
   });
+  self.noFilterChecked = ko.computed(function () {
+    for (let category of self.filterCategories) {
+      if (category.selectedFilters().length > 0) return false;
+    }
+    return true;
+  });
+
+  self._refsToLoad = [];
+  self.getNextAnnotation = function () {
+    let list = self._refsToLoad;
+    if (list.length > 0) {
+      asyncGetAnnotation(list[0]).then(ref => {
+        self.refs.push(ref);
+        self._refsToLoad = list.slice(1);
+        self.getNextAnnotation();
+      });
+    }
+  };
+  self.getRandomRefsMain = function () {
+    let lastRefIds = self.refs().map(ref => ref.id),
+        refIds = getRandom(allRefIds, 5, lastRefIds);
+    self.refs.removeAll();
+    self._refsToLoad = refIds;
+    self.getNextAnnotation();
+  };
+  ko.computed(function () {
+    let refIds = self.refIds(),
+        noFilterChecked = self.noFilterChecked();
+    if (refIds.length === 0 && noFilterChecked) {
+      refIds = getRandom(allRefIds, 5, []);
+    }
+    self.refs.removeAll();
+    self._refsToLoad = refIds;
+    self.getNextAnnotation();
+  }).extend({ rateLimit: 500 });
 }
 const vM = new viewModel();
 initKnockout(ko, vM);
@@ -326,5 +384,70 @@ jQuery('#notifications .close').click(function () {
   });
 });
 */
+
+function modifyScroller() {
+  let scroller = document.getElementById('scroller'),
+      body = document.body,
+      scrollTop = body.scrollTop,
+      scrollHeight = body.scrollHeight,
+      windowHeight = body.clientHeight,
+      height, scrollerTop;
+  if (scrollHeight <= windowHeight) {
+    //scroller.style.display = 'none';
+    scroller.style.top = '0px';
+    scroller.style.height = '0px';
+  } else {
+    //scroller.style.display = 'block';
+    height = windowHeight * windowHeight / scrollHeight;
+    scrollerTop = scrollTop + scrollTop / scrollHeight * windowHeight;
+    if (height < 5) {
+      height = 5;
+      scrollerTop = scrollHeight - 5;
+    }
+    scroller.style.top = String(scrollerTop) + 'px';
+    scroller.style.height = String(height) + 'px';
+  }
+}
+
+let grabScroller = null;
+
+function grab(event) {
+  event.preventDefault();
+  if (grabScroller === null) {
+    holdOff(event);
+    return;
+  }
+  let y = event.clientY - grabScroller,
+      body = document.body,
+      scrollHeight = body.scrollHeight,
+      windowHeight = body.clientHeight,
+      scrollTop = y / windowHeight * scrollHeight;
+  body.scrollTop = scrollTop;
+}
+
+function holdOff(event) {
+  event.preventDefault();
+  let scroller = document.getElementById('scroller');
+  window.removeEventListener('pointermove', grab, true);
+  window.removeEventListener('pointerup', holdOff, true);
+  scroller.classList.remove('grabed');
+  grabScroller = null;
+}
+
+function holdOn(event) {
+  console.log('grab', event);
+  event.preventDefault();
+  let scroller = document.getElementById('scroller');
+  window.addEventListener('pointermove', grab, true);
+  window.addEventListener('pointerup', holdOff, true);
+  scroller.classList.add('grabed');
+  grabScroller = event.offsetY;
+}
+
+window.addEventListener('resize', modifyScroller);
+document.body.addEventListener('scroll', modifyScroller);
+let ro = new ResizeObserver(modifyScroller);
+ro.observe(document.getElementById('main'));
+document.getElementById('scroller').addEventListener('pointerdown', holdOn);
 
 jQuery('#safetyCurtain').fadeOut();
