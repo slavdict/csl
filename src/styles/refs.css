@@ -88,6 +88,10 @@ section#refs {
     border-bottom: 1px solid $--red;
     width: calc(var(--video-width-desktop) * 2 + var(--xgap));
 
+    &:empty {
+      border-bottom-color: $--medium-gray;
+    }
+
     & header {
       margin: 1rem 0;
 
