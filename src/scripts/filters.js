@@ -26,21 +26,17 @@ class Filter {
       if (allRefIds.indexOf(ref) < 0) allRefIds.push(ref);
     });
   }
-  toggle(self, event) {  // NOTE: KnockoutJS будет использовать toggle как функцию,
-    // не привязанную в качестве метода к экземпляру класса, но передаст нужный
-    // нам экземпляр в качестве первого аргумента. Поэтому, если передан первый
-    // аргумент, то используем его в качестве this, а если нет то сам this.
+  toggle(self) { // toggle(self, event)
+    // NOTE: KnockoutJS будет использовать toggle
+    // как функцию, не привязанную в качестве метода к экземпляру класса, но
+    // передаст нужный нам экземпляр в качестве первого аргумента. Поэтому,
+    // если передан первый аргумент, то используем его в качестве this, а если
+    // нет то сам this.
     self = self || this;
-    console.log(self.name, event);
     if (self.disabled) return;
-    //self.items.forEach(item => {
-    //  if (item.isGroup) item.items.forEach(i => i.toggle());
-    //  else item.toggle();
-    //});
     let value = !self.checked();
     self.checked(value);
-    if (value) self.selectedFilters.push(self);
-    else self.selectedFilters.remove(self);
+    self.selectedFilters[value ? 'push' : 'remove'](self);
   }
   getItems(data) {
     if (!data.items) return [];

@@ -184,18 +184,13 @@ function viewModel() {
       );
       return refs;
     });
+    andList = andList.filter(x => x.length > 0);
     switch (andList.length) {
     case 0: return [];
     case 1: return andList[0];
     default: return andList.reduce((a, b) => {
-      if (a.length > b.length) [a, b] = [b, a];
-      if (b.length > 0 && a.length === 0) return b;
       let intersection = [];
-      for (let x of a) {
-        if (b.indexOf(x) > -1 && intersection.indexOf(x) < 0) {
-          intersection.push(x);
-        }
-      }
+      a.forEach(x => b.indexOf(x) > -1 && intersection.push(x));
       return intersection;
     });
     }
