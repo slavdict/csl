@@ -29,8 +29,11 @@ body {
   overflow-y: scroll;
 }
 
-::-webkit-scrollbar {
-  display: none;
+@media (hover: hover) {
+  /* Скрывать полосу прокрутки только у тач-девайсов */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 * {

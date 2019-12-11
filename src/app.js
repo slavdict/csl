@@ -380,69 +380,80 @@ jQuery('#notifications .close').click(function () {
 });
 */
 
-function modifyScroller() {
-  let scroller = document.getElementById('scroller'),
-      body = document.body,
-      scrollTop = body.scrollTop,
-      scrollHeight = body.scrollHeight,
-      windowHeight = body.clientHeight,
-      height, scrollerTop;
-  if (scrollHeight <= windowHeight) {
-    //scroller.style.display = 'none';
-    scroller.style.top = '0px';
-    scroller.style.height = '0px';
-  } else {
-    //scroller.style.display = 'block';
-    height = windowHeight * windowHeight / scrollHeight;
-    scrollerTop = scrollTop + scrollTop / scrollHeight * windowHeight;
-    if (height < 5) {
-      height = 5;
-      scrollerTop = scrollHeight - 5;
+function hoverBehaviour(isPoinerDevice) {
+  // Если это тач-устройство, не делаем ничего.
+  if (!isPoinerDevice) return;
+
+  // Если это не тач-устройство, а устройство с указателем, который может
+  // зависать над элементами страницы, то настраиваем полосу прокрутки.
+  function modifyScroller() {
+    let scroller = document.getElementById('scroller'),
+        body = document.body,
+        scrollTop = body.scrollTop,
+        scrollHeight = body.scrollHeight,
+        windowHeight = body.clientHeight,
+        height, scrollerTop;
+    if (scrollHeight <= windowHeight) {
+      //scroller.style.display = 'none';
+      scroller.style.top = '0px';
+      scroller.style.height = '0px';
+    } else {
+      //scroller.style.display = 'block';
+      height = windowHeight * windowHeight / scrollHeight;
+      scrollerTop = scrollTop + scrollTop / scrollHeight * windowHeight;
+      if (height < 5) {
+        height = 5;
+        scrollerTop = scrollHeight - 5;
+      }
+      scroller.style.top = String(scrollerTop) + 'px';
+      scroller.style.height = String(height) + 'px';
     }
-    scroller.style.top = String(scrollerTop) + 'px';
-    scroller.style.height = String(height) + 'px';
   }
-}
 
-let grabScroller = null;
+  let grabScroller = null;
 
-function grab(event) {
-  event.preventDefault();
-  if (grabScroller === null) {
-    holdOff(event);
-    return;
+  function grab(event) {
+    event.preventDefault();
+    if (grabScroller === null) {
+      holdOff(event);
+      return;
+    }
+    let y = event.clientY - grabScroller,
+        body = document.body,
+        scrollHeight = body.scrollHeight,
+        windowHeight = body.clientHeight,
+        scrollTop = y / windowHeight * scrollHeight;
+    body.scrollTop = scrollTop;
   }
-  let y = event.clientY - grabScroller,
-      body = document.body,
-      scrollHeight = body.scrollHeight,
-      windowHeight = body.clientHeight,
-      scrollTop = y / windowHeight * scrollHeight;
-  body.scrollTop = scrollTop;
+
+  function holdOff(event) {
+    event.preventDefault();
+    let scroller = document.getElementById('scroller');
+    window.removeEventListener('pointermove', grab, true);
+    window.removeEventListener('pointerup', holdOff, true);
+    scroller.classList.remove('grabed');
+    grabScroller = null;
+  }
+
+  function holdOn(event) {
+    console.log('grab', event);
+    event.preventDefault();
+    let scroller = document.getElementById('scroller');
+    window.addEventListener('pointermove', grab, true);
+    window.addEventListener('pointerup', holdOff, true);
+    scroller.classList.add('grabed');
+    grabScroller = event.offsetY;
+  }
+
+  window.addEventListener('resize', modifyScroller);
+  document.body.addEventListener('scroll', modifyScroller);
+  let ro = new ResizeObserver(modifyScroller);
+  ro.observe(document.getElementById('main'));
+  document.getElementById('scroller').addEventListener('pointerdown', holdOn);
+
 }
 
-function holdOff(event) {
-  event.preventDefault();
-  let scroller = document.getElementById('scroller');
-  window.removeEventListener('pointermove', grab, true);
-  window.removeEventListener('pointerup', holdOff, true);
-  scroller.classList.remove('grabed');
-  grabScroller = null;
-}
-
-function holdOn(event) {
-  console.log('grab', event);
-  event.preventDefault();
-  let scroller = document.getElementById('scroller');
-  window.addEventListener('pointermove', grab, true);
-  window.addEventListener('pointerup', holdOff, true);
-  scroller.classList.add('grabed');
-  grabScroller = event.offsetY;
-}
-
-window.addEventListener('resize', modifyScroller);
-document.body.addEventListener('scroll', modifyScroller);
-let ro = new ResizeObserver(modifyScroller);
-ro.observe(document.getElementById('main'));
-document.getElementById('scroller').addEventListener('pointerdown', holdOn);
+let mediaQueryList = window.matchMedia('(hover: hover)');
+hoverBehaviour(mediaQueryList.matches);
 
 jQuery('#safetyCurtain').fadeOut();
