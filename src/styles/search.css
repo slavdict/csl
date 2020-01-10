@@ -87,6 +87,23 @@ $--search-icon-dimension: 2.5rem;
       top: 0.15rem;
       color: inherit;
     }
+    & .rnc {
+      display: inline-block;
+      padding: 0.05rem 0.3rem 0.1rem;
+      position: absolute;
+      top: -0.2rem;
+      color: #fff !important;
+      letter-spacing: 0.02rem;
+      background-color: $--light-gray;
+      border-radius: 0.1875rem;
+      font-size: 0.6875rem;
+      @mixin csl-header;
+
+      &:hover {
+        color: #fff;
+        background-color: $--red;
+      }
+    }
   }
 
   & .spinner {

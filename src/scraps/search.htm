@@ -13,11 +13,13 @@
         <span class="HomonymGloss" data-bind="text: g"></span>
       <!-- /ko -->
     <!-- /ko -->
+    <a class="rnc"
+      data-bind="visible: $data.q, attr: { href: $root.rnc($data.q) }">НКРЯ</a>
     <!-- ko if: $data.r -->
       <span class="qv">
-        ⟶
+         ⟶
       </span>
-      <!-- ko template: { name: 'searchHint', data: $data.r } --><!-- /ko -->
+      <span data-bind="template: { name: 'searchHint', data: $data.r }"></span>
     <!-- /ko -->
   </a>
 </script>

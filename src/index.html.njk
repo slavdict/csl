@@ -94,8 +94,8 @@
     </section>
 
     <section id="article"
-      data-bind="visible: section() === 'dictionary' && !indexIsOn() && !aboutIsOn()">
-      <div class="Entry" data-bind="html: article"></div>
+      data-bind="visible: section() === 'dictionary' && !indexIsOn() && !aboutIsOn(),
+        html: article">
     </section>
 
     <section id="greek"

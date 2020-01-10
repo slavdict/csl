@@ -105,6 +105,7 @@ function onNodeSuccess(keyname) {
           postfix = value.ix[KEY_POSTFIX],
           NORESULTS = [];
 
+
     if (ix) {
       if (query === nodename && !isRootNode) return results;
       else if (query.startsWith(nodename) || isRootNode) {

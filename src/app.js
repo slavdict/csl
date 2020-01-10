@@ -13,6 +13,7 @@ import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
 import { refs } from './scraps/stubdata/refsData.js';
 import { filterCategories, allRefIds } from './scripts/filters.js';
+import { rnc } from '../.temp/slavdict_generated/rnc.js';
 
 const exampleSearchQueries = ['аромат', 'абие', 'бескровный', 'белость', 'варити',
   'восплачевопльствити'];
@@ -102,6 +103,7 @@ function viewModel() {
   this.indexQuery = ko.observable();
   this.searchInProgress = ko.observable(false);
   this.hints = ko.observableArray();
+  this.rnc = rnc;
   this.grixResults = ko.observableArray();
   this.article = ko.observable();
 

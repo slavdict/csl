@@ -128,6 +128,16 @@ span.Address {
   font-size: $--address-font-size;
 }
 
+.Entry .rnc,
+.Entry .rnc2 {
+  text-indent: 0.6rem;
+  font-family: $--civil-font1;
+  font-size: $--address-font-size;
+}
+.Entry .rnc {
+  margin-top: 1rem;
+}
+
 span.CgMeaningNumber {
   font-weight: bold;
 }
