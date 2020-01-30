@@ -1,32 +1,26 @@
 <nav id="menu">
   <i id="burger" data-bind="click: toggleMobileMenu">
     {% include 'scraps/burger.svg' %}</i>
-  <i class="x hidden" data-bind="css: { hidden: isMobileMenuHidden },
-                          click: hideMobileMenu">
+  <i class="x hidden" data-bind="css: { hidden: isMobileMenuHidden }">
     {{ svg_use('icon-times') }}</i>
   <ul class="menuInitState"
     data-bind="css: { menuInitState: isMobileMenuHidden }">
     <li data-bind="css: { active: section() === 'dictionary' }">
       <a href=".{{ urls.dictionary }}">Словарь</a>
       <ul>
-        <li data-bind="css: { active: aboutIsOn },
-                       click: hideMobileMenu">
+        <li data-bind="css: { active: aboutIsOn }">
           <a href=".{{ urls.about }}">О словаре</a>
         </li>
       </ul>
     </li>
-    <li data-bind="css: { active: section() === 'video' },
-                   click: hideMobileMenu">
+    <li data-bind="css: { active: section() === 'video' }">
       <a href=".{{ urls.video }}">Видео</a>
     </li>
-    <li data-bind="css: { active: section() === 'refs' },
-                   click: hideMobileMenu">
+    <li data-bind="css: { active: section() === 'refs' }">
       <a href=".{{ urls.refs }}">Ссылки</a>
     </li>
-    <li data-bind="click: hideMobileMenu">
-      <a href="mailto:csl_centr@mail.ru?subject=[{{ CSL_VERY_SHORT_NAME }}]">
-        Обратная связь
-      </a>
+    <li data-bind="css: { active: section() === 'authors' }">
+      <a href=".{{ urls.authors }}">Об авторах</a>
     </li>
   </ul>
 </nav>

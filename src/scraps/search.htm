@@ -25,7 +25,7 @@
 </script>
 
 <div id="search" data-bind="
-  visible: ['dictionary', 'video', 'refs'].indexOf(section()) < 0
+  visible: ['dictionary', 'video', 'refs', 'authors'].indexOf(section()) < 0
     || section() === 'dictionary' && !aboutIsOn(),
   css: { inDict: section() === 'dictionary' }">
 
