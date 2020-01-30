@@ -355,7 +355,7 @@ if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log(debugURLs);
 
 page(rootUrl, hideMobileMenu, goRoot);
 page(dictionaryUrl, hideMobileMenu, goDictionary);
-page(dictionaryAboutUrl, goDictionaryAbout);
+page(dictionaryAboutUrl, hideMobileMenu, goDictionaryAbout);
 page(entriesUrl, goEntries);
 page(particularEntryUrl, loadEntry, goEntries);
 page(findEntryUrl, findEntry);
