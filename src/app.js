@@ -8,6 +8,7 @@ import initKnockout from './scripts/init.knockout.js';
 import { searchEntries, searchGrix, searchGrixRev,
   cyrillicPreprocess, nonCyrillicPreprocess } from './scripts/searchEntries.js';
 import { asyncGetAnnotation } from './scripts/loadAnnotations.js';
+import { ResizeObserver } from '@juggle/resize-observer';
 
 import { videos } from './scripts/videoData.js';
 import { articles } from './scraps/stubdata/articlesData.js';
