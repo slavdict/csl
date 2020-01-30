@@ -1,7 +1,8 @@
 <nav id="menu">
   <i id="burger" data-bind="click: toggleMobileMenu">
     {% include 'scraps/burger.svg' %}</i>
-  <i class="x hidden" data-bind="css: { hidden: isMobileMenuHidden }">
+  <i class="x hidden" data-bind="css: { hidden: isMobileMenuHidden },
+        click: function() { isMobileMenuHidden(true); }">
     {{ svg_use('icon-times') }}</i>
   <ul class="menuInitState"
     data-bind="css: { menuInitState: isMobileMenuHidden }">
