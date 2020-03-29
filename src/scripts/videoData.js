@@ -35,38 +35,9 @@ export const videos = [
     title: 'Лингвистический корпус и исследование церковнославянской книжности',
     speaker: sichinava, legend: '' },
 
-  { id: '39pJIrn9-q8',
-    title: 'Учебная литература на церковнославянском языке',
-    speaker: ramazanova, legend: '' },
-
-  { id: '4Kj9sAaR2uw',
-    title: 'Какие стурлаби украла Рахиль у Лавана?',
-    speaker: grishchenko, legend: '' },
-
-  { id: 'j8XftR_mYR8',
-    title: 'Славяно-еврейские контакты и переводы средневековой Руси',
-    speaker: grishchenko, legend: '' },
-
   { id: 'zDRRSVplgXM',
     title: 'Споры о богослужебном языке',
     speaker: kravetsky, legend: '' },
-
-  { id: 'am-YJUp7RsU',
-    title: 'Церковнославянский язык ученой элиты: переводы книжного круга Чудова монастыря',
-    speaker: pentk, legend: '' },
-
-  { id: 'uPD7YlzTrKo',
-    title: 'Что такое древнерусский язык',
-    speaker: rozhdestvenskaya, legend: '' },
-
-  { id: 'Ta5MproN5qo',
-    title: 'История славянской Библии на Руси',
-    speaker: pichxadze, legend: '' },
-
-  { id: 'kFLMEqnIxlc',
-    title: 'Церковнославянская Библия в XIX–XXI веке',
-    speaker: kravetsky, legend: '' },
-
 
 
 
@@ -102,6 +73,10 @@ export const videos = [
     title: 'Лексика древнерусской разновидности церковнославянского языка',
     speaker: pichxadze, legend: '' },
 
+  { id: 'uPD7YlzTrKo',
+    title: 'Что такое древнерусский язык',
+    speaker: rozhdestvenskaya, legend: '' },
+
   { id: 'acFV5IrZ09s',
     title: 'Берестяные грамоты и языковая ситуация Древнего Новгорода',
     speaker: gippius, legend: '' },
@@ -114,6 +89,14 @@ export const videos = [
     title: 'Церковнославянский язык на Руси в конце XIV века',
     speaker: afanasieva, legend: '' },
 
+  { id: 'j8XftR_mYR8',
+    title: 'Славяно-еврейские контакты и переводы средневековой Руси',
+    speaker: grishchenko, legend: '' },
+
+  { id: '4Kj9sAaR2uw',
+    title: 'Какие стурлаби украла Рахиль у Лавана?',
+    speaker: grishchenko, legend: '' },
+
   { id: 'HMEYoq7iJcQ',
     title: 'Восточнославянская письменность Великого княжества Литовского',
     speaker: temchin, legend: '' },
@@ -121,6 +104,14 @@ export const videos = [
   { id: 'VOXta0aqEP8',
     title: 'Церковнославянский язык в Речи Посполитой',
     speaker: temchin, legend: '' },
+
+  { id: 'am-YJUp7RsU',
+    title: 'Церковнославянский язык ученой элиты: переводы книжного круга Чудова монастыря',
+    speaker: pentk, legend: '' },
+
+  { id: '39pJIrn9-q8',
+    title: 'Учебная литература на церковнославянском языке',
+    speaker: ramazanova, legend: '' },
 
   { id: 'W3-hs6062WI', title: 'Азбучная реформа Петра I', speaker: kagarlickij,
     legend: '' },
@@ -133,6 +124,20 @@ export const videos = [
 
   { id: '1xAHu2Bo5_M', title: 'Церковнославянская грамотность XVIII–XIX веков',
     speaker: pletneva, legend: '' },
+
+  { id: 'Ta5MproN5qo',
+    title: 'История славянской Библии на Руси',
+    speaker: pichxadze, legend: '' },
+
+  /*
+  { id: 'V9eng-FHatM',
+    title: 'Геннадиевская Библия',
+    speaker: verner, legend: '' },
+  */
+
+  { id: 'kFLMEqnIxlc',
+    title: 'Церковнославянская Библия в XIX–XXI веке',
+    speaker: kravetsky, legend: '' },
 
   { id: '33fLDQMBHzo', title: 'Лубочная письменность и церковнославянский язык',
     speaker: pletneva, legend: '' },
@@ -148,7 +153,7 @@ export const videos = [
     speaker: plyakin, legend: '' },
 
   { id: 'WEawhCf-9VA', title: 'Поэтика богослужебных песнопений',
-    speaker: sedakova, legend: '' }, //legend: 'То, что слова литургической поэзии, – слова из другого, на русский слух «почти понятного» языка, пожалуй, только усиливает их поэтическое воздействие. Но здесь нужно сказать со всей определенностью: без специального изучения церковнославянского языка литургические тексты остаются или вовсе непонятными, или понятыми превратно.' },
+    speaker: sedakova, legend: '' },
 
   { id: 'BZn5wLp_BsI', title: 'Церковнославянская лексика: ошибки понимания',
     speaker: sedakova, legend: '' },
