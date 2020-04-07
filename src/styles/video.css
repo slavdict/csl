@@ -47,6 +47,16 @@ section.video {
   }
 }
 
+lite-youtube {
+  background-color: $--medium-gray;
+
+  & .lty-playbtn {
+    left: 11.5%;
+    top: 15%;
+    border-radius: 0;
+  }
+}
+
 @media (--mobile) {
   section.video {
     width: var(--main-width-mobile);

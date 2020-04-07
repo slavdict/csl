@@ -41,17 +41,7 @@
       </header>
       <div class="main">
         <!-- ko foreach: randomVideos -->
-          <figure>
-            <iframe frameborder="0"
-              data-bind="attr: { src: 'https://www.youtube.com/embed/' + id }"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope;
-              picture-in-picture" allowfullscreen></iframe>
-            <figcaption>
-              <header data-bind="text: title"></header>
-              <div class="speaker" data-bind="text: speaker"></div>
-              <legend data-bind="text: legend"></legend>
-            </figcaption>
-          </figure>
+          <figure data-bind="video: $data"></figure>
         <!-- /ko -->
       </div>
     </section>
@@ -62,17 +52,7 @@
       </header>
       <div class="main">
         <!-- ko foreach: videos -->
-          <figure>
-            <iframe frameborder="0"
-              data-bind="attr: { src: 'https://www.youtube.com/embed/' + id }"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope;
-              picture-in-picture" allowfullscreen></iframe>
-            <figcaption>
-              <header data-bind="text: title"></header>
-              <div class="speaker" data-bind="text: speaker"></div>
-              <legend data-bind="text: legend"></legend>
-            </figcaption>
-          </figure>
+          <figure data-bind="video: $data"></figure>
         <!-- /ko -->
       </div>
     </section>
