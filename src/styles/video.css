@@ -17,10 +17,8 @@ section.video {
     margin: 0 var(--xgap) var(--ygap) 0;
     padding: 0;
 
-    & lite-youtube {
-      width: var(--video-width-desktop);
-      height: var(--video-height-desktop);
-      margin: 0;
+    & iframe {
+      background-color: $--black;
     }
   }
 
@@ -51,7 +49,10 @@ $--ytbtn-width: 70px;
 $--ytbtn-height: 46px;
 
 lite-youtube {
-  background-color: $--medium-gray;
+  width: var(--video-width-desktop);
+  height: var(--video-height-desktop);
+  margin: 0;
+  background-color: $--black;
 
   & .lty-playbtn {
     left: calc($--ytbtn-width / 2 + var(--xgap));
@@ -78,14 +79,6 @@ lite-youtube {
     & figure {
       width: var(--main-width-mobile) /* sic! */;
       margin: 0 0 calc(var(--main-gap-mobile) * 3) 0;
-
-      & lite-youtube {
-        position: relative;
-        width: var(--video-width-mobile);
-        height: var(--video-height-mobile);
-        left: calc(- var(--main-gap-mobile));
-        margin-right: calc(- var(--main-gap-mobile));
-      }
     }
 
     & figcaption {
@@ -97,6 +90,14 @@ lite-youtube {
         margin-top: var(--main-gap-mobile);
       }
     }
+  }
+
+  lite-youtube {
+    position: relative;
+    width: var(--video-width-mobile);
+    height: var(--video-height-mobile);
+    left: calc(- var(--main-gap-mobile));
+    margin-right: calc(- var(--main-gap-mobile));
   }
 
   lite-youtube .lty-playbtn {
