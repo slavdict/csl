@@ -27,6 +27,7 @@ const nunjucksContext = {
 };
 
 const { src, dest, parallel, series } = require('gulp'),
+      { execFile } = require('child_process'),
       merge = require('merge-stream');
 
 // Gulp plugins
@@ -132,6 +133,10 @@ function assets() {
   );
 }
 
+function patch() {
+  return execFile('git', ['apply', '--no-index', './lite-yt-embed.patch']);
+}
+
 function sync() {
   return merge(
     src('.build/*').pipe(dest('build')),
@@ -146,4 +151,4 @@ exports.js = series(js, sync);
 exports.css = series(css, sync);
 exports.assets = series(assets, sync);
 exports.sync = sync;
-exports.default = series(parallel(css, js, assets, html), sync);
+exports.default = series(parallel(css, js, assets, html), patch, sync);
