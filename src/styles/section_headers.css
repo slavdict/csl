@@ -8,6 +8,7 @@ h1 {
   font-size: var(--font-size);
   line-height: calc(var(--font-size) * 1.2);
   margin: var(--ygap) 0;
+  text-indent: -0.1rem;
 }
 
 section {
