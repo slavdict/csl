@@ -330,6 +330,17 @@ function findGreek(ctx, next) {
   vM.indexQuery(query);
   next();
 }
+function pauseAllYtVideos() {
+  const iframes = document.querySelectorAll('iframe'),
+        message = JSON.stringify({ event: 'command', func: 'pauseVideo' });
+  Array.prototype.forEach.call(iframes,
+    iframe => iframe.contentWindow.postMessage(message, '*')
+  );
+}
+function pauseVideos(ctx, next) {
+  pauseAllYtVideos();
+  next();
+}
 function hideMobileMenu(ctx, next) {
   vM.isMobileMenuHidden(true);
   next();
@@ -353,17 +364,17 @@ function renewRandomGreek(ctx) {
 // eslint-disable-next-line no-undef
 if (!$_CONFIG.CSL_ENV_IS_PRODUCTION) log(debugURLs);
 
-page(rootUrl, hideMobileMenu, goRoot);
-page(dictionaryUrl, hideMobileMenu, goDictionary);
-page(dictionaryAboutUrl, hideMobileMenu, goDictionaryAbout);
-page(entriesUrl, goEntries);
-page(particularEntryUrl, loadEntry, goEntries);
-page(findEntryUrl, findEntry);
-page(indexUrl, goIndex);
-page(findGreekUrl, findGreek, goIndex);
-page(videoUrl, hideMobileMenu, goVideos);
-page(refsUrl + '*', hideMobileMenu, goRefs);
-page(authorsUrl, hideMobileMenu, goAuthors);
+page(rootUrl, hideMobileMenu, pauseVideos, goRoot);
+page(dictionaryUrl, hideMobileMenu, pauseVideos, goDictionary);
+page(dictionaryAboutUrl, hideMobileMenu, pauseVideos, goDictionaryAbout);
+page(entriesUrl, pauseVideos, goEntries);
+page(particularEntryUrl, pauseVideos, loadEntry, goEntries);
+page(findEntryUrl, pauseVideos, findEntry);
+page(indexUrl, pauseVideos, goIndex);
+page(findGreekUrl, pauseVideos, findGreek, goIndex);
+page(videoUrl, hideMobileMenu, pauseVideos, goVideos);
+page(refsUrl + '*', hideMobileMenu, pauseVideos, goRefs);
+page(authorsUrl, hideMobileMenu, pauseVideos, goAuthors);
 page('*', rootUrl);
 page({ hashbang: true });
 
