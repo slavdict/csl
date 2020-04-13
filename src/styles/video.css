@@ -24,6 +24,11 @@ section.video {
 
   & figcaption {
     margin: var(--xgap) 0 0 0;
+    user-select: contain;
+
+    & * {
+      user-select: text;
+    }
 
     & header {
       @mixin csl-header;
