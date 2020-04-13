@@ -23,6 +23,7 @@ $--search-icon-dimension: 2.5rem;
     letter-spacing: 0.010625rem;
     outline: none;
     caret-color: $--red;
+    user-select: auto;
 
     &::placeholder {
       color: $--light-gray;
