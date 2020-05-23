@@ -8,6 +8,9 @@ parserOptions:
   ecmaVersion: 2020
   sourceType: module
 rules:
+  max-len:
+    - error
+    - code: 80
   indent:
     - error
     - 2
