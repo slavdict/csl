@@ -16,8 +16,8 @@ import { refs } from './scraps/stubdata/refsData.js';
 import { filterCategories, allRefIds } from './scripts/filters.js';
 import { rnc } from '../.temp/slavdict_generated/rnc.js';
 
-const exampleSearchQueries = ['аромат', 'абие', 'бескровный', 'белость', 'варити',
-  'восплачевопльствити'];
+const exampleSearchQueries = ['аромат', 'абие', 'бескровный', 'белость',
+  'варити', 'восплачевопльствити'];
 const exampleIxQueries = ['абие', 'вдохновение', 'воздаяти', 'вред', 'вода'];
 const exampleIxQueriesGr = ['ἀνταποδίδωμι', 'γάμος', 'ὑλικός', 'χάρις'];
 const exampleIxQueriesLa = ['ballo', 'makarios', 'thearestos', 'phthano'];
@@ -29,7 +29,8 @@ if (document.location.hostname === '$_CONFIG.CSL_IDN_REDIRECT') {
   document.location = 'https://$_CONFIG.CSL_IDN/';
 }
 
-const qs = window.URLSearchParams && (new URLSearchParams(document.location.search));
+const qs = window.URLSearchParams
+  && (new URLSearchParams(document.location.search));
 window[';)'] = {
   debug: qs && qs.has('debug') || false,
 };
