@@ -19,6 +19,10 @@ const afanasieva = 'Татьяна Афанасьева, доктор филол
 
 export const videos = [
 
+  { id: 'F5xCf7zbo58',
+    title: 'Церковнославянское книгопечатание',
+    speaker: ramazanova, legend: '' },
+
   { id: 'R-OdPYwh3Ww',
     title: 'Библейские переводы Максима Грека',
     speaker: verner, legend: '' },
