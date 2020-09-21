@@ -19,18 +19,6 @@ const afanasieva = 'Татьяна Афанасьева, доктор филол
 
 export const videos = [
 
-  { id: 'F5xCf7zbo58',
-    title: 'Церковнославянское книгопечатание',
-    speaker: ramazanova, legend: '' },
-
-  { id: 'R-OdPYwh3Ww',
-    title: 'Библейские переводы Максима Грека',
-    speaker: verner, legend: '' },
-
-  { id: 'V9eng-FHatM',
-    title: 'Геннадиевская Библия',
-    speaker: verner, legend: '' },
-
   { id: 'G3P2iKGRypU',
     title: 'Разработка исторических и церковнославянских корпусов: трудности и решения',
     speaker: sichinava, legend: '' },
@@ -38,10 +26,6 @@ export const videos = [
   { id: '-TIm45mVN2Y',
     title: 'Лингвистический корпус и исследование церковнославянской книжности',
     speaker: sichinava, legend: '' },
-
-  { id: 'zDRRSVplgXM',
-    title: 'Споры о богослужебном языке',
-    speaker: kravetsky, legend: '' },
 
 
 
@@ -109,9 +93,17 @@ export const videos = [
     title: 'Церковнославянский язык в Речи Посполитой',
     speaker: temchin, legend: '' },
 
+  { id: 'R-OdPYwh3Ww',
+    title: 'Библейские переводы Максима Грека',
+    speaker: verner, legend: '' },
+
   { id: 'am-YJUp7RsU',
     title: 'Церковнославянский язык ученой элиты: переводы книжного круга Чудова монастыря',
     speaker: pentk, legend: '' },
+
+  { id: 'F5xCf7zbo58',
+    title: 'Церковнославянское книгопечатание',
+    speaker: ramazanova, legend: '' },
 
   { id: '39pJIrn9-q8',
     title: 'Учебная литература на церковнославянском языке',
@@ -133,11 +125,9 @@ export const videos = [
     title: 'История славянской Библии на Руси',
     speaker: pichxadze, legend: '' },
 
-  /*
   { id: 'V9eng-FHatM',
     title: 'Геннадиевская Библия',
     speaker: verner, legend: '' },
-  */
 
   { id: 'kFLMEqnIxlc',
     title: 'Церковнославянская Библия в XIX–XXI веке',
@@ -155,6 +145,10 @@ export const videos = [
 
   { id: 'TPs3NSVdsD8', title: 'Службы неканонизированным историческим личностям',
     speaker: plyakin, legend: '' },
+
+  { id: 'zDRRSVplgXM',
+    title: 'Споры о богослужебном языке',
+    speaker: kravetsky, legend: '' },
 
   { id: 'WEawhCf-9VA', title: 'Поэтика богослужебных песнопений',
     speaker: sedakova, legend: '' },
