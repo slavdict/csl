@@ -19,17 +19,6 @@ const afanasieva = 'Татьяна Афанасьева, доктор филол
 
 export const videos = [
 
-  { id: 'G3P2iKGRypU',
-    title: 'Разработка исторических и церковнославянских корпусов: трудности и решения',
-    speaker: sichinava, legend: '' },
-
-  { id: '-TIm45mVN2Y',
-    title: 'Лингвистический корпус и исследование церковнославянской книжности',
-    speaker: sichinava, legend: '' },
-
-
-
-
   { id: '0Y1OrlrYtNI',
     title: 'Старославянский язык и письменность',
     speaker: temchin, legend: '' },
@@ -159,4 +148,12 @@ export const videos = [
   { id: 'p89yVMIYX4Y',
     title: 'Церковнославянский текст в восприятии человека Нового времени',
     speaker: meerson, legend: '' },
+
+  { id: 'G3P2iKGRypU',
+    title: 'Разработка исторических и церковнославянских корпусов: трудности и решения',
+    speaker: sichinava, legend: '' },
+
+  { id: '-TIm45mVN2Y',
+    title: 'Лингвистический корпус и исследование церковнославянской книжности',
+    speaker: sichinava, legend: '' },
 ];
