@@ -20,6 +20,14 @@ const afanasieva = 'Татьяна Афанасьева, доктор филол
 
 export const videos = [
 
+  { id: 'URJTs_a1YHs',
+    title: 'Редактирование богослужебных книг в XX веке',
+    speaker: kravetsky, legend: '' },
+
+  { id: '15iD7I5GdsE',
+    title: 'Перевод с церковнославянского: стилистические трудности',
+    speaker: davydenkova, legend: '' },
+
   { id: '70cebbmBcIY',
     title: 'Перевод с церковнославянского: порядок слов',
     speaker: davydenkova, legend: '' },
