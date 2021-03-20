@@ -36,7 +36,7 @@
     "gulp-ext": "^1.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^3.0.0",
-    "gulp-markdown": "^5.0.1",
+    "gulp-markdown": "^6.0.0",
     "gulp-nunjucks": "^5.0.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
@@ -56,5 +56,8 @@
     "rollup-plugin-jscc": "^1.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "yarn-run-all": "^3.1.1"
+  },
+  "resolutions": {
+    "is-svg": "^4.2.2"
   }
 }
