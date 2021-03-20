@@ -21,21 +21,17 @@ const afanasieva = 'Татьяна Афанасьева, доктор филол
 
 export const videos = [
 
+  { id: '3IxiCqD9f6E',
+    title: 'Передача церковнославянского текста средствами гражданской графики',
+    speaker: shmelev, legend: '' },
+
+  { id: 'Pnk9rxLorks',
+    title: 'Сдвиги в использовании церковнославянских элементов в русской речи: проблемы нормы',
+    speaker: shmelev, legend: '' },
+
   { id: 'OzVFT03Yto0',
     title: 'Судьба слов «мир» и «смирение»: роль церковнославянского переводчика',
     speaker: shmelev, legend: '' },
-
-  { id: 'URJTs_a1YHs',
-    title: 'Редактирование богослужебных книг в XX веке',
-    speaker: kravetsky, legend: '' },
-
-  { id: '15iD7I5GdsE',
-    title: 'Перевод с церковнославянского: стилистические трудности',
-    speaker: davydenkova, legend: '' },
-
-  { id: '70cebbmBcIY',
-    title: 'Перевод с церковнославянского: порядок слов',
-    speaker: davydenkova, legend: '' },
 
   { id: '0Y1OrlrYtNI',
     title: 'Старославянский язык и письменность',
@@ -143,6 +139,10 @@ export const videos = [
   { id: '33fLDQMBHzo', title: 'Лубочная письменность и церковнославянский язык',
     speaker: pletneva, legend: '' },
 
+  { id: 'URJTs_a1YHs',
+    title: 'Редактирование богослужебных книг в XX веке',
+    speaker: kravetsky, legend: '' },
+
   { id: '2i4nee62Vx4', title: 'Церковные службы, написанные в новейшее время',
     speaker: plyakin, legend: '' },
 
@@ -156,6 +156,14 @@ export const videos = [
   { id: 'zDRRSVplgXM',
     title: 'Споры о богослужебном языке',
     speaker: kravetsky, legend: '' },
+
+  { id: '15iD7I5GdsE',
+    title: 'Перевод с церковнославянского: стилистические трудности',
+    speaker: davydenkova, legend: '' },
+
+  { id: '70cebbmBcIY',
+    title: 'Перевод с церковнославянского: порядок слов',
+    speaker: davydenkova, legend: '' },
 
   { id: 'WEawhCf-9VA', title: 'Поэтика богослужебных песнопений',
     speaker: sedakova, legend: '' },
