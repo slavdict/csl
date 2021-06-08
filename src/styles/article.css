@@ -70,7 +70,8 @@ div.Entry {
   }
 }
 
-div.Entry * {
+div.Entry *,
+div.Entry span.Text {
   font-family: $--civil-font1;
   user-select: text;
 }
@@ -89,7 +90,10 @@ div.CollogroupParagraph {
 
 span.Headword,
 span.SubHeadword,
-span.CSLSegmentEm {
+span.CSLSegmentEm,
+span.Headword span,
+span.SubHeadword span,
+span.CSLSegmentEm span {
   font-family: $--csl-font1;
 }
 
@@ -102,7 +106,8 @@ span.CSLSegmentEm {
   font-size: 1.24rem;
 }
 
-span.CSLSegment {
+span.CSLSegment,
+span.CSLSegment span {
   font-family: $--csl-font2;
   font-style: normal;
 }
