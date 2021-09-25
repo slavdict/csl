@@ -43,6 +43,8 @@ section#article {
 /* span.CSLSegment */
 /* span.CSLSegmentEm */
 /* span.CSLSuper */
+/* span.UCS8Jat */
+/* span.UCS8JatAsp */
 /* span.MeaningfulNoAccent */
 /* span.Em */
 /* span.MeaningNumber */
@@ -115,6 +117,15 @@ span.CSLSegment span {
 span.CSLSuper {
   font-size: 0.66em;
   vertical-align: super;
+}
+
+$--char-shift: 0.2em;
+span.UCS8Jat {
+  margin-right: calc(2 * $--char-shift);
+}
+span.UCS8JatAsp {
+  margin-left: calc(-1 * $--char-shift);
+  margin-right: calc(-1 * $--char-shift);
 }
 
 span.Text,
