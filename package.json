@@ -19,6 +19,7 @@
   "dependencies": {
     "@juggle/resize-observer": "^3.0.2",
     "debug": "^4.1.1",
+    "is-svg": "^4.2.2",
     "jquery": "^3.5.1",
     "knockout": "^3.5.1",
     "lite-youtube-embed": "0.0.0",
